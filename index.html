@@ -34,8 +34,8 @@
       font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at top left, rgba(232, 183, 183, 0.35), transparent 32%),
-        radial-gradient(circle at bottom right, rgba(183, 207, 194, 0.42), transparent 35%),
+        radial-gradient(circle at top left, rgba(232, 183, 183, 0.38), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(183, 207, 194, 0.45), transparent 35%),
         linear-gradient(135deg, #fff8f4, #f8fbf7);
       min-height: 100vh;
     }
@@ -64,8 +64,7 @@
       width: 42px;
       height: 42px;
       border-radius: 999px;
-      background:
-        linear-gradient(135deg, var(--rose), var(--sage));
+      background: linear-gradient(135deg, var(--rose), var(--sage));
       box-shadow: 0 12px 28px rgba(159, 116, 104, 0.18);
     }
 
@@ -275,6 +274,37 @@
       background: #fff;
     }
 
+    .service-checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .service-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 13px 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.18s ease;
+      font-weight: 650;
+      color: #4b403c;
+    }
+
+    .service-check:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(159, 116, 104, 0.12);
+    }
+
+    .service-check input {
+      width: auto;
+      margin-top: 2px;
+      accent-color: var(--clay);
+    }
+
     .question-box {
       padding: 17px;
       border-radius: 22px;
@@ -359,10 +389,10 @@
       margin-top: 12px;
       color: #645854;
       font-size: 14px;
-      background: rgba(255,255,255,0.7);
+      background: rgba(255, 255, 255, 0.7);
       padding: 12px 14px;
       border-radius: 16px;
-      max-height: 160px;
+      max-height: 180px;
       overflow: auto;
     }
 
@@ -429,6 +459,10 @@
         grid-template-columns: 1fr;
       }
 
+      .service-checkbox-grid {
+        grid-template-columns: 1fr;
+      }
+
       .form-inner {
         padding: 22px;
       }
@@ -469,12 +503,8 @@
     <div class="hero">
       <div class="eyebrow" data-i18n="eyebrow">Natural Beauty Begins With Safety</div>
       <h1 data-i18n="title">Hồ sơ bệnh án ban đầu</h1>
-      <p class="subtitle" data-i18n="subtitle">
-        Vui lòng khai báo thông tin sức khỏe trước khi tư vấn dịch vụ. Thông tin này giúp đội ngũ y khoa sàng lọc an toàn trước tiêm, tiểu phẫu, phẫu thuật, gây tê, tiền mê hoặc gây mê.
-      </p>
-      <div class="safety-note" data-i18n="safetyNote">
-        Biểu mẫu này chỉ dùng để sàng lọc an toàn ban đầu, không phải chẩn đoán y khoa và không thay thế cho khám trực tiếp với bác sĩ.
-      </div>
+      <p class="subtitle" data-i18n="subtitle"></p>
+      <div class="safety-note" data-i18n="safetyNote"></div>
     </div>
 
     <div class="form-shell">
@@ -483,6 +513,8 @@
         <input type="hidden" name="riskLevel" id="riskLevel" value="Green" />
         <input type="hidden" name="riskReasons" id="riskReasons" />
         <input type="hidden" name="createdAt" id="createdAt" />
+        <input type="hidden" name="serviceGroups" id="serviceGroupsInput" required />
+        <input type="hidden" name="serviceGroupLabels" id="serviceGroupLabelsInput" />
 
         <div class="progress-wrap">
           <div class="progress-top">
@@ -494,155 +526,147 @@
           </div>
         </div>
 
-        <!-- STEP 1 -->
         <section class="step active">
           <div class="step-header">
-            <h2 class="step-title" data-i18n="step1Title">1. Thông tin cá nhân</h2>
-            <p class="step-desc" data-i18n="step1Desc">Thông tin cơ bản để tạo hồ sơ khách hàng.</p>
+            <h2 class="step-title" data-i18n="step1Title"></h2>
+            <p class="step-desc" data-i18n="step1Desc"></p>
           </div>
 
           <div class="grid">
             <div class="field">
-              <label data-i18n="fullName">Họ và tên *</label>
+              <label data-i18n="fullName"></label>
               <input name="fullName" required />
             </div>
 
             <div class="field">
-              <label data-i18n="phone">Số điện thoại / Zalo *</label>
+              <label data-i18n="phone"></label>
               <input name="phone" required />
             </div>
 
             <div class="field">
-              <label data-i18n="dob">Ngày sinh *</label>
+              <label data-i18n="dob"></label>
               <input type="date" name="dob" required />
             </div>
 
             <div class="field">
-              <label data-i18n="sex">Giới tính sinh học *</label>
+              <label data-i18n="sex"></label>
               <select name="sex" id="sexSelect" required></select>
             </div>
 
             <div class="field">
-              <label data-i18n="height">Chiều cao, cm *</label>
+              <label data-i18n="height"></label>
               <input type="number" name="height" min="80" max="230" required />
             </div>
 
             <div class="field">
-              <label data-i18n="weight">Cân nặng, kg *</label>
+              <label data-i18n="weight"></label>
               <input type="number" name="weight" min="20" max="250" required />
             </div>
 
             <div class="field full">
-              <label data-i18n="serviceGroup">Dịch vụ quan tâm *</label>
-              <select name="serviceGroup" id="serviceGroup" required></select>
+              <label data-i18n="serviceGroup"></label>
+              <div id="serviceGroupCheckboxes" class="service-checkbox-grid"></div>
             </div>
 
             <div class="field full">
-              <label data-i18n="mainConcern">Mong muốn chính của anh/chị</label>
+              <label data-i18n="mainConcern"></label>
               <textarea name="mainConcern" data-placeholder-key="mainConcernPlaceholder"></textarea>
             </div>
           </div>
         </section>
 
-        <!-- STEP 2 -->
         <section class="step">
           <div class="step-header">
-            <h2 class="step-title" data-i18n="step2Title">2. Dị ứng & phản vệ</h2>
-            <p class="step-desc" data-i18n="step2Desc">Các thông tin này đặc biệt quan trọng trước khi dùng thuốc tê, thuốc mê, Botox, filler hoặc kháng sinh.</p>
+            <h2 class="step-title" data-i18n="step2Title"></h2>
+            <p class="step-desc" data-i18n="step2Desc"></p>
           </div>
 
           <div id="allergyQuestions"></div>
 
           <div class="field question-box">
-            <label data-i18n="allergyDetail">Nếu có dị ứng, vui lòng ghi rõ dị ứng với thuốc/chất gì và biểu hiện</label>
+            <label data-i18n="allergyDetail"></label>
             <textarea name="allergyDetail"></textarea>
           </div>
         </section>
 
-        <!-- STEP 3 -->
         <section class="step">
           <div class="step-header">
-            <h2 class="step-title" data-i18n="step3Title">3. Tiền sử phẫu thuật, gây tê, gây mê</h2>
-            <p class="step-desc" data-i18n="step3Desc">Giúp phát hiện nguy cơ trong tiền mê, gây mê và gây tê diện rộng.</p>
+            <h2 class="step-title" data-i18n="step3Title"></h2>
+            <p class="step-desc" data-i18n="step3Desc"></p>
           </div>
 
           <div id="anesthesiaQuestions"></div>
         </section>
 
-        <!-- STEP 4 -->
         <section class="step">
           <div class="step-header">
-            <h2 class="step-title" data-i18n="step4Title">4. Bệnh nền</h2>
-            <p class="step-desc" data-i18n="step4Desc">Vui lòng chọn “Có” nếu anh/chị từng được chẩn đoán hoặc đang điều trị.</p>
+            <h2 class="step-title" data-i18n="step4Title"></h2>
+            <p class="step-desc" data-i18n="step4Desc"></p>
           </div>
 
           <div id="medicalQuestions"></div>
         </section>
 
-        <!-- STEP 5 -->
         <section class="step">
           <div class="step-header">
-            <h2 class="step-title" data-i18n="step5Title">5. Thuốc đang dùng</h2>
-            <p class="step-desc" data-i18n="step5Desc">Không tự ý ngưng thuốc trước khi có chỉ định của bác sĩ.</p>
+            <h2 class="step-title" data-i18n="step5Title"></h2>
+            <p class="step-desc" data-i18n="step5Desc"></p>
           </div>
 
           <div id="medicationQuestions"></div>
 
           <div class="field question-box">
-            <label data-i18n="medicationDetail">Vui lòng ghi tên thuốc/thực phẩm chức năng đang dùng nếu có</label>
+            <label data-i18n="medicationDetail"></label>
             <textarea name="medicationDetail"></textarea>
           </div>
         </section>
 
-        <!-- STEP 6 -->
         <section class="step">
           <div class="step-header">
-            <h2 class="step-title" data-i18n="step6Title">6. Câu hỏi theo dịch vụ</h2>
-            <p class="step-desc" data-i18n="step6Desc">Hệ thống sẽ hiển thị câu hỏi phù hợp với nhóm dịch vụ đã chọn.</p>
+            <h2 class="step-title" data-i18n="step6Title"></h2>
+            <p class="step-desc" data-i18n="step6Desc"></p>
           </div>
 
           <div id="serviceSpecificContainer" class="section-card"></div>
         </section>
 
-        <!-- STEP 7 -->
         <section class="step">
           <div class="step-header">
-            <h2 class="step-title" data-i18n="step7Title">7. Xác nhận & kết quả sàng lọc</h2>
-            <p class="step-desc" data-i18n="step7Desc">Kết quả này là sàng lọc ban đầu, chưa thay thế khám trực tiếp và kết luận của bác sĩ.</p>
+            <h2 class="step-title" data-i18n="step7Title"></h2>
+            <p class="step-desc" data-i18n="step7Desc"></p>
           </div>
 
-          <div id="riskResult" class="risk-card risk-green">
-            <div class="risk-title">GREEN</div>
-            <div data-i18n="greenMessage">Chưa ghi nhận yếu tố nguy cơ lớn trong form. Khách vẫn cần khám trực tiếp trước khi thực hiện dịch vụ.</div>
-          </div>
+          <div id="riskResult" class="risk-card risk-green"></div>
 
           <div class="question-box">
             <label class="pill">
               <input type="checkbox" name="confirmAccuracy" required />
-              <span data-i18n="confirmAccuracy">Tôi xác nhận thông tin đã khai báo là đúng theo hiểu biết của tôi.</span>
+              <span data-i18n="confirmAccuracy"></span>
             </label>
             <br /><br />
             <label class="pill">
               <input type="checkbox" name="confirmDoctor" required />
-              <span data-i18n="confirmDoctor">Tôi hiểu form này không thay thế cho khám trực tiếp và chỉ định cuối cùng của bác sĩ.</span>
+              <span data-i18n="confirmDoctor"></span>
             </label>
           </div>
         </section>
 
         <div class="actions">
-          <button type="button" class="btn-secondary" id="prevBtn" data-i18n="previous">Quay lại</button>
-          <button type="button" class="btn-primary" id="nextBtn" data-i18n="next">Tiếp tục</button>
-          <button type="submit" class="btn-primary hidden" id="submitBtn" data-i18n="submit">Gửi hồ sơ</button>
+          <button type="button" class="btn-secondary" id="prevBtn" data-i18n="previous"></button>
+          <button type="button" class="btn-primary" id="nextBtn" data-i18n="next"></button>
+          <button type="submit" class="btn-primary hidden" id="submitBtn" data-i18n="submit"></button>
         </div>
       </form>
     </div>
 
-    <div class="footer-note" data-i18n="footerNote">
-      HL Health & Beauty · Medical Safety Screening · Natural Beauty, Thoughtfully Protected
-    </div>
+    <div class="footer-note" data-i18n="footerNote"></div>
   </div>
 
   <script>
+    // Gắn Google Apps Script Web App URL vào đây nếu muốn lưu Google Sheet.
+    // Ví dụ: const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx.../exec";
+    const GOOGLE_APPS_SCRIPT_URL = "";
+
     let currentLang = "vi";
 
     const i18n = {
@@ -652,12 +676,10 @@
         title: "Hồ sơ bệnh án ban đầu",
         subtitle: "Vui lòng khai báo thông tin sức khỏe trước khi tư vấn dịch vụ. Thông tin này giúp đội ngũ y khoa sàng lọc an toàn trước tiêm, tiểu phẫu, phẫu thuật, gây tê, tiền mê hoặc gây mê.",
         safetyNote: "Biểu mẫu này chỉ dùng để sàng lọc an toàn ban đầu, không phải chẩn đoán y khoa và không thay thế cho khám trực tiếp với bác sĩ.",
-
         step: "Bước",
         next: "Tiếp tục",
         previous: "Quay lại",
         submit: "Gửi hồ sơ",
-
         step1Title: "1. Thông tin cá nhân",
         step1Desc: "Thông tin cơ bản để tạo hồ sơ khách hàng.",
         step2Title: "2. Dị ứng & phản vệ",
@@ -669,60 +691,52 @@
         step5Title: "5. Thuốc đang dùng",
         step5Desc: "Không tự ý ngưng thuốc trước khi có chỉ định của bác sĩ.",
         step6Title: "6. Câu hỏi theo dịch vụ",
-        step6Desc: "Hệ thống sẽ hiển thị câu hỏi phù hợp với nhóm dịch vụ đã chọn.",
+        step6Desc: "Hệ thống sẽ hiển thị câu hỏi phù hợp với tất cả nhóm dịch vụ đã chọn.",
         step7Title: "7. Xác nhận & kết quả sàng lọc",
         step7Desc: "Kết quả này là sàng lọc ban đầu, chưa thay thế khám trực tiếp và kết luận của bác sĩ.",
-
         fullName: "Họ và tên *",
         phone: "Số điện thoại / Zalo *",
         dob: "Ngày sinh *",
         sex: "Giới tính sinh học *",
         height: "Chiều cao, cm *",
         weight: "Cân nặng, kg *",
-        serviceGroup: "Dịch vụ quan tâm *",
+        serviceGroup: "Dịch vụ quan tâm * - có thể chọn nhiều nhóm",
         mainConcern: "Mong muốn chính của anh/chị",
         mainConcernPlaceholder: "Ví dụ: muốn nâng mũi tự nhiên, sửa mí bị lệch, hút mỡ bụng...",
-
         choose: "Chọn",
         female: "Nữ",
         male: "Nam",
         otherSex: "Khác / không muốn trả lời",
-
         yes: "Có",
         no: "Không",
         unknown: "Không rõ",
-
         allergyDetail: "Nếu có dị ứng, vui lòng ghi rõ dị ứng với thuốc/chất gì và biểu hiện",
         medicationDetail: "Vui lòng ghi tên thuốc/thực phẩm chức năng đang dùng nếu có",
-
-        noServiceSelected: "Vui lòng chọn nhóm dịch vụ ở bước 1 để hiển thị câu hỏi phù hợp.",
-
+        noServiceSelected: "Vui lòng chọn ít nhất một nhóm dịch vụ ở bước 1 để hiển thị câu hỏi phù hợp.",
+        selectAtLeastOneService: "Vui lòng chọn ít nhất một nhóm dịch vụ quan tâm.",
         greenTitle: "GREEN",
         greenMessage: "Chưa ghi nhận yếu tố nguy cơ lớn trong form. Khách vẫn cần khám trực tiếp trước khi thực hiện dịch vụ.",
         yellowTitle: "YELLOW FLAG",
         yellowMessage: "Cần bác sĩ hoặc điều dưỡng đánh giá thêm trước khi chốt lịch thủ thuật/phẫu thuật.",
         redTitle: "RED FLAG",
         redMessage: "Không nên chốt lịch tự động. Cần chuyển bác sĩ hoặc bác sĩ gây mê đánh giá trước khi tư vấn cam kết hoặc đặt lịch.",
-
         riskReasons: "Lý do hệ thống ghi nhận",
         confirmAccuracy: "Tôi xác nhận thông tin đã khai báo là đúng theo hiểu biết của tôi.",
         confirmDoctor: "Tôi hiểu form này không thay thế cho khám trực tiếp và chỉ định cuối cùng của bác sĩ.",
         alertSubmitted: "Đã ghi nhận hồ sơ. Kết quả sàng lọc: ",
+        alertSubmitError: "Có lỗi khi gửi hồ sơ. Vui lòng thử lại hoặc báo nhân viên hỗ trợ.",
         footerNote: "HL Health & Beauty · Medical Safety Screening · Natural Beauty, Thoughtfully Protected"
       },
-
       en: {
         brand: "HL Health & Beauty",
         eyebrow: "Natural Beauty Begins With Safety",
         title: "Initial Medical Intake Form",
         subtitle: "Please complete this health screening form before your consultation. This information helps our medical team screen for safety before injections, minor procedures, surgery, local anesthesia, sedation, or general anesthesia.",
         safetyNote: "This form is for initial safety screening only. It is not a medical diagnosis and does not replace an in-person consultation with a doctor.",
-
         step: "Step",
         next: "Next",
         previous: "Back",
         submit: "Submit",
-
         step1Title: "1. Personal Information",
         step1Desc: "Basic information to create your client profile.",
         step2Title: "2. Allergies & Anaphylaxis",
@@ -734,45 +748,40 @@
         step5Title: "5. Current Medications",
         step5Desc: "Please do not stop any medication without medical advice.",
         step6Title: "6. Service-Specific Questions",
-        step6Desc: "Questions will be shown based on the service group you selected.",
+        step6Desc: "Questions will be shown based on all service groups you selected.",
         step7Title: "7. Confirmation & Screening Result",
         step7Desc: "This is an initial screening result and does not replace an in-person medical assessment or the doctor’s final decision.",
-
         fullName: "Full name *",
         phone: "Phone number / WhatsApp / Zalo *",
         dob: "Date of birth *",
         sex: "Biological sex *",
         height: "Height, cm *",
         weight: "Weight, kg *",
-        serviceGroup: "Service of interest *",
+        serviceGroup: "Service of interest * - multiple selections allowed",
         mainConcern: "Main concern or desired result",
         mainConcernPlaceholder: "Example: natural-looking rhinoplasty, eyelid revision, abdominal liposuction...",
-
         choose: "Select",
         female: "Female",
         male: "Male",
         otherSex: "Other / prefer not to say",
-
         yes: "Yes",
         no: "No",
         unknown: "Not sure",
-
         allergyDetail: "If you have any allergies, please specify the substance/medication and your reaction",
         medicationDetail: "Please list any medications or supplements you are currently taking",
-
-        noServiceSelected: "Please select a service group in step 1 to show relevant questions.",
-
+        noServiceSelected: "Please select at least one service group in step 1 to show relevant questions.",
+        selectAtLeastOneService: "Please select at least one service group.",
         greenTitle: "GREEN",
         greenMessage: "No major risk factor has been identified in this form. An in-person medical assessment is still required before any procedure.",
         yellowTitle: "YELLOW FLAG",
         yellowMessage: "Further review by a doctor or medical staff is required before confirming the procedure or surgery.",
         redTitle: "RED FLAG",
         redMessage: "Do not confirm the appointment automatically. This case requires review by a doctor and/or anesthesiologist before any commitment or booking.",
-
         riskReasons: "Reasons identified by the screening system",
         confirmAccuracy: "I confirm that the information I have provided is accurate to the best of my knowledge.",
         confirmDoctor: "I understand that this form does not replace an in-person consultation and the doctor’s final medical decision.",
         alertSubmitted: "Your form has been submitted. Screening result: ",
+        alertSubmitError: "There was an error submitting the form. Please try again or contact our staff.",
         footerNote: "HL Health & Beauty · Medical Safety Screening · Natural Beauty, Thoughtfully Protected"
       }
     };
@@ -876,7 +885,6 @@
           en: "Are you allergic to latex, medical gloves, adhesive tape, or antiseptic solutions?"
         }
       ],
-
       anesthesiaQuestions: [
         {
           name: "previousSurgery",
@@ -915,7 +923,6 @@
           en: "Have you ever required ICU or intensive monitoring after surgery?"
         }
       ],
-
       medicalQuestions: [
         {
           name: "hypertension",
@@ -1020,7 +1027,6 @@
           en: "Do you currently have a skin infection, dental infection, herpes outbreak, or open wound?"
         }
       ],
-
       medicationQuestions: [
         {
           name: "anticoagulant",
@@ -1130,7 +1136,6 @@
           en: "Have you had eyelid surgery, canthoplasty, or multiple eyelid revisions before?"
         }
       ],
-
       nose: [
         {
           name: "sinusitis",
@@ -1163,7 +1168,6 @@
           en: "If rib cartilage is needed: do you have lung disease or previous chest surgery?"
         }
       ],
-
       lips: [
         {
           name: "oralHerpes",
@@ -1184,7 +1188,6 @@
           en: "Have you had lip filler, lip surgery, philtrum surgery, or gummy smile treatment before?"
         }
       ],
-
       faceLift: [
         {
           name: "faceliftSmoking",
@@ -1211,7 +1214,6 @@
           en: "Do you expect a very dramatic change or have difficulty accepting scars?"
         }
       ],
-
       faceImplant: [
         {
           name: "faceSilicone",
@@ -1232,7 +1234,6 @@
           en: "Do you currently have numbness, pain, or weakness in the chin or face?"
         }
       ],
-
       jaw: [
         {
           name: "limitedMouth",
@@ -1259,7 +1260,6 @@
           en: "Do you have anemia, bleeding disorder, or take blood thinners?"
         }
       ],
-
       breast: [
         {
           name: "breastMass",
@@ -1286,7 +1286,6 @@
           en: "Do you have a history of blood clots or currently use hormones/IVF medication?"
         }
       ],
-
       body: [
         {
           name: "multiLipo",
@@ -1319,7 +1318,6 @@
           en: "Have you ever had signs of severe reaction after local anesthesia or liposuction?"
         }
       ],
-
       buttock: [
         {
           name: "buttockSilicone",
@@ -1340,7 +1338,6 @@
           en: "Do you have a history of blood clots, high BMI, or limited mobility?"
         }
       ],
-
       intimate: [
         {
           name: "vaginalInfection",
@@ -1361,7 +1358,6 @@
           en: "Is anyone pressuring or forcing you to have this procedure?"
         }
       ],
-
       botox: [
         {
           name: "myasthenia",
@@ -1388,7 +1384,6 @@
           en: "Have you had Botox within the last 3–4 months?"
         }
       ],
-
       filler: [
         {
           name: "fillerVascular",
@@ -1415,7 +1410,6 @@
           en: "Do you currently have infection, inflamed acne, or herpes at the injection area?"
         }
       ],
-
       scar: [
         {
           name: "keloid",
@@ -1436,7 +1430,6 @@
           en: "Have you ever had skin thinning or ulceration after scar injections?"
         }
       ],
-
       unknown: [
         {
           name: "unknownConcern",
@@ -1449,7 +1442,9 @@
 
     const steps = document.querySelectorAll(".step");
     const form = document.getElementById("medicalForm");
-    const serviceGroup = document.getElementById("serviceGroup");
+    const serviceGroupCheckboxes = document.getElementById("serviceGroupCheckboxes");
+    const serviceGroupsInput = document.getElementById("serviceGroupsInput");
+    const serviceGroupLabelsInput = document.getElementById("serviceGroupLabelsInput");
     const sexSelect = document.getElementById("sexSelect");
     const progressBar = document.getElementById("progressBar");
     const stepText = document.getElementById("stepText");
@@ -1483,11 +1478,14 @@
       });
 
       renderSexOptions();
-      renderServiceDropdown();
+      renderServiceCheckboxes();
       renderAllQuestionGroups();
       renderServiceQuestions();
       updateStep();
-      if (currentStep === steps.length - 1) calculateRisk();
+
+      if (currentStep === steps.length - 1) {
+        calculateRisk();
+      }
     }
 
     function renderSexOptions() {
@@ -1501,18 +1499,56 @@
       sexSelect.value = currentValue;
     }
 
-    function renderServiceDropdown() {
-      const currentValue = serviceGroup.value;
-      serviceGroup.innerHTML = `<option value="">${i18n[currentLang].choose}</option>`;
+    function getSelectedServiceGroups() {
+      return Array.from(
+        document.querySelectorAll('input[name="serviceGroupOption"]:checked')
+      ).map(input => input.value);
+    }
 
-      Object.entries(serviceLabels[currentLang]).forEach(([value, label]) => {
-        const option = document.createElement("option");
-        option.value = value;
-        option.textContent = label;
-        serviceGroup.appendChild(option);
+    function updateServiceGroupHiddenInputs() {
+      const selected = getSelectedServiceGroups();
+
+      const labels = selected.map(code => {
+        return serviceLabels[currentLang][code] || code;
       });
 
-      serviceGroup.value = currentValue;
+      serviceGroupsInput.value = selected.join(",");
+      serviceGroupLabelsInput.value = labels.join(" | ");
+    }
+
+    function renderServiceCheckboxes() {
+      const selectedBefore = getSelectedServiceGroups();
+
+      serviceGroupCheckboxes.innerHTML = "";
+
+      Object.entries(serviceLabels[currentLang]).forEach(([value, label]) => {
+        const item = document.createElement("label");
+        item.className = "service-check";
+
+        item.innerHTML = `
+          <input 
+            type="checkbox" 
+            name="serviceGroupOption" 
+            value="${value}"
+          />
+          <span>${label}</span>
+        `;
+
+        serviceGroupCheckboxes.appendChild(item);
+
+        const input = item.querySelector("input");
+
+        if (selectedBefore.includes(value)) {
+          input.checked = true;
+        }
+
+        input.addEventListener("change", () => {
+          updateServiceGroupHiddenInputs();
+          renderServiceQuestions();
+        });
+      });
+
+      updateServiceGroupHiddenInputs();
     }
 
     function getRadioValue(name) {
@@ -1567,15 +1603,29 @@
     }
 
     function renderServiceQuestions() {
-      const selected = serviceGroup.value;
+      const selectedServices = getSelectedServiceGroups();
       const container = document.getElementById("serviceSpecificContainer");
 
-      if (!selected || !serviceQuestions[selected]) {
+      if (!selectedServices.length) {
         container.innerHTML = `<p class="small-note">${i18n[currentLang].noServiceSelected}</p>`;
         return;
       }
 
-      renderYesNoQuestions("serviceSpecificContainer", serviceQuestions[selected]);
+      const mergedQuestions = [];
+      const existingNames = new Set();
+
+      selectedServices.forEach(serviceCode => {
+        const questions = serviceQuestions[serviceCode] || [];
+
+        questions.forEach(q => {
+          if (!existingNames.has(q.name)) {
+            mergedQuestions.push(q);
+            existingNames.add(q.name);
+          }
+        });
+      });
+
+      renderYesNoQuestions("serviceSpecificContainer", mergedQuestions);
     }
 
     function updateStep() {
@@ -1599,12 +1649,23 @@
 
     function validateCurrentStep() {
       const inputs = steps[currentStep].querySelectorAll("input, select, textarea");
+
       for (const input of inputs) {
         if (!input.checkValidity()) {
           input.reportValidity();
           return false;
         }
       }
+
+      if (currentStep === 0) {
+        const selectedServices = getSelectedServiceGroups();
+
+        if (!selectedServices.length) {
+          alert(i18n[currentLang].selectAtLeastOneService);
+          return false;
+        }
+      }
+
       return true;
     }
 
@@ -1676,8 +1737,13 @@
         data[key] = value;
       }
 
+      const selectedServices = getSelectedServiceGroups();
+
       data.createdAt = new Date().toISOString();
-      data.serviceGroupLabel = serviceLabels[currentLang][data.serviceGroup] || "";
+      data.serviceGroups = selectedServices.join(",");
+      data.serviceGroupLabels = selectedServices
+        .map(code => serviceLabels[currentLang][code] || code)
+        .join(" | ");
       data.userAgent = navigator.userAgent;
 
       return data;
@@ -1699,8 +1765,6 @@
       }
     });
 
-    serviceGroup.addEventListener("change", renderServiceQuestions);
-
     form.addEventListener("submit", async event => {
       event.preventDefault();
 
@@ -1709,36 +1773,43 @@
       calculateRisk();
 
       const payload = collectFormData();
-
-      /*
-        GOOGLE APPS SCRIPT INTEGRATION:
-        1. Deploy Apps Script as Web App.
-        2. Replace YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL below.
-        3. Uncomment the fetch block.
-      */
-
-      /*
-      await fetch("YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL", {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8"
-        },
-        body: JSON.stringify(payload)
-      });
-      */
-
       console.log("HL Medical Intake Payload:", payload);
+
+      if (GOOGLE_APPS_SCRIPT_URL) {
+        try {
+          await fetch(GOOGLE_APPS_SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify(payload)
+          });
+        } catch (error) {
+          console.error(error);
+          alert(i18n[currentLang].alertSubmitError);
+          return;
+        }
+      }
+
       alert(i18n[currentLang].alertSubmitted + payload.riskLevel);
+      form.reset();
+      currentStep = 0;
+      document.getElementById("createdAt").value = new Date().toISOString();
+      renderSexOptions();
+      renderServiceCheckboxes();
+      renderAllQuestionGroups();
+      renderServiceQuestions();
+      updateStep();
     });
 
     document.getElementById("createdAt").value = new Date().toISOString();
 
     renderSexOptions();
-    renderServiceDropdown();
+    renderServiceCheckboxes();
     renderAllQuestionGroups();
     renderServiceQuestions();
-    updateStep();
+    setLanguage("vi");
   </script>
 </body>
 </html>
