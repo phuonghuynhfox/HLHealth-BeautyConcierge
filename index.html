@@ -657,6 +657,7 @@
         medicationDetail: "Vui lòng ghi tên thuốc/thực phẩm chức năng đang dùng nếu có",
         noServiceSelected: "Vui lòng chọn ít nhất một nhóm dịch vụ ở bước 1 để hiển thị câu hỏi phù hợp.",
         selectAtLeastOneService: "Vui lòng chọn ít nhất một nhóm dịch vụ quan tâm.",
+        requiredRadioMessage: "Vui lòng trả lời đầy đủ các câu hỏi Có / Không / Không rõ trước khi chuyển sang bước tiếp theo.",
         layerProcedure: "A. Mức can thiệp, gây tê, tiền mê/gây mê",
         layerBleedingVTE: "B. Chảy máu, bầm tụ máu, huyết khối",
         layerInfectionHealing: "C. Nhiễm trùng, lành thương, da/vùng làm",
@@ -720,6 +721,7 @@
         medicationDetail: "Please list any medications or supplements you are currently taking",
         noServiceSelected: "Please select at least one service group in step 1 to show relevant questions.",
         selectAtLeastOneService: "Please select at least one service group.",
+        requiredRadioMessage: "Please answer all Yes / No / Not sure questions before continuing to the next step.",
         layerProcedure: "A. Procedure intensity, local anesthesia, sedation/general anesthesia",
         layerBleedingVTE: "B. Bleeding, bruising, hematoma, blood clot risk",
         layerInfectionHealing: "C. Infection, wound healing, skin/treatment area",
@@ -761,6 +763,7 @@
         botox: "Botox",
         filler: "Filler / tiêm tan / xử lý filler",
         scar: "Sẹo / sẹo lồi / cắt sẹo",
+        dental: "Nha khoa",
         unknown: "Chưa biết, cần bác sĩ tư vấn"
       },
       en: {
@@ -777,6 +780,7 @@
         botox: "Botox / botulinum toxin",
         filler: "Dermal filler / dissolving filler / filler complication management",
         scar: "Scar / keloid / scar revision",
+        dental: "Dentistry / dental care",
         unknown: "Not sure yet, need doctor consultation"
       }
     };
@@ -850,6 +854,7 @@
       botox: { profiles: ["botoxSpecific", "neuromuscular", "infectionInjectionSite"] },
       filler: { profiles: ["fillerSpecific", "vascularOcclusion", "infectionInjectionSite", "siliconeForeignMaterial", "allergyLidocaineHA"] },
       scar: { profiles: ["scarSpecific", "woundHealing", "minorLocalAnesthesia", "infectionLocal"] },
+      dental: { profiles: ["dentalSpecific", "dentalInfection", "dentalBleeding", "dentalMedicationRisk", "minorLocalAnesthesia", "woundHealing", "pregnancyRelated"] },
       unknown: { profiles: ["doctorConsultationNeeded"] }
     };
 
@@ -929,6 +934,18 @@
       scarSteroidComplication: { layer: "layerMaterialRevision", flag: "yellow", vi: "Anh/chị từng tiêm sẹo bằng Triamcinolone/corticoid và bị teo da, lõm da, giãn mạch hoặc loét da chưa?", en: "Have you had Triamcinolone/steroid scar injections causing skin thinning, indentation, visible vessels, or ulceration?" },
       scarContractureFunction: { layer: "layerAnatomy", flag: "yellow", vi: "Sẹo có gây co kéo, hạn chế vận động, kéo lệch mí/môi/mũi hoặc ảnh hưởng chức năng không?", en: "Does the scar cause contracture, limited movement, eyelid/lip/nose distortion, or functional problems?" },
 
+
+      dentalPainSwellingInfection: { layer: "layerInfectionHealing", flag: "red", vi: "Hiện tại anh/chị có đau răng dữ dội, sưng mặt/sưng nướu, mủ, sốt, áp xe răng hoặc nhiễm trùng răng miệng chưa điều trị không?", en: "Do you currently have severe tooth pain, facial/gum swelling, pus, fever, dental abscess, or untreated oral infection?" },
+      dentalGumDiseaseLooseTeeth: { layer: "layerAnatomy", flag: "yellow", vi: "Anh/chị có nha chu nặng, chảy máu nướu thường xuyên, răng lung lay, tiêu xương hoặc hôi miệng kéo dài không?", en: "Do you have severe periodontal disease, frequent gum bleeding, loose teeth, bone loss, or persistent bad breath?" },
+      dentalHeartEndocarditisRisk: { layer: "layerAnatomy", flag: "red", vi: "Anh/chị có van tim nhân tạo, từng viêm nội tâm mạc nhiễm khuẩn, bệnh tim bẩm sinh phức tạp hoặc bác sĩ từng dặn phải dùng kháng sinh dự phòng trước nha khoa không?", en: "Do you have a prosthetic heart valve, previous infective endocarditis, complex congenital heart disease, or have been told to take antibiotic prophylaxis before dental treatment?" },
+      dentalBoneMedicationRadiation: { layer: "layerMaterialRevision", flag: "red", vi: "Anh/chị đang hoặc từng dùng Bisphosphonate/Denosumab thuốc chống hủy xương, điều trị loãng xương/ung thư xương, hoặc từng xạ trị vùng đầu-cổ không?", en: "Are you currently or have you previously used bisphosphonates/denosumab or bone-modifying medication for osteoporosis/cancer, or had head and neck radiation?" },
+      dentalBleedingAnticoagulant: { layer: "layerBleedingVTE", flag: "red", vi: "Anh/chị có chảy máu kéo dài sau nhổ răng/lấy cao răng, rối loạn đông máu, hoặc đang dùng thuốc chống đông/kháng kết tập tiểu cầu không?", en: "Have you had prolonged bleeding after tooth extraction/scaling, a bleeding disorder, or are you taking blood thinners/antiplatelet medication?" },
+      dentalAnestheticAdrenalineReaction: { layer: "layerProcedure", flag: "yellow", vi: "Anh/chị từng hồi hộp mạnh, run tay, choáng, khó thở hoặc dị ứng sau khi tiêm thuốc tê nha khoa có adrenaline chưa?", en: "Have you ever had strong palpitations, shaking, dizziness, breathing difficulty, or allergy after dental local anesthesia with adrenaline/epinephrine?" },
+      dentalPregnancyTiming: { layer: "layerEthics", flag: "yellow", vi: "Anh/chị đang mang thai, nghi mang thai hoặc đang cho con bú và dự kiến làm nhổ răng, phẫu thuật nướu, implant hoặc dùng thuốc/kháng sinh/giảm đau không?", en: "Are you pregnant, possibly pregnant, or breastfeeding and planning extraction, gum surgery, implant treatment, or medication such as antibiotics/painkillers?" },
+      dentalDiabetesHealing: { layer: "layerInfectionHealing", flag: "yellow", vi: "Anh/chị có tiểu đường, đường huyết chưa ổn định, hay bị nhiễm trùng nướu/răng hoặc lành thương chậm sau điều trị nha khoa không?", en: "Do you have diabetes, poorly controlled blood sugar, frequent gum/tooth infections, or delayed healing after dental treatment?" },
+      dentalAnxietyGagReflex: { layer: "layerProcedure", flag: "yellow", vi: "Anh/chị có sợ nha khoa nhiều, phản xạ nôn mạnh, khó há miệng lâu hoặc từng ngất khi điều trị nha khoa không?", en: "Do you have significant dental anxiety, strong gag reflex, difficulty keeping your mouth open, or have you ever fainted during dental treatment?" },
+      dentalPreviousImplantComplication: { layer: "layerMaterialRevision", flag: "yellow", vi: "Anh/chị từng cấy implant, ghép xương, nâng xoang, bọc sứ, niềng răng hoặc phẫu thuật nha khoa và có biến chứng như nhiễm trùng, đau kéo dài, mất implant không?", en: "Have you had dental implants, bone grafting, sinus lift, crowns/veneers, orthodontics, or dental surgery with complications such as infection, prolonged pain, or implant failure?" },
+
       doctorConsultationNeeded: { layer: "layerEthics", flag: "yellow", vi: "Anh/chị chưa rõ dịch vụ phù hợp và cần bác sĩ tư vấn trực tiếp?", en: "Are you unsure which service is suitable and need a direct doctor consultation?" }
     };
 
@@ -978,6 +995,10 @@
       allergyLidocaineHA: ["fillerLidocaineHAAllergy"],
       localAnestheticToxicity: ["localAnesthesiaToxicitySigns"],
       scarSpecific: ["scarKeloidHistory", "scarCurrentInflammation", "scarSteroidComplication", "scarContractureFunction"],
+      dentalSpecific: ["dentalGumDiseaseLooseTeeth", "dentalHeartEndocarditisRisk", "dentalAnestheticAdrenalineReaction", "dentalAnxietyGagReflex", "dentalPreviousImplantComplication"],
+      dentalInfection: ["dentalPainSwellingInfection", "dentalDiabetesHealing"],
+      dentalBleeding: ["dentalBleedingAnticoagulant"],
+      dentalMedicationRisk: ["dentalBoneMedicationRadiation"],
       doctorConsultationNeeded: ["doctorConsultationNeeded"]
     };
 
@@ -1247,6 +1268,23 @@
 
       if (currentStep === 0 && !getSelectedServiceGroups().length) {
         alert(i18n[currentLang].selectAtLeastOneService);
+        return false;
+      }
+
+      const currentStepElement = steps[currentStep];
+      const radioNames = Array.from(currentStepElement.querySelectorAll('input[type="radio"]'))
+        .map(input => input.name)
+        .filter((name, index, arr) => name && arr.indexOf(name) === index);
+
+      const unansweredRadioName = radioNames.find(name => {
+        return !currentStepElement.querySelector(`input[type="radio"][name="${CSS.escape(name)}"]:checked`);
+      });
+
+      if (unansweredRadioName) {
+        alert(i18n[currentLang].requiredRadioMessage);
+        const firstUnanswered = currentStepElement.querySelector(`input[type="radio"][name="${CSS.escape(unansweredRadioName)}"]`);
+        const box = firstUnanswered ? firstUnanswered.closest('.question-box') : null;
+        if (box) box.scrollIntoView({ behavior: "smooth", block: "center" });
         return false;
       }
 
