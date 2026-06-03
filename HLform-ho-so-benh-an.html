@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>HL Health & Beauty - Medical Intake Form</title>
+
+  <style>
+    :root {
+      --rose: #e8b7b7;
+      --rose-soft: #fff1f1;
+      --sage: #b7cfc2;
+      --sage-soft: #edf6f1;
+      --cream: #fbf7ef;
+      --sand: #e8dccd;
+      --clay: #9f7468;
+      --ink: #2f2a28;
+      --muted: #7d746f;
+      --white: #ffffff;
+      --border: rgba(159, 116, 104, 0.2);
+
+      --green: #2f8f5b;
+      --yellow: #b98216;
+      --red: #c7443e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(232, 183, 183, 0.35), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(183, 207, 194, 0.42), transparent 35%),
+        linear-gradient(135deg, #fff8f4, #f8fbf7);
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 34px 16px 72px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .logo-mark {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background:
+        linear-gradient(135deg, var(--rose), var(--sage));
+      box-shadow: 0 12px 28px rgba(159, 116, 104, 0.18);
+    }
+
+    .brand-name {
+      font-size: 14px;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--clay);
+    }
+
+    .language-switch {
+      display: flex;
+      background: rgba(255, 255, 255, 0.72);
+      padding: 5px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+    }
+
+    .language-switch button {
+      border: 0;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--clay);
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .language-switch button.active {
+      background: linear-gradient(135deg, var(--rose), var(--sage));
+      color: #fff;
+      box-shadow: 0 8px 18px rgba(159, 116, 104, 0.18);
+    }
+
+    .hero {
+      text-align: center;
+      margin: 18px auto 30px;
+      max-width: 820px;
+    }
+
+    .eyebrow {
+      color: var(--clay);
+      text-transform: uppercase;
+      letter-spacing: 2.4px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.06;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      color: #5d453f;
+    }
+
+    .subtitle {
+      margin: 18px auto 0;
+      max-width: 780px;
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 16px;
+    }
+
+    .safety-note {
+      margin: 18px auto 0;
+      max-width: 760px;
+      padding: 14px 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.66);
+      border: 1px solid var(--border);
+      color: #6f625d;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .form-shell {
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid var(--border);
+      border-radius: 34px;
+      box-shadow:
+        0 28px 70px rgba(159, 116, 104, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(18px);
+      overflow: hidden;
+    }
+
+    .form-inner {
+      padding: 30px;
+    }
+
+    .progress-wrap {
+      margin-bottom: 28px;
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .progress {
+      height: 11px;
+      background: #f0e5df;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      width: 14%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--rose), var(--sage));
+      transition: width 0.28s ease;
+    }
+
+    .step {
+      display: none;
+      animation: rise 0.25s ease;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .step-header {
+      margin-bottom: 22px;
+    }
+
+    .step-title {
+      margin: 0;
+      font-size: 28px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      color: #5d453f;
+    }
+
+    .step-desc {
+      margin: 9px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    .field label,
+    .question-title {
+      display: block;
+      font-size: 14px;
+      font-weight: 750;
+      color: #4a3c37;
+      margin-bottom: 8px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px 15px;
+      border-radius: 17px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--ink);
+      font-size: 15px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    textarea {
+      min-height: 98px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgba(159, 116, 104, 0.48);
+      box-shadow: 0 0 0 4px rgba(232, 183, 183, 0.22);
+      background: #fff;
+    }
+
+    .question-box {
+      padding: 17px;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(135deg, rgba(255, 241, 241, 0.72), rgba(237, 246, 241, 0.68));
+      margin-bottom: 14px;
+    }
+
+    .radio-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid var(--border);
+      color: #4b403c;
+      cursor: pointer;
+      font-weight: 650;
+      transition: all 0.18s ease;
+    }
+
+    .pill:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(159, 116, 104, 0.12);
+    }
+
+    .pill input {
+      width: auto;
+      accent-color: var(--clay);
+    }
+
+    .section-card {
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px dashed rgba(159, 116, 104, 0.34);
+      margin-top: 14px;
+    }
+
+    .risk-card {
+      padding: 22px;
+      border-radius: 26px;
+      border: 1px solid var(--border);
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+
+    .risk-title {
+      font-size: 26px;
+      font-family: Georgia, "Times New Roman", serif;
+      margin-bottom: 8px;
+    }
+
+    .risk-green {
+      background: #ecf8f1;
+      border-color: rgba(47, 143, 91, 0.25);
+      color: var(--green);
+    }
+
+    .risk-yellow {
+      background: #fff8e8;
+      border-color: rgba(185, 130, 22, 0.25);
+      color: var(--yellow);
+    }
+
+    .risk-red {
+      background: #fff0ef;
+      border-color: rgba(199, 68, 62, 0.25);
+      color: var(--red);
+    }
+
+    .risk-reasons {
+      margin-top: 12px;
+      color: #645854;
+      font-size: 14px;
+      background: rgba(255,255,255,0.7);
+      padding: 12px 14px;
+      border-radius: 16px;
+      max-height: 160px;
+      overflow: auto;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 23px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary {
+      background: #f0e5df;
+      color: #5d453f;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #d99fa2, #98b9a9);
+      color: #fff;
+      box-shadow: 0 14px 28px rgba(159, 116, 104, 0.18);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 34px rgba(159, 116, 104, 0.22);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .small-note {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-top: 8px;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 24px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 760px) {
+      .top-bar {
+        flex-direction: column;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-inner {
+        padding: 22px;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+
+      .radio-row {
+        flex-direction: column;
+      }
+
+      .pill {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="top-bar">
+      <div class="logo-mark">
+        <div class="logo-circle"></div>
+        <div class="brand-name" data-i18n="brand">HL Health & Beauty</div>
+      </div>
+
+      <div class="language-switch">
+        <button type="button" id="btnVi" class="active" onclick="setLanguage('vi')">Tiếng Việt</button>
+        <button type="button" id="btnEn" onclick="setLanguage('en')">English</button>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="eyebrow" data-i18n="eyebrow">Natural Beauty Begins With Safety</div>
+      <h1 data-i18n="title">Hồ sơ bệnh án ban đầu</h1>
+      <p class="subtitle" data-i18n="subtitle">
+        Vui lòng khai báo thông tin sức khỏe trước khi tư vấn dịch vụ. Thông tin này giúp đội ngũ y khoa sàng lọc an toàn trước tiêm, tiểu phẫu, phẫu thuật, gây tê, tiền mê hoặc gây mê.
+      </p>
+      <div class="safety-note" data-i18n="safetyNote">
+        Biểu mẫu này chỉ dùng để sàng lọc an toàn ban đầu, không phải chẩn đoán y khoa và không thay thế cho khám trực tiếp với bác sĩ.
+      </div>
+    </div>
+
+    <div class="form-shell">
+      <form id="medicalForm" class="form-inner">
+        <input type="hidden" name="language" id="languageInput" value="vi" />
+        <input type="hidden" name="riskLevel" id="riskLevel" value="Green" />
+        <input type="hidden" name="riskReasons" id="riskReasons" />
+        <input type="hidden" name="createdAt" id="createdAt" />
+
+        <div class="progress-wrap">
+          <div class="progress-top">
+            <span id="stepText">Bước 1/7</span>
+            <span id="progressPercent">14%</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+        </div>
+
+        <!-- STEP 1 -->
+        <section class="step active">
+          <div class="step-header">
+            <h2 class="step-title" data-i18n="step1Title">1. Thông tin cá nhân</h2>
+            <p class="step-desc" data-i18n="step1Desc">Thông tin cơ bản để tạo hồ sơ khách hàng.</p>
+          </div>
+
+          <div class="grid">
+            <div class="field">
+              <label data-i18n="fullName">Họ và tên *</label>
+              <input name="fullName" required />
+            </div>
+
+            <div class="field">
+              <label data-i18n="phone">Số điện thoại / Zalo *</label>
+              <input name="phone" required />
+            </div>
+
+            <div class="field">
+              <label data-i18n="dob">Ngày sinh *</label>
+              <input type="date" name="dob" required />
+            </div>
+
+            <div class="field">
+              <label data-i18n="sex">Giới tính sinh học *</label>
+              <select name="sex" id="sexSelect" required></select>
+            </div>
+
+            <div class="field">
+              <label data-i18n="height">Chiều cao, cm *</label>
+              <input type="number" name="height" min="80" max="230" required />
+            </div>
+
+            <div class="field">
+              <label data-i18n="weight">Cân nặng, kg *</label>
+              <input type="number" name="weight" min="20" max="250" required />
+            </div>
+
+            <div class="field full">
+              <label data-i18n="serviceGroup">Dịch vụ quan tâm *</label>
+              <select name="serviceGroup" id="serviceGroup" required></select>
+            </div>
+
+            <div class="field full">
+              <label data-i18n="mainConcern">Mong muốn chính của anh/chị</label>
+              <textarea name="mainConcern" data-placeholder-key="mainConcernPlaceholder"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- STEP 2 -->
+        <section class="step">
+          <div class="step-header">
+            <h2 class="step-title" data-i18n="step2Title">2. Dị ứng & phản vệ</h2>
+            <p class="step-desc" data-i18n="step2Desc">Các thông tin này đặc biệt quan trọng trước khi dùng thuốc tê, thuốc mê, Botox, filler hoặc kháng sinh.</p>
+          </div>
+
+          <div id="allergyQuestions"></div>
+
+          <div class="field question-box">
+            <label data-i18n="allergyDetail">Nếu có dị ứng, vui lòng ghi rõ dị ứng với thuốc/chất gì và biểu hiện</label>
+            <textarea name="allergyDetail"></textarea>
+          </div>
+        </section>
+
+        <!-- STEP 3 -->
+        <section class="step">
+          <div class="step-header">
+            <h2 class="step-title" data-i18n="step3Title">3. Tiền sử phẫu thuật, gây tê, gây mê</h2>
+            <p class="step-desc" data-i18n="step3Desc">Giúp phát hiện nguy cơ trong tiền mê, gây mê và gây tê diện rộng.</p>
+          </div>
+
+          <div id="anesthesiaQuestions"></div>
+        </section>
+
+        <!-- STEP 4 -->
+        <section class="step">
+          <div class="step-header">
+            <h2 class="step-title" data-i18n="step4Title">4. Bệnh nền</h2>
+            <p class="step-desc" data-i18n="step4Desc">Vui lòng chọn “Có” nếu anh/chị từng được chẩn đoán hoặc đang điều trị.</p>
+          </div>
+
+          <div id="medicalQuestions"></div>
+        </section>
+
+        <!-- STEP 5 -->
+        <section class="step">
+          <div class="step-header">
+            <h2 class="step-title" data-i18n="step5Title">5. Thuốc đang dùng</h2>
+            <p class="step-desc" data-i18n="step5Desc">Không tự ý ngưng thuốc trước khi có chỉ định của bác sĩ.</p>
+          </div>
+
+          <div id="medicationQuestions"></div>
+
+          <div class="field question-box">
+            <label data-i18n="medicationDetail">Vui lòng ghi tên thuốc/thực phẩm chức năng đang dùng nếu có</label>
+            <textarea name="medicationDetail"></textarea>
+          </div>
+        </section>
+
+        <!-- STEP 6 -->
+        <section class="step">
+          <div class="step-header">
+            <h2 class="step-title" data-i18n="step6Title">6. Câu hỏi theo dịch vụ</h2>
+            <p class="step-desc" data-i18n="step6Desc">Hệ thống sẽ hiển thị câu hỏi phù hợp với nhóm dịch vụ đã chọn.</p>
+          </div>
+
+          <div id="serviceSpecificContainer" class="section-card"></div>
+        </section>
+
+        <!-- STEP 7 -->
+        <section class="step">
+          <div class="step-header">
+            <h2 class="step-title" data-i18n="step7Title">7. Xác nhận & kết quả sàng lọc</h2>
+            <p class="step-desc" data-i18n="step7Desc">Kết quả này là sàng lọc ban đầu, chưa thay thế khám trực tiếp và kết luận của bác sĩ.</p>
+          </div>
+
+          <div id="riskResult" class="risk-card risk-green">
+            <div class="risk-title">GREEN</div>
+            <div data-i18n="greenMessage">Chưa ghi nhận yếu tố nguy cơ lớn trong form. Khách vẫn cần khám trực tiếp trước khi thực hiện dịch vụ.</div>
+          </div>
+
+          <div class="question-box">
+            <label class="pill">
+              <input type="checkbox" name="confirmAccuracy" required />
+              <span data-i18n="confirmAccuracy">Tôi xác nhận thông tin đã khai báo là đúng theo hiểu biết của tôi.</span>
+            </label>
+            <br /><br />
+            <label class="pill">
+              <input type="checkbox" name="confirmDoctor" required />
+              <span data-i18n="confirmDoctor">Tôi hiểu form này không thay thế cho khám trực tiếp và chỉ định cuối cùng của bác sĩ.</span>
+            </label>
+          </div>
+        </section>
+
+        <div class="actions">
+          <button type="button" class="btn-secondary" id="prevBtn" data-i18n="previous">Quay lại</button>
+          <button type="button" class="btn-primary" id="nextBtn" data-i18n="next">Tiếp tục</button>
+          <button type="submit" class="btn-primary hidden" id="submitBtn" data-i18n="submit">Gửi hồ sơ</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="footer-note" data-i18n="footerNote">
+      HL Health & Beauty · Medical Safety Screening · Natural Beauty, Thoughtfully Protected
+    </div>
+  </div>
+
+  <script>
+    let currentLang = "vi";
+
+    const i18n = {
+      vi: {
+        brand: "HL Health & Beauty",
+        eyebrow: "Natural Beauty Begins With Safety",
+        title: "Hồ sơ bệnh án ban đầu",
+        subtitle: "Vui lòng khai báo thông tin sức khỏe trước khi tư vấn dịch vụ. Thông tin này giúp đội ngũ y khoa sàng lọc an toàn trước tiêm, tiểu phẫu, phẫu thuật, gây tê, tiền mê hoặc gây mê.",
+        safetyNote: "Biểu mẫu này chỉ dùng để sàng lọc an toàn ban đầu, không phải chẩn đoán y khoa và không thay thế cho khám trực tiếp với bác sĩ.",
+
+        step: "Bước",
+        next: "Tiếp tục",
+        previous: "Quay lại",
+        submit: "Gửi hồ sơ",
+
+        step1Title: "1. Thông tin cá nhân",
+        step1Desc: "Thông tin cơ bản để tạo hồ sơ khách hàng.",
+        step2Title: "2. Dị ứng & phản vệ",
+        step2Desc: "Các thông tin này đặc biệt quan trọng trước khi dùng thuốc tê, thuốc mê, Botox, filler hoặc kháng sinh.",
+        step3Title: "3. Tiền sử phẫu thuật, gây tê, gây mê",
+        step3Desc: "Giúp phát hiện nguy cơ trong tiền mê, gây mê và gây tê diện rộng.",
+        step4Title: "4. Bệnh nền",
+        step4Desc: "Vui lòng chọn “Có” nếu anh/chị từng được chẩn đoán hoặc đang điều trị.",
+        step5Title: "5. Thuốc đang dùng",
+        step5Desc: "Không tự ý ngưng thuốc trước khi có chỉ định của bác sĩ.",
+        step6Title: "6. Câu hỏi theo dịch vụ",
+        step6Desc: "Hệ thống sẽ hiển thị câu hỏi phù hợp với nhóm dịch vụ đã chọn.",
+        step7Title: "7. Xác nhận & kết quả sàng lọc",
+        step7Desc: "Kết quả này là sàng lọc ban đầu, chưa thay thế khám trực tiếp và kết luận của bác sĩ.",
+
+        fullName: "Họ và tên *",
+        phone: "Số điện thoại / Zalo *",
+        dob: "Ngày sinh *",
+        sex: "Giới tính sinh học *",
+        height: "Chiều cao, cm *",
+        weight: "Cân nặng, kg *",
+        serviceGroup: "Dịch vụ quan tâm *",
+        mainConcern: "Mong muốn chính của anh/chị",
+        mainConcernPlaceholder: "Ví dụ: muốn nâng mũi tự nhiên, sửa mí bị lệch, hút mỡ bụng...",
+
+        choose: "Chọn",
+        female: "Nữ",
+        male: "Nam",
+        otherSex: "Khác / không muốn trả lời",
+
+        yes: "Có",
+        no: "Không",
+        unknown: "Không rõ",
+
+        allergyDetail: "Nếu có dị ứng, vui lòng ghi rõ dị ứng với thuốc/chất gì và biểu hiện",
+        medicationDetail: "Vui lòng ghi tên thuốc/thực phẩm chức năng đang dùng nếu có",
+
+        noServiceSelected: "Vui lòng chọn nhóm dịch vụ ở bước 1 để hiển thị câu hỏi phù hợp.",
+
+        greenTitle: "GREEN",
+        greenMessage: "Chưa ghi nhận yếu tố nguy cơ lớn trong form. Khách vẫn cần khám trực tiếp trước khi thực hiện dịch vụ.",
+        yellowTitle: "YELLOW FLAG",
+        yellowMessage: "Cần bác sĩ hoặc điều dưỡng đánh giá thêm trước khi chốt lịch thủ thuật/phẫu thuật.",
+        redTitle: "RED FLAG",
+        redMessage: "Không nên chốt lịch tự động. Cần chuyển bác sĩ hoặc bác sĩ gây mê đánh giá trước khi tư vấn cam kết hoặc đặt lịch.",
+
+        riskReasons: "Lý do hệ thống ghi nhận",
+        confirmAccuracy: "Tôi xác nhận thông tin đã khai báo là đúng theo hiểu biết của tôi.",
+        confirmDoctor: "Tôi hiểu form này không thay thế cho khám trực tiếp và chỉ định cuối cùng của bác sĩ.",
+        alertSubmitted: "Đã ghi nhận hồ sơ. Kết quả sàng lọc: ",
+        footerNote: "HL Health & Beauty · Medical Safety Screening · Natural Beauty, Thoughtfully Protected"
+      },
+
+      en: {
+        brand: "HL Health & Beauty",
+        eyebrow: "Natural Beauty Begins With Safety",
+        title: "Initial Medical Intake Form",
+        subtitle: "Please complete this health screening form before your consultation. This information helps our medical team screen for safety before injections, minor procedures, surgery, local anesthesia, sedation, or general anesthesia.",
+        safetyNote: "This form is for initial safety screening only. It is not a medical diagnosis and does not replace an in-person consultation with a doctor.",
+
+        step: "Step",
+        next: "Next",
+        previous: "Back",
+        submit: "Submit",
+
+        step1Title: "1. Personal Information",
+        step1Desc: "Basic information to create your client profile.",
+        step2Title: "2. Allergies & Anaphylaxis",
+        step2Desc: "This information is especially important before using local anesthetics, anesthesia, Botox, fillers, or antibiotics.",
+        step3Title: "3. Surgery & Anesthesia History",
+        step3Desc: "This helps identify risks related to sedation, general anesthesia, or extensive local anesthesia.",
+        step4Title: "4. Medical Conditions",
+        step4Desc: "Please select “Yes” if you have ever been diagnosed with or are currently being treated for any of the following.",
+        step5Title: "5. Current Medications",
+        step5Desc: "Please do not stop any medication without medical advice.",
+        step6Title: "6. Service-Specific Questions",
+        step6Desc: "Questions will be shown based on the service group you selected.",
+        step7Title: "7. Confirmation & Screening Result",
+        step7Desc: "This is an initial screening result and does not replace an in-person medical assessment or the doctor’s final decision.",
+
+        fullName: "Full name *",
+        phone: "Phone number / WhatsApp / Zalo *",
+        dob: "Date of birth *",
+        sex: "Biological sex *",
+        height: "Height, cm *",
+        weight: "Weight, kg *",
+        serviceGroup: "Service of interest *",
+        mainConcern: "Main concern or desired result",
+        mainConcernPlaceholder: "Example: natural-looking rhinoplasty, eyelid revision, abdominal liposuction...",
+
+        choose: "Select",
+        female: "Female",
+        male: "Male",
+        otherSex: "Other / prefer not to say",
+
+        yes: "Yes",
+        no: "No",
+        unknown: "Not sure",
+
+        allergyDetail: "If you have any allergies, please specify the substance/medication and your reaction",
+        medicationDetail: "Please list any medications or supplements you are currently taking",
+
+        noServiceSelected: "Please select a service group in step 1 to show relevant questions.",
+
+        greenTitle: "GREEN",
+        greenMessage: "No major risk factor has been identified in this form. An in-person medical assessment is still required before any procedure.",
+        yellowTitle: "YELLOW FLAG",
+        yellowMessage: "Further review by a doctor or medical staff is required before confirming the procedure or surgery.",
+        redTitle: "RED FLAG",
+        redMessage: "Do not confirm the appointment automatically. This case requires review by a doctor and/or anesthesiologist before any commitment or booking.",
+
+        riskReasons: "Reasons identified by the screening system",
+        confirmAccuracy: "I confirm that the information I have provided is accurate to the best of my knowledge.",
+        confirmDoctor: "I understand that this form does not replace an in-person consultation and the doctor’s final medical decision.",
+        alertSubmitted: "Your form has been submitted. Screening result: ",
+        footerNote: "HL Health & Beauty · Medical Safety Screening · Natural Beauty, Thoughtfully Protected"
+      }
+    };
+
+    const sexOptions = {
+      vi: {
+        female: "Nữ",
+        male: "Nam",
+        other: "Khác / không muốn trả lời"
+      },
+      en: {
+        female: "Female",
+        male: "Male",
+        other: "Other / prefer not to say"
+      }
+    };
+
+    const serviceLabels = {
+      vi: {
+        eyes: "Mắt / mí / cung mày",
+        nose: "Mũi",
+        lips: "Môi / nhân trung / cười hở lợi",
+        faceLift: "Căng da mặt / cổ / nội soi",
+        faceImplant: "Cấy mỡ / độn mặt / cằm / thái dương",
+        jaw: "Hàm mặt / xương mặt",
+        breast: "Ngực",
+        body: "Hút mỡ / tạo hình bụng / body",
+        buttock: "Mông / silicon mông / túi mông",
+        intimate: "Vùng kín nữ",
+        botox: "Botox",
+        filler: "Filler / tiêm tan / xử lý filler",
+        scar: "Sẹo / sẹo lồi / cắt sẹo",
+        unknown: "Chưa biết, cần bác sĩ tư vấn"
+      },
+      en: {
+        eyes: "Eyes / eyelids / brow",
+        nose: "Nose / rhinoplasty",
+        lips: "Lips / philtrum / gummy smile",
+        faceLift: "Face lift / neck lift / endoscopic lift",
+        faceImplant: "Facial fat grafting / implants / chin / temples",
+        jaw: "Facial bone / jaw surgery",
+        breast: "Breast surgery",
+        body: "Liposuction / tummy tuck / body contouring",
+        buttock: "Buttock surgery / silicone removal / buttock implants",
+        intimate: "Female intimate surgery",
+        botox: "Botox / botulinum toxin",
+        filler: "Dermal filler / dissolving filler / filler complication management",
+        scar: "Scar / keloid / scar revision",
+        unknown: "Not sure yet, need doctor consultation"
+      }
+    };
+
+    const questionSets = {
+      allergyQuestions: [
+        {
+          name: "allergyDrug",
+          flag: "yellow",
+          vi: "Anh/chị có từng dị ứng thuốc không?",
+          en: "Have you ever had a medication allergy?"
+        },
+        {
+          name: "anaphylaxis",
+          flag: "red",
+          vi: "Anh/chị có từng sốc phản vệ hoặc cấp cứu vì dị ứng không?",
+          en: "Have you ever had anaphylaxis or required emergency care due to an allergy?"
+        },
+        {
+          name: "localAnestheticAllergy",
+          flag: "red",
+          vi: "Có dị ứng thuốc tê như Lidocaine/Bupivacaine không?",
+          en: "Are you allergic to local anesthetics such as Lidocaine or Bupivacaine?"
+        },
+        {
+          name: "generalAnesthesiaAllergy",
+          flag: "red",
+          vi: "Có dị ứng thuốc mê không?",
+          en: "Are you allergic to any anesthetic medications?"
+        },
+        {
+          name: "antibioticAllergy",
+          flag: "yellow",
+          vi: "Có dị ứng kháng sinh không?",
+          en: "Are you allergic to any antibiotics?"
+        },
+        {
+          name: "botoxAllergy",
+          flag: "red",
+          vi: "Có từng dị ứng Botox/Botulinum toxin không?",
+          en: "Have you ever had an allergic reaction to Botox or botulinum toxin?"
+        },
+        {
+          name: "fillerAllergy",
+          flag: "red",
+          vi: "Có từng dị ứng filler/HA/lidocaine trong filler không?",
+          en: "Have you ever had an allergic reaction to dermal fillers, hyaluronic acid, or lidocaine in fillers?"
+        },
+        {
+          name: "latexAllergy",
+          flag: "yellow",
+          vi: "Có dị ứng latex/găng tay/băng keo/thuốc sát khuẩn không?",
+          en: "Are you allergic to latex, medical gloves, adhesive tape, or antiseptic solutions?"
+        }
+      ],
+
+      anesthesiaQuestions: [
+        {
+          name: "previousSurgery",
+          flag: "yellow",
+          vi: "Anh/chị từng phẫu thuật/gây mê/gây tê chưa?",
+          en: "Have you ever had surgery, general anesthesia, sedation, or local anesthesia?"
+        },
+        {
+          name: "anesthesiaComplication",
+          flag: "red",
+          vi: "Từng khó thở, tụt huyết áp, co giật, khó tỉnh mê sau gây mê/gây tê không?",
+          en: "Have you ever had breathing difficulty, low blood pressure, seizure, or delayed recovery after anesthesia?"
+        },
+        {
+          name: "difficultAirway",
+          flag: "red",
+          vi: "Từng được báo khó đặt ống thở/khó kiểm soát đường thở không?",
+          en: "Have you ever been told you had a difficult airway or difficult intubation?"
+        },
+        {
+          name: "malignantHyperthermia",
+          flag: "red",
+          vi: "Bản thân hoặc gia đình từng có sốt cao ác tính khi gây mê không?",
+          en: "Have you or any family member ever had malignant hyperthermia during anesthesia?"
+        },
+        {
+          name: "localAnestheticToxicity",
+          flag: "red",
+          vi: "Từng tê quanh miệng, ù tai, vị kim loại, hồi hộp, co giật sau tiêm tê không?",
+          en: "Have you ever had numbness around the mouth, ringing in the ears, metallic taste, palpitations, or seizure after local anesthesia?"
+        },
+        {
+          name: "icuAfterSurgery",
+          flag: "red",
+          vi: "Từng phải nằm hồi sức/ICU sau phẫu thuật không?",
+          en: "Have you ever required ICU or intensive monitoring after surgery?"
+        }
+      ],
+
+      medicalQuestions: [
+        {
+          name: "hypertension",
+          flag: "yellow",
+          vi: "Có tăng huyết áp không?",
+          en: "Do you have high blood pressure?"
+        },
+        {
+          name: "veryHighBP",
+          flag: "red",
+          vi: "Từng đo huyết áp gần hoặc ≥180/110 mmHg không?",
+          en: "Have you ever had blood pressure around or above 180/110 mmHg?"
+        },
+        {
+          name: "heartDisease",
+          flag: "red",
+          vi: "Có bệnh tim, đặt stent, nhồi máu cơ tim, suy tim, rối loạn nhịp không?",
+          en: "Do you have heart disease, heart stent, heart attack, heart failure, or abnormal heart rhythm?"
+        },
+        {
+          name: "stroke",
+          flag: "red",
+          vi: "Có từng đột quỵ hoặc thiếu máu não thoáng qua không?",
+          en: "Have you ever had a stroke or transient ischemic attack?"
+        },
+        {
+          name: "asthmaCopd",
+          flag: "yellow",
+          vi: "Có hen suyễn/COPD/khó thở mạn tính không?",
+          en: "Do you have asthma, COPD, or chronic breathing difficulty?"
+        },
+        {
+          name: "respInfection",
+          flag: "red",
+          vi: "Hiện có sốt, ho, đau họng, đờm, viêm hô hấp không?",
+          en: "Do you currently have fever, cough, sore throat, phlegm, or respiratory infection?"
+        },
+        {
+          name: "sleepApnea",
+          flag: "red",
+          vi: "Có ngủ ngáy to/ngưng thở khi ngủ/dùng CPAP không?",
+          en: "Do you snore loudly, have sleep apnea, or use CPAP?"
+        },
+        {
+          name: "diabetes",
+          flag: "yellow",
+          vi: "Có đái tháo đường không?",
+          en: "Do you have diabetes?"
+        },
+        {
+          name: "uncontrolledDiabetes",
+          flag: "red",
+          vi: "Đường huyết/tiểu đường hiện chưa kiểm soát tốt không?",
+          en: "Is your diabetes or blood sugar currently poorly controlled?"
+        },
+        {
+          name: "thyroidUnstable",
+          flag: "red",
+          vi: "Có bệnh tuyến giáp chưa ổn định không?",
+          en: "Do you have unstable thyroid disease?"
+        },
+        {
+          name: "liverKidney",
+          flag: "red",
+          vi: "Có bệnh gan, xơ gan, suy thận hoặc lọc thận không?",
+          en: "Do you have liver disease, cirrhosis, kidney failure, or dialysis?"
+        },
+        {
+          name: "bleedingDisorder",
+          flag: "red",
+          vi: "Có rối loạn đông máu, giảm tiểu cầu, dễ chảy máu không?",
+          en: "Do you have a bleeding disorder, low platelets, or easy bleeding?"
+        },
+        {
+          name: "dvtPe",
+          flag: "red",
+          vi: "Từng bị huyết khối tĩnh mạch sâu/thuyên tắc phổi không?",
+          en: "Have you ever had a blood clot in the leg or pulmonary embolism?"
+        },
+        {
+          name: "autoimmuneActive",
+          flag: "yellow",
+          vi: "Có bệnh tự miễn đang hoạt động hoặc dùng thuốc ức chế miễn dịch không?",
+          en: "Do you have active autoimmune disease or take immunosuppressive medication?"
+        },
+        {
+          name: "pregnant",
+          flag: "red",
+          vi: "Đang mang thai hoặc nghi ngờ mang thai không?",
+          en: "Are you pregnant or possibly pregnant?"
+        },
+        {
+          name: "breastfeeding",
+          flag: "yellow",
+          vi: "Đang cho con bú không?",
+          en: "Are you currently breastfeeding?"
+        },
+        {
+          name: "activeInfection",
+          flag: "red",
+          vi: "Đang có nhiễm trùng da, răng miệng, herpes hoặc vết thương hở không?",
+          en: "Do you currently have a skin infection, dental infection, herpes outbreak, or open wound?"
+        }
+      ],
+
+      medicationQuestions: [
+        {
+          name: "anticoagulant",
+          flag: "red",
+          vi: "Đang dùng thuốc chống đông: Warfarin/Rivaroxaban/Apixaban/Dabigatran?",
+          en: "Are you taking blood thinners such as Warfarin, Rivaroxaban, Apixaban, or Dabigatran?"
+        },
+        {
+          name: "antiplatelet",
+          flag: "red",
+          vi: "Đang dùng Aspirin/Clopidogrel/Plavix?",
+          en: "Are you taking Aspirin, Clopidogrel, or Plavix?"
+        },
+        {
+          name: "heartMeds",
+          flag: "yellow",
+          vi: "Đang dùng thuốc tim mạch/huyết áp?",
+          en: "Are you taking heart or blood pressure medication?"
+        },
+        {
+          name: "diabetesMeds",
+          flag: "yellow",
+          vi: "Đang dùng insulin hoặc thuốc tiểu đường?",
+          en: "Are you taking insulin or diabetes medication?"
+        },
+        {
+          name: "hormone",
+          flag: "yellow",
+          vi: "Đang dùng thuốc tránh thai nội tiết/hormone/IVF?",
+          en: "Are you taking hormonal contraception, hormone therapy, or IVF medication?"
+        },
+        {
+          name: "steroid",
+          flag: "yellow",
+          vi: "Đang dùng corticoid kéo dài?",
+          en: "Are you taking long-term corticosteroids?"
+        },
+        {
+          name: "weightLossDrug",
+          flag: "yellow",
+          vi: "Đang dùng thuốc giảm cân/stimulant/thuốc ADHD?",
+          en: "Are you taking weight-loss medication, stimulants, or ADHD medication?"
+        },
+        {
+          name: "sedative",
+          flag: "yellow",
+          vi: "Đang dùng thuốc ngủ/an thần/chống trầm cảm/opioid?",
+          en: "Are you taking sleeping pills, sedatives, antidepressants, or opioid pain medication?"
+        },
+        {
+          name: "isotretinoin",
+          flag: "yellow",
+          vi: "Đang hoặc mới dùng Isotretinoin?",
+          en: "Are you currently taking or have you recently taken Isotretinoin?"
+        },
+        {
+          name: "aminoglycoside",
+          flag: "red",
+          vi: "Đang dùng aminoglycoside hoặc thuốc giãn cơ?",
+          en: "Are you taking aminoglycoside antibiotics or muscle relaxants?"
+        },
+        {
+          name: "supplementsBleeding",
+          flag: "yellow",
+          vi: "Đang dùng omega-3 liều cao, ginkgo, nhân sâm, tỏi/nghệ liều cao?",
+          en: "Are you taking high-dose omega-3, ginkgo, ginseng, garlic, or turmeric supplements?"
+        },
+        {
+          name: "smoking",
+          flag: "yellow",
+          vi: "Có hút thuốc lá/vape/shisha?",
+          en: "Do you smoke cigarettes, vape, or use shisha?"
+        },
+        {
+          name: "alcoholDrugs",
+          flag: "red",
+          vi: "Có uống rượu nhiều hoặc sử dụng chất kích thích?",
+          en: "Do you drink heavily or use recreational drugs?"
+        }
+      ]
+    };
+
+    const serviceQuestions = {
+      eyes: [
+        {
+          name: "dryEye",
+          flag: "yellow",
+          vi: "Có khô mắt thường xuyên không?",
+          en: "Do you often have dry eyes?"
+        },
+        {
+          name: "glaucoma",
+          flag: "yellow",
+          vi: "Có glaucoma/cườm nước hoặc bệnh mắt đang điều trị không?",
+          en: "Do you have glaucoma or any eye condition under treatment?"
+        },
+        {
+          name: "thyroidEye",
+          flag: "yellow",
+          vi: "Có Basedow/bệnh tuyến giáp/mắt lồi không?",
+          en: "Do you have Graves’ disease, thyroid eye disease, or bulging eyes?"
+        },
+        {
+          name: "eyeRevision",
+          flag: "yellow",
+          vi: "Từng cắt mí/mở góc/chỉnh mí hoặc sửa mí nhiều lần chưa?",
+          en: "Have you had eyelid surgery, canthoplasty, or multiple eyelid revisions before?"
+        }
+      ],
+
+      nose: [
+        {
+          name: "sinusitis",
+          flag: "yellow",
+          vi: "Có viêm xoang/viêm mũi dị ứng/nghẹt mũi mạn tính không?",
+          en: "Do you have sinusitis, allergic rhinitis, or chronic nasal blockage?"
+        },
+        {
+          name: "noseInfection",
+          flag: "red",
+          vi: "Có đang viêm xoang cấp/chảy mũi mủ không?",
+          en: "Do you currently have acute sinus infection or pus-like nasal discharge?"
+        },
+        {
+          name: "noseRevision",
+          flag: "red",
+          vi: "Từng nâng mũi/sửa mũi nhiều lần hoặc từng nhiễm trùng/lộ sóng không?",
+          en: "Have you had multiple rhinoplasty revisions, infection, or implant exposure?"
+        },
+        {
+          name: "noseSilicone",
+          flag: "red",
+          vi: "Từng tiêm filler/silicon/chỉ không rõ vào mũi không?",
+          en: "Have you ever had filler, silicone, or unknown threads injected/placed in the nose?"
+        },
+        {
+          name: "ribCartilageRisk",
+          flag: "yellow",
+          vi: "Nếu lấy sụn sườn: có bệnh phổi/từng mổ lồng ngực không?",
+          en: "If rib cartilage is needed: do you have lung disease or previous chest surgery?"
+        }
+      ],
+
+      lips: [
+        {
+          name: "oralHerpes",
+          flag: "red",
+          vi: "Có herpes môi tái phát hoặc đang bùng phát không?",
+          en: "Do you have recurrent cold sores or an active herpes outbreak on the lips?"
+        },
+        {
+          name: "dentalInfection",
+          flag: "yellow",
+          vi: "Có viêm lợi, đau răng, nhiễm trùng răng miệng không?",
+          en: "Do you have gum inflammation, tooth pain, or dental infection?"
+        },
+        {
+          name: "lipFiller",
+          flag: "yellow",
+          vi: "Từng tiêm filler/cắt môi/nhân trung/chỉnh hở lợi chưa?",
+          en: "Have you had lip filler, lip surgery, philtrum surgery, or gummy smile treatment before?"
+        }
+      ],
+
+      faceLift: [
+        {
+          name: "faceliftSmoking",
+          flag: "yellow",
+          vi: "Có hút thuốc lá/vape không?",
+          en: "Do you smoke or vape?"
+        },
+        {
+          name: "facialNerve",
+          flag: "red",
+          vi: "Từng liệt mặt/yếu cơ mặt không?",
+          en: "Have you ever had facial paralysis or facial muscle weakness?"
+        },
+        {
+          name: "faceSurgery",
+          flag: "yellow",
+          vi: "Từng căng da/cấy mỡ/filler/silicon vùng mặt hoặc phẫu thuật nhiều lần chưa?",
+          en: "Have you had face lift, fat grafting, filler, silicone, or multiple facial surgeries before?"
+        },
+        {
+          name: "highExpectation",
+          flag: "yellow",
+          vi: "Có kỳ vọng thay đổi rất lớn hoặc khó chấp nhận sẹo không?",
+          en: "Do you expect a very dramatic change or have difficulty accepting scars?"
+        }
+      ],
+
+      faceImplant: [
+        {
+          name: "faceSilicone",
+          flag: "yellow",
+          vi: "Từng tiêm filler/silicon vùng mặt/cằm/thái dương không?",
+          en: "Have you had filler or silicone injected in the face, chin, or temples?"
+        },
+        {
+          name: "faceInflammation",
+          flag: "red",
+          vi: "Từng viêm/u cục kéo dài sau tiêm không?",
+          en: "Have you ever had prolonged inflammation or lumps after injections?"
+        },
+        {
+          name: "chinNumbness",
+          flag: "yellow",
+          vi: "Có tê/đau/yếu vùng cằm/mặt hiện tại không?",
+          en: "Do you currently have numbness, pain, or weakness in the chin or face?"
+        }
+      ],
+
+      jaw: [
+        {
+          name: "limitedMouth",
+          flag: "red",
+          vi: "Có khó há miệng, hàm nhỏ, ngủ ngáy/ngưng thở khi ngủ không?",
+          en: "Do you have limited mouth opening, small jaw, loud snoring, or sleep apnea?"
+        },
+        {
+          name: "dentalSevere",
+          flag: "red",
+          vi: "Có nhiễm trùng răng miệng/nha chu/áp xe răng không?",
+          en: "Do you have dental infection, gum disease, or dental abscess?"
+        },
+        {
+          name: "jawSurgery",
+          flag: "yellow",
+          vi: "Từng phẫu thuật/gãy xương hàm mặt chưa?",
+          en: "Have you ever had facial bone surgery or facial/jaw fracture?"
+        },
+        {
+          name: "jawBleeding",
+          flag: "red",
+          vi: "Có thiếu máu/rối loạn đông máu/chống đông không?",
+          en: "Do you have anemia, bleeding disorder, or take blood thinners?"
+        }
+      ],
+
+      breast: [
+        {
+          name: "breastMass",
+          flag: "red",
+          vi: "Có khối u vú, tiết dịch núm vú bất thường hoặc bệnh tuyến vú chưa đánh giá không?",
+          en: "Do you have a breast lump, abnormal nipple discharge, or unevaluated breast condition?"
+        },
+        {
+          name: "breastCancer",
+          flag: "yellow",
+          vi: "Có tiền sử ung thư vú/xạ trị vùng ngực không?",
+          en: "Do you have a history of breast cancer or chest radiation?"
+        },
+        {
+          name: "breastRevision",
+          flag: "yellow",
+          vi: "Từng nâng ngực, co thắt bao xơ, nhiễm trùng, lệch/vỡ túi không?",
+          en: "Have you had breast implants, capsular contracture, infection, implant malposition, or rupture?"
+        },
+        {
+          name: "breastVTE",
+          flag: "red",
+          vi: "Có tiền sử huyết khối hoặc đang dùng hormone/IVF không?",
+          en: "Do you have a history of blood clots or currently use hormones/IVF medication?"
+        }
+      ],
+
+      body: [
+        {
+          name: "multiLipo",
+          flag: "yellow",
+          vi: "Muốn hút nhiều vùng/lượng hút lớn trong một lần không?",
+          en: "Are you considering multiple liposuction areas or a large-volume procedure in one session?"
+        },
+        {
+          name: "hernia",
+          flag: "yellow",
+          vi: "Có thoát vị rốn/thành bụng hoặc từng mổ bụng nhiều lần không?",
+          en: "Do you have an umbilical/abdominal hernia or multiple previous abdominal surgeries?"
+        },
+        {
+          name: "bodyVTE",
+          flag: "red",
+          vi: "Có tiền sử huyết khối, giãn tĩnh mạch nặng, dùng hormone/IVF không?",
+          en: "Do you have a history of blood clots, severe varicose veins, or use hormones/IVF medication?"
+        },
+        {
+          name: "bodyOsa",
+          flag: "red",
+          vi: "Có BMI cao kèm ngủ ngáy/ngưng thở khi ngủ không?",
+          en: "Do you have high BMI with loud snoring or sleep apnea?"
+        },
+        {
+          name: "bodyLast",
+          flag: "red",
+          vi: "Từng có dấu hiệu ngộ độc thuốc tê sau gây tê/hút mỡ không?",
+          en: "Have you ever had signs of severe reaction after local anesthesia or liposuction?"
+        }
+      ],
+
+      buttock: [
+        {
+          name: "buttockSilicone",
+          flag: "red",
+          vi: "Từng tiêm silicon lỏng/chất làm đầy không rõ vùng mông không?",
+          en: "Have you ever had liquid silicone or unknown filler injected into the buttocks?"
+        },
+        {
+          name: "buttockInfection",
+          flag: "red",
+          vi: "Có viêm/u cục/đau/nhiễm trùng vùng mông không?",
+          en: "Do you have inflammation, lumps, pain, or infection in the buttock area?"
+        },
+        {
+          name: "buttockVTE",
+          flag: "red",
+          vi: "Có tiền sử huyết khối/BMI cao/ít vận động không?",
+          en: "Do you have a history of blood clots, high BMI, or limited mobility?"
+        }
+      ],
+
+      intimate: [
+        {
+          name: "vaginalInfection",
+          flag: "red",
+          vi: "Có viêm âm đạo, khí hư bất thường, herpes sinh dục đang bùng phát không?",
+          en: "Do you currently have vaginal infection, abnormal discharge, or active genital herpes?"
+        },
+        {
+          name: "hpvActive",
+          flag: "yellow",
+          vi: "Có tổn thương HPV/mụn cóc sinh dục đang hoạt động không?",
+          en: "Do you have active HPV lesions or genital warts?"
+        },
+        {
+          name: "coercion",
+          flag: "red",
+          vi: "Có ai ép buộc anh/chị làm dịch vụ này không?",
+          en: "Is anyone pressuring or forcing you to have this procedure?"
+        }
+      ],
+
+      botox: [
+        {
+          name: "myasthenia",
+          flag: "red",
+          vi: "Có nhược cơ, Lambert-Eaton, ALS hoặc bệnh thần kinh-cơ không?",
+          en: "Do you have myasthenia gravis, Lambert-Eaton syndrome, ALS, or neuromuscular disease?"
+        },
+        {
+          name: "swallowBreath",
+          flag: "red",
+          vi: "Có khó nuốt, khó thở, yếu cơ không rõ nguyên nhân không?",
+          en: "Do you have unexplained difficulty swallowing, breathing, or muscle weakness?"
+        },
+        {
+          name: "botoxInfection",
+          flag: "red",
+          vi: "Có nhiễm trùng tại vùng tiêm không?",
+          en: "Do you have an infection at the intended injection area?"
+        },
+        {
+          name: "botoxRecent",
+          flag: "yellow",
+          vi: "Đã tiêm Botox trong 3–4 tháng gần đây chưa?",
+          en: "Have you had Botox within the last 3–4 months?"
+        }
+      ],
+
+      filler: [
+        {
+          name: "fillerVascular",
+          flag: "red",
+          vi: "Từng bị tím da, đau dữ dội, hoại tử, mờ mắt sau tiêm filler không?",
+          en: "Have you ever had skin discoloration, severe pain, tissue necrosis, or blurred vision after filler injection?"
+        },
+        {
+          name: "unknownFiller",
+          flag: "red",
+          vi: "Từng tiêm silicon/chất không rõ nguồn gốc không?",
+          en: "Have you ever had silicone or unknown filler injected?"
+        },
+        {
+          name: "fillerInflammation",
+          flag: "yellow",
+          vi: "Từng sưng viêm/u cục kéo dài sau filler không?",
+          en: "Have you ever had prolonged swelling, inflammation, or lumps after filler?"
+        },
+        {
+          name: "fillerInfection",
+          flag: "red",
+          vi: "Có nhiễm trùng/mụn viêm/herpes vùng tiêm không?",
+          en: "Do you currently have infection, inflamed acne, or herpes at the injection area?"
+        }
+      ],
+
+      scar: [
+        {
+          name: "keloid",
+          flag: "yellow",
+          vi: "Có cơ địa sẹo lồi/sẹo xấu không?",
+          en: "Do you have a tendency to form keloids or poor scars?"
+        },
+        {
+          name: "scarInfection",
+          flag: "red",
+          vi: "Sẹo có đang đỏ, đau, ngứa nhiều, chảy dịch không?",
+          en: "Is the scar currently red, painful, very itchy, or draining fluid?"
+        },
+        {
+          name: "steroidScar",
+          flag: "yellow",
+          vi: "Từng loét/teo da sau tiêm sẹo chưa?",
+          en: "Have you ever had skin thinning or ulceration after scar injections?"
+        }
+      ],
+
+      unknown: [
+        {
+          name: "unknownConcern",
+          flag: "yellow",
+          vi: "Anh/chị chưa rõ dịch vụ và cần bác sĩ tư vấn trực tiếp?",
+          en: "Are you unsure which service is suitable and need a direct doctor consultation?"
+        }
+      ]
+    };
+
+    const steps = document.querySelectorAll(".step");
+    const form = document.getElementById("medicalForm");
+    const serviceGroup = document.getElementById("serviceGroup");
+    const sexSelect = document.getElementById("sexSelect");
+    const progressBar = document.getElementById("progressBar");
+    const stepText = document.getElementById("stepText");
+    const progressPercent = document.getElementById("progressPercent");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const submitBtn = document.getElementById("submitBtn");
+
+    let currentStep = 0;
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.getElementById("languageInput").value = lang;
+
+      document.getElementById("btnVi").classList.toggle("active", lang === "vi");
+      document.getElementById("btnEn").classList.toggle("active", lang === "en");
+
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (i18n[lang][key]) {
+          el.textContent = i18n[lang][key];
+        }
+      });
+
+      document.querySelectorAll("[data-placeholder-key]").forEach(el => {
+        const key = el.getAttribute("data-placeholder-key");
+        if (i18n[lang][key]) {
+          el.placeholder = i18n[lang][key];
+        }
+      });
+
+      renderSexOptions();
+      renderServiceDropdown();
+      renderAllQuestionGroups();
+      renderServiceQuestions();
+      updateStep();
+      if (currentStep === steps.length - 1) calculateRisk();
+    }
+
+    function renderSexOptions() {
+      const currentValue = sexSelect.value;
+      sexSelect.innerHTML = `
+        <option value="">${i18n[currentLang].choose}</option>
+        <option value="female">${sexOptions[currentLang].female}</option>
+        <option value="male">${sexOptions[currentLang].male}</option>
+        <option value="other">${sexOptions[currentLang].other}</option>
+      `;
+      sexSelect.value = currentValue;
+    }
+
+    function renderServiceDropdown() {
+      const currentValue = serviceGroup.value;
+      serviceGroup.innerHTML = `<option value="">${i18n[currentLang].choose}</option>`;
+
+      Object.entries(serviceLabels[currentLang]).forEach(([value, label]) => {
+        const option = document.createElement("option");
+        option.value = value;
+        option.textContent = label;
+        serviceGroup.appendChild(option);
+      });
+
+      serviceGroup.value = currentValue;
+    }
+
+    function getRadioValue(name) {
+      const checked = form.querySelector(`input[name="${name}"]:checked`);
+      return checked ? checked.value : null;
+    }
+
+    function renderYesNoQuestions(containerId, questions) {
+      const container = document.getElementById(containerId);
+      const previousValues = {};
+
+      questions.forEach(q => {
+        previousValues[q.name] = getRadioValue(q.name);
+      });
+
+      container.innerHTML = "";
+
+      questions.forEach(q => {
+        const box = document.createElement("div");
+        box.className = "question-box";
+        box.innerHTML = `
+          <div class="question-title">${q[currentLang]}</div>
+          <div class="radio-row">
+            <label class="pill">
+              <input type="radio" name="${q.name}" value="No" data-flag="none" />
+              ${i18n[currentLang].no}
+            </label>
+            <label class="pill">
+              <input type="radio" name="${q.name}" value="Yes" data-flag="${q.flag}" />
+              ${i18n[currentLang].yes}
+            </label>
+            <label class="pill">
+              <input type="radio" name="${q.name}" value="Not sure" data-flag="yellow" />
+              ${i18n[currentLang].unknown}
+            </label>
+          </div>
+        `;
+        container.appendChild(box);
+
+        const oldValue = previousValues[q.name];
+        if (oldValue) {
+          const target = box.querySelector(`input[name="${q.name}"][value="${oldValue}"]`);
+          if (target) target.checked = true;
+        }
+      });
+    }
+
+    function renderAllQuestionGroups() {
+      Object.keys(questionSets).forEach(containerId => {
+        renderYesNoQuestions(containerId, questionSets[containerId]);
+      });
+    }
+
+    function renderServiceQuestions() {
+      const selected = serviceGroup.value;
+      const container = document.getElementById("serviceSpecificContainer");
+
+      if (!selected || !serviceQuestions[selected]) {
+        container.innerHTML = `<p class="small-note">${i18n[currentLang].noServiceSelected}</p>`;
+        return;
+      }
+
+      renderYesNoQuestions("serviceSpecificContainer", serviceQuestions[selected]);
+    }
+
+    function updateStep() {
+      steps.forEach((step, index) => {
+        step.classList.toggle("active", index === currentStep);
+      });
+
+      const percent = Math.round(((currentStep + 1) / steps.length) * 100);
+      progressBar.style.width = `${percent}%`;
+      stepText.textContent = `${i18n[currentLang].step} ${currentStep + 1}/${steps.length}`;
+      progressPercent.textContent = `${percent}%`;
+
+      prevBtn.style.visibility = currentStep === 0 ? "hidden" : "visible";
+      nextBtn.classList.toggle("hidden", currentStep === steps.length - 1);
+      submitBtn.classList.toggle("hidden", currentStep !== steps.length - 1);
+
+      if (currentStep === steps.length - 1) {
+        calculateRisk();
+      }
+    }
+
+    function validateCurrentStep() {
+      const inputs = steps[currentStep].querySelectorAll("input, select, textarea");
+      for (const input of inputs) {
+        if (!input.checkValidity()) {
+          input.reportValidity();
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function calculateRisk() {
+      const checked = form.querySelectorAll("input[type='radio']:checked");
+      let hasRed = false;
+      let hasYellow = false;
+      const reasons = [];
+
+      checked.forEach(input => {
+        const flag = input.dataset.flag;
+        const answer = input.value;
+        const question = input.closest(".question-box")?.querySelector(".question-title")?.innerText || input.name;
+
+        if (answer === "Yes" || answer === "Not sure") {
+          if (flag === "red") {
+            hasRed = true;
+            reasons.push(`RED: ${question}`);
+          } else if (flag === "yellow") {
+            hasYellow = true;
+            reasons.push(`YELLOW: ${question}`);
+          }
+        }
+      });
+
+      const riskResult = document.getElementById("riskResult");
+      const riskLevelInput = document.getElementById("riskLevel");
+      const riskReasonsInput = document.getElementById("riskReasons");
+
+      riskResult.className = "risk-card";
+
+      let level = "Green";
+      let title = i18n[currentLang].greenTitle;
+      let message = i18n[currentLang].greenMessage;
+
+      if (hasRed) {
+        level = "Red";
+        title = i18n[currentLang].redTitle;
+        message = i18n[currentLang].redMessage;
+        riskResult.classList.add("risk-red");
+      } else if (hasYellow) {
+        level = "Yellow";
+        title = i18n[currentLang].yellowTitle;
+        message = i18n[currentLang].yellowMessage;
+        riskResult.classList.add("risk-yellow");
+      } else {
+        riskResult.classList.add("risk-green");
+      }
+
+      riskResult.innerHTML = `
+        <div class="risk-title">${title}</div>
+        <div>${message}</div>
+        ${
+          reasons.length
+            ? `<div class="risk-reasons"><strong>${i18n[currentLang].riskReasons}:</strong><br>${reasons.join("<br>")}</div>`
+            : ""
+        }
+      `;
+
+      riskLevelInput.value = level;
+      riskReasonsInput.value = reasons.join(" | ");
+    }
+
+    function collectFormData() {
+      const data = {};
+      const formData = new FormData(form);
+
+      for (const [key, value] of formData.entries()) {
+        data[key] = value;
+      }
+
+      data.createdAt = new Date().toISOString();
+      data.serviceGroupLabel = serviceLabels[currentLang][data.serviceGroup] || "";
+      data.userAgent = navigator.userAgent;
+
+      return data;
+    }
+
+    prevBtn.addEventListener("click", () => {
+      if (currentStep > 0) {
+        currentStep--;
+        updateStep();
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (!validateCurrentStep()) return;
+
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        updateStep();
+      }
+    });
+
+    serviceGroup.addEventListener("change", renderServiceQuestions);
+
+    form.addEventListener("submit", async event => {
+      event.preventDefault();
+
+      if (!validateCurrentStep()) return;
+
+      calculateRisk();
+
+      const payload = collectFormData();
+
+      /*
+        GOOGLE APPS SCRIPT INTEGRATION:
+        1. Deploy Apps Script as Web App.
+        2. Replace YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL below.
+        3. Uncomment the fetch block.
+      */
+
+      /*
+      await fetch("YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(payload)
+      });
+      */
+
+      console.log("HL Medical Intake Payload:", payload);
+      alert(i18n[currentLang].alertSubmitted + payload.riskLevel);
+    });
+
+    document.getElementById("createdAt").value = new Date().toISOString();
+
+    renderSexOptions();
+    renderServiceDropdown();
+    renderAllQuestionGroups();
+    renderServiceQuestions();
+    updateStep();
+  </script>
+</body>
+</html>
