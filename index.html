@@ -6,15 +6,25 @@
   <title>HL Health & Beauty - Medical Intake Form</title>
   <style>
     :root {
-      --rose: #e8b7b7;
-      --sage: #b7cfc2;
-      --clay: #9f7468;
-      --ink: #2f2a28;
-      --muted: #7d746f;
-      --border: rgba(159, 116, 104, 0.2);
-      --green: #2f8f5b;
-      --yellow: #b98216;
-      --red: #c7443e;
+      /* HL updated palette from brand reference */
+      --mint: #CCF2F1;
+      --pink: #F9A3E2;
+      --coral: #FF9C8F;
+      --lavender: #A790EA;
+      --cream: #FFD68B;
+      --orange: #F16925;
+
+      /* Semantic design tokens */
+      --rose: var(--pink);
+      --sage: var(--mint);
+      --clay: #6F4D7A;
+      --ink: #251F2F;
+      --muted: #6D6276;
+      --border: rgba(167, 144, 234, 0.24);
+
+      --green: #2F8F7D;
+      --yellow: #C98300;
+      --red: #D94A3D;
     }
 
     * { box-sizing: border-box; }
@@ -24,9 +34,11 @@
       font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at top left, rgba(232, 183, 183, 0.38), transparent 34%),
-        radial-gradient(circle at bottom right, rgba(183, 207, 194, 0.45), transparent 35%),
-        linear-gradient(135deg, #fff8f4, #f8fbf7);
+        radial-gradient(circle at top left, rgba(249, 163, 226, 0.34), transparent 34%),
+        radial-gradient(circle at top right, rgba(204, 242, 241, 0.46), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(167, 144, 234, 0.28), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(241, 105, 37, 0.16), transparent 30%),
+        linear-gradient(135deg, #fff9f1, #f7fbff);
       min-height: 100vh;
     }
 
@@ -54,8 +66,8 @@
       width: 42px;
       height: 42px;
       border-radius: 999px;
-      background: linear-gradient(135deg, var(--rose), var(--sage));
-      box-shadow: 0 12px 28px rgba(159, 116, 104, 0.18);
+      background: linear-gradient(135deg, var(--pink), var(--mint));
+      box-shadow: 0 12px 28px rgba(167, 144, 234, 0.20);
     }
 
     .brand-name {
@@ -87,9 +99,9 @@
     }
 
     .language-switch button.active {
-      background: linear-gradient(135deg, var(--rose), var(--sage));
+      background: linear-gradient(135deg, var(--pink), var(--mint));
       color: #fff;
-      box-shadow: 0 8px 18px rgba(159, 116, 104, 0.18);
+      box-shadow: 0 8px 18px rgba(167, 144, 234, 0.20);
     }
 
     .hero {
@@ -113,7 +125,7 @@
       line-height: 1.06;
       font-family: Georgia, "Times New Roman", serif;
       font-weight: 500;
-      color: #5d453f;
+      color: #3C2A4D;
     }
 
     .subtitle {
@@ -131,17 +143,18 @@
       border-radius: 20px;
       background: rgba(255, 255, 255, 0.66);
       border: 1px solid var(--border);
-      color: #6f625d;
+      color: #655B72;
       font-size: 14px;
       line-height: 1.55;
     }
 
     .form-shell {
-      background: rgba(255, 255, 255, 0.78);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.86), rgba(204,242,241,0.16), rgba(249,163,226,0.10));
       border: 1px solid var(--border);
       border-radius: 34px;
       box-shadow:
-        0 28px 70px rgba(159, 116, 104, 0.14),
+        0 28px 70px rgba(167, 144, 234, 0.16),
         inset 0 1px 0 rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(18px);
       overflow: hidden;
@@ -161,7 +174,7 @@
 
     .progress {
       height: 11px;
-      background: #f0e5df;
+      background: #F3E9FF;
       border-radius: 999px;
       overflow: hidden;
     }
@@ -170,7 +183,7 @@
       width: 14%;
       height: 100%;
       border-radius: 999px;
-      background: linear-gradient(90deg, var(--rose), var(--sage));
+      background: linear-gradient(90deg, var(--mint), var(--pink), var(--lavender));
       transition: width 0.28s ease;
     }
 
@@ -193,7 +206,7 @@
       font-size: 28px;
       font-family: Georgia, "Times New Roman", serif;
       font-weight: 500;
-      color: #5d453f;
+      color: #3C2A4D;
     }
 
     .step-desc {
@@ -216,7 +229,7 @@
       display: block;
       font-size: 14px;
       font-weight: 750;
-      color: #4a3c37;
+      color: #352941;
       margin-bottom: 8px;
     }
 
@@ -238,8 +251,8 @@
     }
 
     input:focus, select:focus, textarea:focus {
-      border-color: rgba(159, 116, 104, 0.48);
-      box-shadow: 0 0 0 4px rgba(232, 183, 183, 0.22);
+      border-color: rgba(167, 144, 234, 0.52);
+      box-shadow: 0 0 0 4px rgba(249, 163, 226, 0.18);
       background: #fff;
     }
 
@@ -260,12 +273,12 @@
       cursor: pointer;
       transition: all 0.18s ease;
       font-weight: 650;
-      color: #4b403c;
+      color: #3B3148;
     }
 
     .service-check:hover {
       transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(159, 116, 104, 0.12);
+      box-shadow: 0 8px 18px rgba(167, 144, 234, 0.16);
     }
 
     .service-check input {
@@ -278,8 +291,8 @@
       margin: 20px 0 10px;
       font-size: 16px;
       font-weight: 850;
-      color: #6c4f47;
-      border-left: 4px solid var(--rose);
+      color: #5A4174;
+      border-left: 4px solid var(--orange);
       padding-left: 10px;
     }
 
@@ -288,7 +301,7 @@
       border-radius: 22px;
       border: 1px solid var(--border);
       background:
-        linear-gradient(135deg, rgba(255, 241, 241, 0.72), rgba(237, 246, 241, 0.68));
+        linear-gradient(135deg, rgba(249, 163, 226, 0.18), rgba(204, 242, 241, 0.36));
       margin-bottom: 14px;
     }
 
@@ -307,7 +320,7 @@
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.85);
       border: 1px solid var(--border);
-      color: #4b403c;
+      color: #3B3148;
       cursor: pointer;
       font-weight: 650;
       transition: all 0.18s ease;
@@ -315,7 +328,7 @@
 
     .pill:hover {
       transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(159, 116, 104, 0.12);
+      box-shadow: 0 8px 18px rgba(167, 144, 234, 0.16);
     }
 
     .pill input {
@@ -327,7 +340,7 @@
       padding: 18px;
       border-radius: 24px;
       background: rgba(255, 255, 255, 0.62);
-      border: 1px dashed rgba(159, 116, 104, 0.34);
+      border: 1px dashed rgba(167, 144, 234, 0.38);
       margin-top: 14px;
     }
 
@@ -374,6 +387,89 @@
       overflow: auto;
     }
 
+
+    .photo-upload-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .photo-card {
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.72);
+      border-radius: 22px;
+      padding: 15px;
+      transition: all 0.18s ease;
+    }
+
+    .photo-card.required {
+      border-color: rgba(241, 105, 37, 0.36);
+    }
+
+    .photo-card:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(167, 144, 234, 0.14);
+    }
+
+    .photo-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 850;
+      color: #3B3148;
+      margin-bottom: 8px;
+    }
+
+    .photo-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, var(--orange), var(--coral));
+      white-space: nowrap;
+    }
+
+    .photo-help {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.45;
+      margin: 0 0 10px;
+    }
+
+    .photo-card input[type="file"] {
+      padding: 10px;
+      background: rgba(204, 242, 241, 0.18);
+    }
+
+    .photo-preview {
+      display: none;
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 16px;
+      max-height: 180px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+    }
+
+    .upload-note {
+      margin-top: 10px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    @media (max-width: 760px) {
+      .photo-upload-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .actions {
       display: flex;
       justify-content: space-between;
@@ -394,19 +490,19 @@
     }
 
     .btn-secondary {
-      background: #f0e5df;
-      color: #5d453f;
+      background: #F3E9FF;
+      color: #3C2A4D;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #d99fa2, #98b9a9);
+      background: linear-gradient(135deg, var(--pink), var(--lavender), var(--mint));
       color: #fff;
-      box-shadow: 0 14px 28px rgba(159, 116, 104, 0.18);
+      box-shadow: 0 14px 28px rgba(167, 144, 234, 0.20);
     }
 
     .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 18px 34px rgba(159, 116, 104, 0.22);
+      box-shadow: 0 18px 34px rgba(167, 144, 234, 0.24);
     }
 
     .hidden { display: none !important; }
@@ -584,6 +680,65 @@
           <div id="riskResult" class="risk-card risk-green"></div>
 
           <div class="question-box">
+            <div class="question-title" data-i18n="photoUploadTitle"></div>
+            <p class="small-note" data-i18n="photoUploadDesc"></p>
+
+            <div class="photo-upload-grid">
+              <div class="photo-card required">
+                <div class="photo-title">
+                  <span data-i18n="photoFrontTitle"></span>
+                  <span class="photo-badge" data-i18n="requiredBadge"></span>
+                </div>
+                <p class="photo-help" data-i18n="photoFrontHelp"></p>
+                <input type="file" id="photoFront" name="photoFront" accept="image/*" data-photo-label-key="photoFrontTitle" required />
+                <img class="photo-preview" id="previewFront" alt="Preview front" />
+              </div>
+
+              <div class="photo-card required">
+                <div class="photo-title">
+                  <span data-i18n="photoRightTitle"></span>
+                  <span class="photo-badge" data-i18n="requiredBadge"></span>
+                </div>
+                <p class="photo-help" data-i18n="photoRightHelp"></p>
+                <input type="file" id="photoRight" name="photoRight" accept="image/*" data-photo-label-key="photoRightTitle" required />
+                <img class="photo-preview" id="previewRight" alt="Preview right" />
+              </div>
+
+              <div class="photo-card required">
+                <div class="photo-title">
+                  <span data-i18n="photoLeftTitle"></span>
+                  <span class="photo-badge" data-i18n="requiredBadge"></span>
+                </div>
+                <p class="photo-help" data-i18n="photoLeftHelp"></p>
+                <input type="file" id="photoLeft" name="photoLeft" accept="image/*" data-photo-label-key="photoLeftTitle" required />
+                <img class="photo-preview" id="previewLeft" alt="Preview left" />
+              </div>
+
+              <div class="photo-card">
+                <div class="photo-title">
+                  <span data-i18n="photoTop45Title"></span>
+                  <span class="photo-badge" data-i18n="optionalBadge"></span>
+                </div>
+                <p class="photo-help" data-i18n="photoTop45Help"></p>
+                <input type="file" id="photoTop45" name="photoTop45" accept="image/*" data-photo-label-key="photoTop45Title" />
+                <img class="photo-preview" id="previewTop45" alt="Preview top 45" />
+              </div>
+
+              <div class="photo-card">
+                <div class="photo-title">
+                  <span data-i18n="photoBottom45Title"></span>
+                  <span class="photo-badge" data-i18n="optionalBadge"></span>
+                </div>
+                <p class="photo-help" data-i18n="photoBottom45Help"></p>
+                <input type="file" id="photoBottom45" name="photoBottom45" accept="image/*" data-photo-label-key="photoBottom45Title" />
+                <img class="photo-preview" id="previewBottom45" alt="Preview bottom 45" />
+              </div>
+            </div>
+
+            <p class="upload-note" data-i18n="photoUploadNote"></p>
+          </div>
+
+          <div class="question-box">
             <label class="pill">
               <input type="checkbox" name="confirmAccuracy" required />
               <span data-i18n="confirmAccuracy"></span>
@@ -675,7 +830,22 @@
         confirmDoctor: "Tôi hiểu form này không thay thế cho khám trực tiếp và chỉ định cuối cùng của bác sĩ.",
         alertSubmitted: "Đã ghi nhận hồ sơ. Kết quả sàng lọc: ",
         alertSubmitError: "Có lỗi khi gửi hồ sơ. Vui lòng thử lại hoặc báo nhân viên hỗ trợ.",
-        footerNote: "HL Health & Beauty · Medical Safety Screening · Natural Beauty, Thoughtfully Protected"
+        footerNote: "HL Health & Beauty · Medical Safety Screening · Natural Beauty, Thoughtfully Protected",
+        photoUploadTitle: "Hình ảnh đánh giá ban đầu",
+        photoUploadDesc: "Vui lòng tải lên tối thiểu 3 hình ảnh không che mặt/vùng cần tư vấn. Hình ảnh giúp bác sĩ đánh giá đúng hơn trước khi tư vấn. Tùy dịch vụ, đội ngũ HL có thể yêu cầu thêm góc ảnh bổ sung.",
+        requiredBadge: "Bắt buộc",
+        optionalBadge: "Tùy chọn",
+        photoFrontTitle: "Chính diện",
+        photoRightTitle: "Bên phải",
+        photoLeftTitle: "Bên trái",
+        photoTop45Title: "Góc 45° từ trên xuống",
+        photoBottom45Title: "Góc 45° từ dưới lên",
+        photoFrontHelp: "Chụp thẳng chính diện, đủ sáng, không dùng filter, không che vùng cần tư vấn.",
+        photoRightHelp: "Chụp nghiêng/phía bên phải, giữ tư thế tự nhiên, đủ sáng.",
+        photoLeftHelp: "Chụp nghiêng/phía bên trái, giữ tư thế tự nhiên, đủ sáng.",
+        photoTop45Help: "Khuyến nghị cho vùng mặt, mũi, cằm, body hoặc vùng cần đánh giá hình khối.",
+        photoBottom45Help: "Khuyến nghị cho vùng mặt, mũi, cằm, cổ, nọng cằm hoặc vùng cần đánh giá hình khối.",
+        photoUploadNote: "Lưu ý: Hình ảnh sẽ được nén trước khi gửi để giảm dung lượng. Không tải ảnh có lớp che/cover/filter làm sai lệch đánh giá."
       },
       en: {
         brand: "HL Health & Beauty",
@@ -739,7 +909,22 @@
         confirmDoctor: "I understand that this form does not replace an in-person consultation and the doctor’s final medical decision.",
         alertSubmitted: "Your form has been submitted. Screening result: ",
         alertSubmitError: "There was an error submitting the form. Please try again or contact our staff.",
-        footerNote: "HL Health & Beauty · Medical Safety Screening · Natural Beauty, Thoughtfully Protected"
+        footerNote: "HL Health & Beauty · Medical Safety Screening · Natural Beauty, Thoughtfully Protected",
+        photoUploadTitle: "Initial assessment photos",
+        photoUploadDesc: "Please upload at least 3 photos without covering the face/treatment area. These images help our doctor assess your case more accurately before consultation. Depending on the selected service, HL may request additional angles.",
+        requiredBadge: "Required",
+        optionalBadge: "Optional",
+        photoFrontTitle: "Front view",
+        photoRightTitle: "Right side",
+        photoLeftTitle: "Left side",
+        photoTop45Title: "45° angle from above",
+        photoBottom45Title: "45° angle from below",
+        photoFrontHelp: "Take a straight front-facing photo in good lighting, without filters or covering the treatment area.",
+        photoRightHelp: "Take a right-side profile/angle photo with natural posture and good lighting.",
+        photoLeftHelp: "Take a left-side profile/angle photo with natural posture and good lighting.",
+        photoTop45Help: "Recommended for face, nose, chin, body, or areas requiring contour assessment.",
+        photoBottom45Help: "Recommended for face, nose, chin, neck, double chin, or areas requiring contour assessment.",
+        photoUploadNote: "Note: Images will be compressed before submission to reduce file size. Do not upload photos with covers, filters, or edits that may affect assessment."
       }
     };
 
@@ -1040,6 +1225,7 @@
       renderServiceCheckboxes();
       renderAllQuestionGroups();
       renderServiceQuestions();
+      resetPhotoPreviews();
       updateStep();
 
       if (currentStep === steps.length - 1) calculateRisk();
@@ -1271,20 +1457,29 @@
         return false;
       }
 
-      const currentStepElement = steps[currentStep];
-      const radioNames = Array.from(currentStepElement.querySelectorAll('input[type="radio"]'))
-        .map(input => input.name)
-        .filter((name, index, arr) => name && arr.indexOf(name) === index);
-
-      const unansweredRadioName = radioNames.find(name => {
-        return !currentStepElement.querySelector(`input[type="radio"][name="${CSS.escape(name)}"]:checked`);
+      const visibleRadioGroups = new Set();
+      steps[currentStep].querySelectorAll('input[type="radio"]').forEach(input => {
+        visibleRadioGroups.add(input.name);
       });
 
-      if (unansweredRadioName) {
-        alert(i18n[currentLang].requiredRadioMessage);
-        const firstUnanswered = currentStepElement.querySelector(`input[type="radio"][name="${CSS.escape(unansweredRadioName)}"]`);
-        const box = firstUnanswered ? firstUnanswered.closest('.question-box') : null;
-        if (box) box.scrollIntoView({ behavior: "smooth", block: "center" });
+      for (const groupName of visibleRadioGroups) {
+        const selected = steps[currentStep].querySelector(`input[name="${groupName}"]:checked`);
+        if (!selected) {
+          alert(
+            currentLang === "vi"
+              ? "Vui lòng trả lời đầy đủ tất cả câu hỏi trước khi tiếp tục."
+              : "Please answer all questions before continuing."
+          );
+
+          const firstRadio = steps[currentStep].querySelector(`input[name="${groupName}"]`);
+          if (firstRadio) {
+            firstRadio.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+          return false;
+        }
+      }
+
+      if (currentStep === steps.length - 1 && !validateRequiredPhotos()) {
         return false;
       }
 
@@ -1351,11 +1546,14 @@
       riskReasonsInput.value = reasons.join(" | ");
     }
 
-    function collectFormData() {
+    async function collectFormData() {
       const data = {};
       const formData = new FormData(form);
 
-      for (const [key, value] of formData.entries()) data[key] = value;
+      for (const [key, value] of formData.entries()) {
+        if (value instanceof File) continue;
+        data[key] = value;
+      }
 
       const selectedServices = getSelectedServiceGroups();
 
@@ -1364,6 +1562,9 @@
       data.serviceGroupLabels = selectedServices.map(code => serviceLabels[currentLang][code] || code).join(" | ");
       data.serviceProfiles = getSelectedProfiles(selectedServices).join(",");
       data.userAgent = navigator.userAgent;
+      data.photos = await collectPhotoData();
+      data.photoCount = data.photos.length;
+      data.photoLabels = data.photos.map(photo => photo.label).join(" | ");
 
       return data;
     }
@@ -1389,7 +1590,7 @@
 
       calculateRisk();
 
-      const payload = collectFormData();
+      const payload = await collectFormData();
       console.log("HL Medical Intake Payload:", payload);
 
       if (GOOGLE_APPS_SCRIPT_URL) {
@@ -1423,6 +1624,7 @@
     renderServiceCheckboxes();
     renderAllQuestionGroups();
     renderServiceQuestions();
+    setupPhotoPreviews();
     setLanguage("vi");
   </script>
 </body>
