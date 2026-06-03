@@ -1550,10 +1550,33 @@
       riskLevelInput.value = level;
       riskReasonsInput.value = reasons.join(" | ");
     }
+    function collectAnswerSummary() {
+  const answers = [];
 
+  form.querySelectorAll("input[type='radio']:checked").forEach(input => {
+    const answer = input.value;
+    const isMeaningful = answer === "Yes" || answer === "Not sure";
+
+    if (!isMeaningful) return;
+
+    const questionBox = input.closest(".question-box");
+    const questionText = questionBox?.querySelector(".question-title")?.innerText || input.name;
+
+    answers.push({
+      name: input.name,
+      question: questionText,
+      answer: answer === "Yes" ? (currentLang === "vi" ? "Có" : "Yes") : (currentLang === "vi" ? "Không rõ" : "Not sure"),
+      flag: input.dataset.flag || "",
+      language: currentLang
+    });
+  });
+
+  return answers;
+}
     async function collectFormData() {
       const data = {};
       const formData = new FormData(form);
+      
 
       for (const [key, value] of formData.entries()) {
         if (value instanceof File) continue;
@@ -1570,7 +1593,7 @@
       data.photos = await collectPhotoData();
       data.photoCount = data.photos.length;
       data.photoLabels = data.photos.map(photo => photo.label).join(" | ");
-
+      data.answerSummary = collectAnswerSummary();
       return data;
     }
 
