@@ -3,31 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>HL Health & Beauty - Medical Intake Form</title>
-
   <style>
     :root {
       --rose: #e8b7b7;
-      --rose-soft: #fff1f1;
       --sage: #b7cfc2;
-      --sage-soft: #edf6f1;
-      --cream: #fbf7ef;
-      --sand: #e8dccd;
       --clay: #9f7468;
       --ink: #2f2a28;
       --muted: #7d746f;
-      --white: #ffffff;
       --border: rgba(159, 116, 104, 0.2);
-
       --green: #2f8f5b;
       --yellow: #b98216;
       --red: #c7443e;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -157,13 +147,8 @@
       overflow: hidden;
     }
 
-    .form-inner {
-      padding: 30px;
-    }
-
-    .progress-wrap {
-      margin-bottom: 28px;
-    }
+    .form-inner { padding: 30px; }
+    .progress-wrap { margin-bottom: 28px; }
 
     .progress-top {
       display: flex;
@@ -194,24 +179,14 @@
       animation: rise 0.25s ease;
     }
 
-    .step.active {
-      display: block;
-    }
+    .step.active { display: block; }
 
     @keyframes rise {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .step-header {
-      margin-bottom: 22px;
-    }
+    .step-header { margin-bottom: 22px; }
 
     .step-title {
       margin: 0;
@@ -234,9 +209,7 @@
       gap: 18px;
     }
 
-    .full {
-      grid-column: 1 / -1;
-    }
+    .full { grid-column: 1 / -1; }
 
     .field label,
     .question-title {
@@ -247,9 +220,7 @@
       margin-bottom: 8px;
     }
 
-    input,
-    select,
-    textarea {
+    input, select, textarea {
       width: 100%;
       padding: 13px 15px;
       border-radius: 17px;
@@ -266,9 +237,7 @@
       resize: vertical;
     }
 
-    input:focus,
-    select:focus,
-    textarea:focus {
+    input:focus, select:focus, textarea:focus {
       border-color: rgba(159, 116, 104, 0.48);
       box-shadow: 0 0 0 4px rgba(232, 183, 183, 0.22);
       background: #fff;
@@ -303,6 +272,15 @@
       width: auto;
       margin-top: 2px;
       accent-color: var(--clay);
+    }
+
+    .question-layer-title {
+      margin: 20px 0 10px;
+      font-size: 16px;
+      font-weight: 850;
+      color: #6c4f47;
+      border-left: 4px solid var(--rose);
+      padding-left: 10px;
     }
 
     .question-box {
@@ -431,9 +409,7 @@
       box-shadow: 0 18px 34px rgba(159, 116, 104, 0.22);
     }
 
-    .hidden {
-      display: none !important;
-    }
+    .hidden { display: none !important; }
 
     .small-note {
       font-size: 13px;
@@ -451,37 +427,14 @@
     }
 
     @media (max-width: 760px) {
-      .top-bar {
-        flex-direction: column;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .service-checkbox-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .form-inner {
-        padding: 22px;
-      }
-
-      .actions {
-        flex-direction: column;
-      }
-
-      button {
-        width: 100%;
-      }
-
-      .radio-row {
-        flex-direction: column;
-      }
-
-      .pill {
-        width: 100%;
-      }
+      .top-bar { flex-direction: column; }
+      .grid { grid-template-columns: 1fr; }
+      .service-checkbox-grid { grid-template-columns: 1fr; }
+      .form-inner { padding: 22px; }
+      .actions { flex-direction: column; }
+      button { width: 100%; }
+      .radio-row { flex-direction: column; }
+      .pill { width: 100%; }
     }
   </style>
 </head>
@@ -501,8 +454,8 @@
     </div>
 
     <div class="hero">
-      <div class="eyebrow" data-i18n="eyebrow">Natural Beauty Begins With Safety</div>
-      <h1 data-i18n="title">Hồ sơ bệnh án ban đầu</h1>
+      <div class="eyebrow" data-i18n="eyebrow"></div>
+      <h1 data-i18n="title"></h1>
       <p class="subtitle" data-i18n="subtitle"></p>
       <div class="safety-note" data-i18n="safetyNote"></div>
     </div>
@@ -515,15 +468,14 @@
         <input type="hidden" name="createdAt" id="createdAt" />
         <input type="hidden" name="serviceGroups" id="serviceGroupsInput" required />
         <input type="hidden" name="serviceGroupLabels" id="serviceGroupLabelsInput" />
+        <input type="hidden" name="serviceProfiles" id="serviceProfilesInput" />
 
         <div class="progress-wrap">
           <div class="progress-top">
             <span id="stepText">Bước 1/7</span>
             <span id="progressPercent">14%</span>
           </div>
-          <div class="progress">
-            <div class="progress-bar" id="progressBar"></div>
-          </div>
+          <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
         </div>
 
         <section class="step active">
@@ -580,9 +532,7 @@
             <h2 class="step-title" data-i18n="step2Title"></h2>
             <p class="step-desc" data-i18n="step2Desc"></p>
           </div>
-
           <div id="allergyQuestions"></div>
-
           <div class="field question-box">
             <label data-i18n="allergyDetail"></label>
             <textarea name="allergyDetail"></textarea>
@@ -594,7 +544,6 @@
             <h2 class="step-title" data-i18n="step3Title"></h2>
             <p class="step-desc" data-i18n="step3Desc"></p>
           </div>
-
           <div id="anesthesiaQuestions"></div>
         </section>
 
@@ -603,7 +552,6 @@
             <h2 class="step-title" data-i18n="step4Title"></h2>
             <p class="step-desc" data-i18n="step4Desc"></p>
           </div>
-
           <div id="medicalQuestions"></div>
         </section>
 
@@ -612,9 +560,7 @@
             <h2 class="step-title" data-i18n="step5Title"></h2>
             <p class="step-desc" data-i18n="step5Desc"></p>
           </div>
-
           <div id="medicationQuestions"></div>
-
           <div class="field question-box">
             <label data-i18n="medicationDetail"></label>
             <textarea name="medicationDetail"></textarea>
@@ -626,7 +572,6 @@
             <h2 class="step-title" data-i18n="step6Title"></h2>
             <p class="step-desc" data-i18n="step6Desc"></p>
           </div>
-
           <div id="serviceSpecificContainer" class="section-card"></div>
         </section>
 
@@ -663,8 +608,6 @@
   </div>
 
   <script>
-    // Gắn Google Apps Script Web App URL vào đây nếu muốn lưu Google Sheet.
-    // Ví dụ: const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx.../exec";
     const GOOGLE_APPS_SCRIPT_URL = "";
 
     let currentLang = "vi";
@@ -683,15 +626,15 @@
         step1Title: "1. Thông tin cá nhân",
         step1Desc: "Thông tin cơ bản để tạo hồ sơ khách hàng.",
         step2Title: "2. Dị ứng & phản vệ",
-        step2Desc: "Các thông tin này đặc biệt quan trọng trước khi dùng thuốc tê, thuốc mê, Botox, filler hoặc kháng sinh.",
+        step2Desc: "Câu hỏi bắt buộc cho mọi khách trước khi dùng thuốc tê, thuốc mê, Botox, filler hoặc kháng sinh.",
         step3Title: "3. Tiền sử phẫu thuật, gây tê, gây mê",
         step3Desc: "Giúp phát hiện nguy cơ trong tiền mê, gây mê và gây tê diện rộng.",
         step4Title: "4. Bệnh nền",
         step4Desc: "Vui lòng chọn “Có” nếu anh/chị từng được chẩn đoán hoặc đang điều trị.",
         step5Title: "5. Thuốc đang dùng",
         step5Desc: "Không tự ý ngưng thuốc trước khi có chỉ định của bác sĩ.",
-        step6Title: "6. Câu hỏi theo dịch vụ",
-        step6Desc: "Hệ thống sẽ hiển thị câu hỏi phù hợp với tất cả nhóm dịch vụ đã chọn.",
+        step6Title: "6. Câu hỏi liên quan dịch vụ",
+        step6Desc: "Hệ thống tự động chia câu hỏi theo tầng nguy cơ: mức can thiệp, chảy máu/huyết khối, vùng giải phẫu, vật liệu/sửa lại.",
         step7Title: "7. Xác nhận & kết quả sàng lọc",
         step7Desc: "Kết quả này là sàng lọc ban đầu, chưa thay thế khám trực tiếp và kết luận của bác sĩ.",
         fullName: "Họ và tên *",
@@ -714,6 +657,12 @@
         medicationDetail: "Vui lòng ghi tên thuốc/thực phẩm chức năng đang dùng nếu có",
         noServiceSelected: "Vui lòng chọn ít nhất một nhóm dịch vụ ở bước 1 để hiển thị câu hỏi phù hợp.",
         selectAtLeastOneService: "Vui lòng chọn ít nhất một nhóm dịch vụ quan tâm.",
+        layerProcedure: "A. Mức can thiệp, gây tê, tiền mê/gây mê",
+        layerBleedingVTE: "B. Chảy máu, bầm tụ máu, huyết khối",
+        layerInfectionHealing: "C. Nhiễm trùng, lành thương, da/vùng làm",
+        layerAnatomy: "D. Câu hỏi chuyên biệt theo vùng/dịch vụ",
+        layerMaterialRevision: "E. Vật liệu cũ, filler/silicon, ca sửa lại",
+        layerEthics: "F. Thai kỳ, vùng kín, đồng thuận",
         greenTitle: "GREEN",
         greenMessage: "Chưa ghi nhận yếu tố nguy cơ lớn trong form. Khách vẫn cần khám trực tiếp trước khi thực hiện dịch vụ.",
         yellowTitle: "YELLOW FLAG",
@@ -740,15 +689,15 @@
         step1Title: "1. Personal Information",
         step1Desc: "Basic information to create your client profile.",
         step2Title: "2. Allergies & Anaphylaxis",
-        step2Desc: "This information is especially important before using local anesthetics, anesthesia, Botox, fillers, or antibiotics.",
+        step2Desc: "Required for all clients before local anesthetics, anesthesia, Botox, fillers, or antibiotics.",
         step3Title: "3. Surgery & Anesthesia History",
         step3Desc: "This helps identify risks related to sedation, general anesthesia, or extensive local anesthesia.",
         step4Title: "4. Medical Conditions",
         step4Desc: "Please select “Yes” if you have ever been diagnosed with or are currently being treated for any of the following.",
         step5Title: "5. Current Medications",
         step5Desc: "Please do not stop any medication without medical advice.",
-        step6Title: "6. Service-Specific Questions",
-        step6Desc: "Questions will be shown based on all service groups you selected.",
+        step6Title: "6. Service-Related Questions",
+        step6Desc: "Questions are automatically layered by procedure intensity, bleeding/clot risk, anatomy, and revision/foreign material risk.",
         step7Title: "7. Confirmation & Screening Result",
         step7Desc: "This is an initial screening result and does not replace an in-person medical assessment or the doctor’s final decision.",
         fullName: "Full name *",
@@ -771,6 +720,12 @@
         medicationDetail: "Please list any medications or supplements you are currently taking",
         noServiceSelected: "Please select at least one service group in step 1 to show relevant questions.",
         selectAtLeastOneService: "Please select at least one service group.",
+        layerProcedure: "A. Procedure intensity, local anesthesia, sedation/general anesthesia",
+        layerBleedingVTE: "B. Bleeding, bruising, hematoma, blood clot risk",
+        layerInfectionHealing: "C. Infection, wound healing, skin/treatment area",
+        layerAnatomy: "D. Anatomy/service-specific questions",
+        layerMaterialRevision: "E. Previous materials, filler/silicone, revision history",
+        layerEthics: "F. Pregnancy, intimate area, consent",
         greenTitle: "GREEN",
         greenMessage: "No major risk factor has been identified in this form. An in-person medical assessment is still required before any procedure.",
         yellowTitle: "YELLOW FLAG",
@@ -787,16 +742,8 @@
     };
 
     const sexOptions = {
-      vi: {
-        female: "Nữ",
-        male: "Nam",
-        other: "Khác / không muốn trả lời"
-      },
-      en: {
-        female: "Female",
-        male: "Male",
-        other: "Other / prefer not to say"
-      }
+      vi: { female: "Nữ", male: "Nam", other: "Khác / không muốn trả lời" },
+      en: { female: "Female", male: "Male", other: "Other / prefer not to say" }
     };
 
     const serviceLabels = {
@@ -836,608 +783,202 @@
 
     const questionSets = {
       allergyQuestions: [
-        {
-          name: "allergyDrug",
-          flag: "yellow",
-          vi: "Anh/chị có từng dị ứng thuốc không?",
-          en: "Have you ever had a medication allergy?"
-        },
-        {
-          name: "anaphylaxis",
-          flag: "red",
-          vi: "Anh/chị có từng sốc phản vệ hoặc cấp cứu vì dị ứng không?",
-          en: "Have you ever had anaphylaxis or required emergency care due to an allergy?"
-        },
-        {
-          name: "localAnestheticAllergy",
-          flag: "red",
-          vi: "Có dị ứng thuốc tê như Lidocaine/Bupivacaine không?",
-          en: "Are you allergic to local anesthetics such as Lidocaine or Bupivacaine?"
-        },
-        {
-          name: "generalAnesthesiaAllergy",
-          flag: "red",
-          vi: "Có dị ứng thuốc mê không?",
-          en: "Are you allergic to any anesthetic medications?"
-        },
-        {
-          name: "antibioticAllergy",
-          flag: "yellow",
-          vi: "Có dị ứng kháng sinh không?",
-          en: "Are you allergic to any antibiotics?"
-        },
-        {
-          name: "botoxAllergy",
-          flag: "red",
-          vi: "Có từng dị ứng Botox/Botulinum toxin không?",
-          en: "Have you ever had an allergic reaction to Botox or botulinum toxin?"
-        },
-        {
-          name: "fillerAllergy",
-          flag: "red",
-          vi: "Có từng dị ứng filler/HA/lidocaine trong filler không?",
-          en: "Have you ever had an allergic reaction to dermal fillers, hyaluronic acid, or lidocaine in fillers?"
-        },
-        {
-          name: "latexAllergy",
-          flag: "yellow",
-          vi: "Có dị ứng latex/găng tay/băng keo/thuốc sát khuẩn không?",
-          en: "Are you allergic to latex, medical gloves, adhesive tape, or antiseptic solutions?"
-        }
+        { name: "allergyDrug", flag: "yellow", vi: "Anh/chị có từng dị ứng thuốc không?", en: "Have you ever had a medication allergy?" },
+        { name: "anaphylaxis", flag: "red", vi: "Anh/chị có từng sốc phản vệ hoặc cấp cứu vì dị ứng không?", en: "Have you ever had anaphylaxis or required emergency care due to an allergy?" },
+        { name: "localAnestheticAllergy", flag: "red", vi: "Có dị ứng thuốc tê như Lidocaine/Bupivacaine không?", en: "Are you allergic to local anesthetics such as Lidocaine or Bupivacaine?" },
+        { name: "generalAnesthesiaAllergy", flag: "red", vi: "Có dị ứng thuốc mê không?", en: "Are you allergic to any anesthetic medications?" },
+        { name: "antibioticAllergy", flag: "yellow", vi: "Có dị ứng kháng sinh không?", en: "Are you allergic to any antibiotics?" },
+        { name: "botoxAllergy", flag: "red", vi: "Có từng dị ứng Botox/Botulinum toxin không?", en: "Have you ever had an allergic reaction to Botox or botulinum toxin?" },
+        { name: "fillerAllergy", flag: "red", vi: "Có từng dị ứng filler/HA/lidocaine trong filler không?", en: "Have you ever had an allergic reaction to dermal fillers, hyaluronic acid, or lidocaine in fillers?" },
+        { name: "latexAllergy", flag: "yellow", vi: "Có dị ứng latex/găng tay/băng keo/thuốc sát khuẩn không?", en: "Are you allergic to latex, medical gloves, adhesive tape, or antiseptic solutions?" }
       ],
       anesthesiaQuestions: [
-        {
-          name: "previousSurgery",
-          flag: "yellow",
-          vi: "Anh/chị từng phẫu thuật/gây mê/gây tê chưa?",
-          en: "Have you ever had surgery, general anesthesia, sedation, or local anesthesia?"
-        },
-        {
-          name: "anesthesiaComplication",
-          flag: "red",
-          vi: "Từng khó thở, tụt huyết áp, co giật, khó tỉnh mê sau gây mê/gây tê không?",
-          en: "Have you ever had breathing difficulty, low blood pressure, seizure, or delayed recovery after anesthesia?"
-        },
-        {
-          name: "difficultAirway",
-          flag: "red",
-          vi: "Từng được báo khó đặt ống thở/khó kiểm soát đường thở không?",
-          en: "Have you ever been told you had a difficult airway or difficult intubation?"
-        },
-        {
-          name: "malignantHyperthermia",
-          flag: "red",
-          vi: "Bản thân hoặc gia đình từng có sốt cao ác tính khi gây mê không?",
-          en: "Have you or any family member ever had malignant hyperthermia during anesthesia?"
-        },
-        {
-          name: "localAnestheticToxicity",
-          flag: "red",
-          vi: "Từng tê quanh miệng, ù tai, vị kim loại, hồi hộp, co giật sau tiêm tê không?",
-          en: "Have you ever had numbness around the mouth, ringing in the ears, metallic taste, palpitations, or seizure after local anesthesia?"
-        },
-        {
-          name: "icuAfterSurgery",
-          flag: "red",
-          vi: "Từng phải nằm hồi sức/ICU sau phẫu thuật không?",
-          en: "Have you ever required ICU or intensive monitoring after surgery?"
-        }
+        { name: "previousSurgery", flag: "yellow", vi: "Anh/chị từng phẫu thuật/gây mê/gây tê chưa?", en: "Have you ever had surgery, general anesthesia, sedation, or local anesthesia?" },
+        { name: "anesthesiaComplication", flag: "red", vi: "Từng khó thở, tụt huyết áp, co giật, khó tỉnh mê sau gây mê/gây tê không?", en: "Have you ever had breathing difficulty, low blood pressure, seizure, or delayed recovery after anesthesia?" },
+        { name: "difficultAirway", flag: "red", vi: "Từng được báo khó đặt ống thở/khó kiểm soát đường thở không?", en: "Have you ever been told you had a difficult airway or difficult intubation?" },
+        { name: "malignantHyperthermia", flag: "red", vi: "Bản thân hoặc gia đình từng có sốt cao ác tính khi gây mê không?", en: "Have you or any family member ever had malignant hyperthermia during anesthesia?" },
+        { name: "localAnestheticToxicity", flag: "red", vi: "Từng tê quanh miệng, ù tai, vị kim loại, hồi hộp, co giật sau tiêm tê không?", en: "Have you ever had numbness around the mouth, ringing in the ears, metallic taste, palpitations, or seizure after local anesthesia?" },
+        { name: "icuAfterSurgery", flag: "red", vi: "Từng phải nằm hồi sức/ICU sau phẫu thuật không?", en: "Have you ever required ICU or intensive monitoring after surgery?" }
       ],
       medicalQuestions: [
-        {
-          name: "hypertension",
-          flag: "yellow",
-          vi: "Có tăng huyết áp không?",
-          en: "Do you have high blood pressure?"
-        },
-        {
-          name: "veryHighBP",
-          flag: "red",
-          vi: "Từng đo huyết áp gần hoặc ≥180/110 mmHg không?",
-          en: "Have you ever had blood pressure around or above 180/110 mmHg?"
-        },
-        {
-          name: "heartDisease",
-          flag: "red",
-          vi: "Có bệnh tim, đặt stent, nhồi máu cơ tim, suy tim, rối loạn nhịp không?",
-          en: "Do you have heart disease, heart stent, heart attack, heart failure, or abnormal heart rhythm?"
-        },
-        {
-          name: "stroke",
-          flag: "red",
-          vi: "Có từng đột quỵ hoặc thiếu máu não thoáng qua không?",
-          en: "Have you ever had a stroke or transient ischemic attack?"
-        },
-        {
-          name: "asthmaCopd",
-          flag: "yellow",
-          vi: "Có hen suyễn/COPD/khó thở mạn tính không?",
-          en: "Do you have asthma, COPD, or chronic breathing difficulty?"
-        },
-        {
-          name: "respInfection",
-          flag: "red",
-          vi: "Hiện có sốt, ho, đau họng, đờm, viêm hô hấp không?",
-          en: "Do you currently have fever, cough, sore throat, phlegm, or respiratory infection?"
-        },
-        {
-          name: "sleepApnea",
-          flag: "red",
-          vi: "Có ngủ ngáy to/ngưng thở khi ngủ/dùng CPAP không?",
-          en: "Do you snore loudly, have sleep apnea, or use CPAP?"
-        },
-        {
-          name: "diabetes",
-          flag: "yellow",
-          vi: "Có đái tháo đường không?",
-          en: "Do you have diabetes?"
-        },
-        {
-          name: "uncontrolledDiabetes",
-          flag: "red",
-          vi: "Đường huyết/tiểu đường hiện chưa kiểm soát tốt không?",
-          en: "Is your diabetes or blood sugar currently poorly controlled?"
-        },
-        {
-          name: "thyroidUnstable",
-          flag: "red",
-          vi: "Có bệnh tuyến giáp chưa ổn định không?",
-          en: "Do you have unstable thyroid disease?"
-        },
-        {
-          name: "liverKidney",
-          flag: "red",
-          vi: "Có bệnh gan, xơ gan, suy thận hoặc lọc thận không?",
-          en: "Do you have liver disease, cirrhosis, kidney failure, or dialysis?"
-        },
-        {
-          name: "bleedingDisorder",
-          flag: "red",
-          vi: "Có rối loạn đông máu, giảm tiểu cầu, dễ chảy máu không?",
-          en: "Do you have a bleeding disorder, low platelets, or easy bleeding?"
-        },
-        {
-          name: "dvtPe",
-          flag: "red",
-          vi: "Từng bị huyết khối tĩnh mạch sâu/thuyên tắc phổi không?",
-          en: "Have you ever had a blood clot in the leg or pulmonary embolism?"
-        },
-        {
-          name: "autoimmuneActive",
-          flag: "yellow",
-          vi: "Có bệnh tự miễn đang hoạt động hoặc dùng thuốc ức chế miễn dịch không?",
-          en: "Do you have active autoimmune disease or take immunosuppressive medication?"
-        },
-        {
-          name: "pregnant",
-          flag: "red",
-          vi: "Đang mang thai hoặc nghi ngờ mang thai không?",
-          en: "Are you pregnant or possibly pregnant?"
-        },
-        {
-          name: "breastfeeding",
-          flag: "yellow",
-          vi: "Đang cho con bú không?",
-          en: "Are you currently breastfeeding?"
-        },
-        {
-          name: "activeInfection",
-          flag: "red",
-          vi: "Đang có nhiễm trùng da, răng miệng, herpes hoặc vết thương hở không?",
-          en: "Do you currently have a skin infection, dental infection, herpes outbreak, or open wound?"
-        }
+        { name: "hypertension", flag: "yellow", vi: "Có tăng huyết áp không?", en: "Do you have high blood pressure?" },
+        { name: "veryHighBP", flag: "red", vi: "Từng đo huyết áp gần hoặc ≥180/110 mmHg không?", en: "Have you ever had blood pressure around or above 180/110 mmHg?" },
+        { name: "heartDisease", flag: "red", vi: "Có bệnh tim, đặt stent, nhồi máu cơ tim, suy tim, rối loạn nhịp không?", en: "Do you have heart disease, heart stent, heart attack, heart failure, or abnormal heart rhythm?" },
+        { name: "stroke", flag: "red", vi: "Có từng đột quỵ hoặc thiếu máu não thoáng qua không?", en: "Have you ever had a stroke or transient ischemic attack?" },
+        { name: "asthmaCopd", flag: "yellow", vi: "Có hen suyễn/COPD/khó thở mạn tính không?", en: "Do you have asthma, COPD, or chronic breathing difficulty?" },
+        { name: "respInfection", flag: "red", vi: "Hiện có sốt, ho, đau họng, đờm, viêm hô hấp không?", en: "Do you currently have fever, cough, sore throat, phlegm, or respiratory infection?" },
+        { name: "sleepApnea", flag: "red", vi: "Có ngủ ngáy to/ngưng thở khi ngủ/dùng CPAP không?", en: "Do you snore loudly, have sleep apnea, or use CPAP?" },
+        { name: "diabetes", flag: "yellow", vi: "Có đái tháo đường không?", en: "Do you have diabetes?" },
+        { name: "uncontrolledDiabetes", flag: "red", vi: "Đường huyết/tiểu đường hiện chưa kiểm soát tốt không?", en: "Is your diabetes or blood sugar currently poorly controlled?" },
+        { name: "thyroidUnstable", flag: "red", vi: "Có bệnh tuyến giáp chưa ổn định không?", en: "Do you have unstable thyroid disease?" },
+        { name: "liverKidney", flag: "red", vi: "Có bệnh gan, xơ gan, suy thận hoặc lọc thận không?", en: "Do you have liver disease, cirrhosis, kidney failure, or dialysis?" },
+        { name: "bleedingDisorder", flag: "red", vi: "Có rối loạn đông máu, giảm tiểu cầu, dễ chảy máu không?", en: "Do you have a bleeding disorder, low platelets, or easy bleeding?" },
+        { name: "dvtPe", flag: "red", vi: "Từng bị huyết khối tĩnh mạch sâu/thuyên tắc phổi không?", en: "Have you ever had a blood clot in the leg or pulmonary embolism?" },
+        { name: "autoimmuneActive", flag: "yellow", vi: "Có bệnh tự miễn đang hoạt động hoặc dùng thuốc ức chế miễn dịch không?", en: "Do you have active autoimmune disease or take immunosuppressive medication?" },
+        { name: "pregnant", flag: "red", vi: "Đang mang thai hoặc nghi ngờ mang thai không?", en: "Are you pregnant or possibly pregnant?" },
+        { name: "breastfeeding", flag: "yellow", vi: "Đang cho con bú không?", en: "Are you currently breastfeeding?" },
+        { name: "activeInfection", flag: "red", vi: "Đang có nhiễm trùng da, răng miệng, herpes hoặc vết thương hở không?", en: "Do you currently have a skin infection, dental infection, herpes outbreak, or open wound?" }
       ],
       medicationQuestions: [
-        {
-          name: "anticoagulant",
-          flag: "red",
-          vi: "Đang dùng thuốc chống đông: Warfarin/Rivaroxaban/Apixaban/Dabigatran?",
-          en: "Are you taking blood thinners such as Warfarin, Rivaroxaban, Apixaban, or Dabigatran?"
-        },
-        {
-          name: "antiplatelet",
-          flag: "red",
-          vi: "Đang dùng Aspirin/Clopidogrel/Plavix?",
-          en: "Are you taking Aspirin, Clopidogrel, or Plavix?"
-        },
-        {
-          name: "heartMeds",
-          flag: "yellow",
-          vi: "Đang dùng thuốc tim mạch/huyết áp?",
-          en: "Are you taking heart or blood pressure medication?"
-        },
-        {
-          name: "diabetesMeds",
-          flag: "yellow",
-          vi: "Đang dùng insulin hoặc thuốc tiểu đường?",
-          en: "Are you taking insulin or diabetes medication?"
-        },
-        {
-          name: "hormone",
-          flag: "yellow",
-          vi: "Đang dùng thuốc tránh thai nội tiết/hormone/IVF?",
-          en: "Are you taking hormonal contraception, hormone therapy, or IVF medication?"
-        },
-        {
-          name: "steroid",
-          flag: "yellow",
-          vi: "Đang dùng corticoid kéo dài?",
-          en: "Are you taking long-term corticosteroids?"
-        },
-        {
-          name: "weightLossDrug",
-          flag: "yellow",
-          vi: "Đang dùng thuốc giảm cân/stimulant/thuốc ADHD?",
-          en: "Are you taking weight-loss medication, stimulants, or ADHD medication?"
-        },
-        {
-          name: "sedative",
-          flag: "yellow",
-          vi: "Đang dùng thuốc ngủ/an thần/chống trầm cảm/opioid?",
-          en: "Are you taking sleeping pills, sedatives, antidepressants, or opioid pain medication?"
-        },
-        {
-          name: "isotretinoin",
-          flag: "yellow",
-          vi: "Đang hoặc mới dùng Isotretinoin?",
-          en: "Are you currently taking or have you recently taken Isotretinoin?"
-        },
-        {
-          name: "aminoglycoside",
-          flag: "red",
-          vi: "Đang dùng aminoglycoside hoặc thuốc giãn cơ?",
-          en: "Are you taking aminoglycoside antibiotics or muscle relaxants?"
-        },
-        {
-          name: "supplementsBleeding",
-          flag: "yellow",
-          vi: "Đang dùng omega-3 liều cao, ginkgo, nhân sâm, tỏi/nghệ liều cao?",
-          en: "Are you taking high-dose omega-3, ginkgo, ginseng, garlic, or turmeric supplements?"
-        },
-        {
-          name: "smoking",
-          flag: "yellow",
-          vi: "Có hút thuốc lá/vape/shisha?",
-          en: "Do you smoke cigarettes, vape, or use shisha?"
-        },
-        {
-          name: "alcoholDrugs",
-          flag: "red",
-          vi: "Có uống rượu nhiều hoặc sử dụng chất kích thích?",
-          en: "Do you drink heavily or use recreational drugs?"
-        }
+        { name: "anticoagulant", flag: "red", vi: "Đang dùng thuốc chống đông: Warfarin/Rivaroxaban/Apixaban/Dabigatran?", en: "Are you taking blood thinners such as Warfarin, Rivaroxaban, Apixaban, or Dabigatran?" },
+        { name: "antiplatelet", flag: "red", vi: "Đang dùng Aspirin/Clopidogrel/Plavix?", en: "Are you taking Aspirin, Clopidogrel, or Plavix?" },
+        { name: "heartMeds", flag: "yellow", vi: "Đang dùng thuốc tim mạch/huyết áp?", en: "Are you taking heart or blood pressure medication?" },
+        { name: "diabetesMeds", flag: "yellow", vi: "Đang dùng insulin hoặc thuốc tiểu đường?", en: "Are you taking insulin or diabetes medication?" },
+        { name: "hormone", flag: "yellow", vi: "Đang dùng thuốc tránh thai nội tiết/hormone/IVF?", en: "Are you taking hormonal contraception, hormone therapy, or IVF medication?" },
+        { name: "steroid", flag: "yellow", vi: "Đang dùng corticoid kéo dài?", en: "Are you taking long-term corticosteroids?" },
+        { name: "weightLossDrug", flag: "yellow", vi: "Đang dùng thuốc giảm cân/stimulant/thuốc ADHD?", en: "Are you taking weight-loss medication, stimulants, or ADHD medication?" },
+        { name: "sedative", flag: "yellow", vi: "Đang dùng thuốc ngủ/an thần/chống trầm cảm/opioid?", en: "Are you taking sleeping pills, sedatives, antidepressants, or opioid pain medication?" },
+        { name: "isotretinoin", flag: "yellow", vi: "Đang hoặc mới dùng Isotretinoin?", en: "Are you currently taking or have you recently taken Isotretinoin?" },
+        { name: "aminoglycoside", flag: "red", vi: "Đang dùng aminoglycoside hoặc thuốc giãn cơ?", en: "Are you taking aminoglycoside antibiotics or muscle relaxants?" },
+        { name: "supplementsBleeding", flag: "yellow", vi: "Đang dùng omega-3 liều cao, ginkgo, nhân sâm, tỏi/nghệ liều cao?", en: "Are you taking high-dose omega-3, ginkgo, ginseng, garlic, or turmeric supplements?" },
+        { name: "smoking", flag: "yellow", vi: "Có hút thuốc lá/vape/shisha?", en: "Do you smoke cigarettes, vape, or use shisha?" },
+        { name: "alcoholDrugs", flag: "red", vi: "Có uống rượu nhiều hoặc sử dụng chất kích thích?", en: "Do you drink heavily or use recreational drugs?" }
       ]
     };
 
-    const serviceQuestions = {
-      eyes: [
-        {
-          name: "dryEye",
-          flag: "yellow",
-          vi: "Có khô mắt thường xuyên không?",
-          en: "Do you often have dry eyes?"
-        },
-        {
-          name: "glaucoma",
-          flag: "yellow",
-          vi: "Có glaucoma/cườm nước hoặc bệnh mắt đang điều trị không?",
-          en: "Do you have glaucoma or any eye condition under treatment?"
-        },
-        {
-          name: "thyroidEye",
-          flag: "yellow",
-          vi: "Có Basedow/bệnh tuyến giáp/mắt lồi không?",
-          en: "Do you have Graves’ disease, thyroid eye disease, or bulging eyes?"
-        },
-        {
-          name: "eyeRevision",
-          flag: "yellow",
-          vi: "Từng cắt mí/mở góc/chỉnh mí hoặc sửa mí nhiều lần chưa?",
-          en: "Have you had eyelid surgery, canthoplasty, or multiple eyelid revisions before?"
-        }
-      ],
-      nose: [
-        {
-          name: "sinusitis",
-          flag: "yellow",
-          vi: "Có viêm xoang/viêm mũi dị ứng/nghẹt mũi mạn tính không?",
-          en: "Do you have sinusitis, allergic rhinitis, or chronic nasal blockage?"
-        },
-        {
-          name: "noseInfection",
-          flag: "red",
-          vi: "Có đang viêm xoang cấp/chảy mũi mủ không?",
-          en: "Do you currently have acute sinus infection or pus-like nasal discharge?"
-        },
-        {
-          name: "noseRevision",
-          flag: "red",
-          vi: "Từng nâng mũi/sửa mũi nhiều lần hoặc từng nhiễm trùng/lộ sóng không?",
-          en: "Have you had multiple rhinoplasty revisions, infection, or implant exposure?"
-        },
-        {
-          name: "noseSilicone",
-          flag: "red",
-          vi: "Từng tiêm filler/silicon/chỉ không rõ vào mũi không?",
-          en: "Have you ever had filler, silicone, or unknown threads injected/placed in the nose?"
-        },
-        {
-          name: "ribCartilageRisk",
-          flag: "yellow",
-          vi: "Nếu lấy sụn sườn: có bệnh phổi/từng mổ lồng ngực không?",
-          en: "If rib cartilage is needed: do you have lung disease or previous chest surgery?"
-        }
-      ],
-      lips: [
-        {
-          name: "oralHerpes",
-          flag: "red",
-          vi: "Có herpes môi tái phát hoặc đang bùng phát không?",
-          en: "Do you have recurrent cold sores or an active herpes outbreak on the lips?"
-        },
-        {
-          name: "dentalInfection",
-          flag: "yellow",
-          vi: "Có viêm lợi, đau răng, nhiễm trùng răng miệng không?",
-          en: "Do you have gum inflammation, tooth pain, or dental infection?"
-        },
-        {
-          name: "lipFiller",
-          flag: "yellow",
-          vi: "Từng tiêm filler/cắt môi/nhân trung/chỉnh hở lợi chưa?",
-          en: "Have you had lip filler, lip surgery, philtrum surgery, or gummy smile treatment before?"
-        }
-      ],
-      faceLift: [
-        {
-          name: "faceliftSmoking",
-          flag: "yellow",
-          vi: "Có hút thuốc lá/vape không?",
-          en: "Do you smoke or vape?"
-        },
-        {
-          name: "facialNerve",
-          flag: "red",
-          vi: "Từng liệt mặt/yếu cơ mặt không?",
-          en: "Have you ever had facial paralysis or facial muscle weakness?"
-        },
-        {
-          name: "faceSurgery",
-          flag: "yellow",
-          vi: "Từng căng da/cấy mỡ/filler/silicon vùng mặt hoặc phẫu thuật nhiều lần chưa?",
-          en: "Have you had face lift, fat grafting, filler, silicone, or multiple facial surgeries before?"
-        },
-        {
-          name: "highExpectation",
-          flag: "yellow",
-          vi: "Có kỳ vọng thay đổi rất lớn hoặc khó chấp nhận sẹo không?",
-          en: "Do you expect a very dramatic change or have difficulty accepting scars?"
-        }
-      ],
-      faceImplant: [
-        {
-          name: "faceSilicone",
-          flag: "yellow",
-          vi: "Từng tiêm filler/silicon vùng mặt/cằm/thái dương không?",
-          en: "Have you had filler or silicone injected in the face, chin, or temples?"
-        },
-        {
-          name: "faceInflammation",
-          flag: "red",
-          vi: "Từng viêm/u cục kéo dài sau tiêm không?",
-          en: "Have you ever had prolonged inflammation or lumps after injections?"
-        },
-        {
-          name: "chinNumbness",
-          flag: "yellow",
-          vi: "Có tê/đau/yếu vùng cằm/mặt hiện tại không?",
-          en: "Do you currently have numbness, pain, or weakness in the chin or face?"
-        }
-      ],
-      jaw: [
-        {
-          name: "limitedMouth",
-          flag: "red",
-          vi: "Có khó há miệng, hàm nhỏ, ngủ ngáy/ngưng thở khi ngủ không?",
-          en: "Do you have limited mouth opening, small jaw, loud snoring, or sleep apnea?"
-        },
-        {
-          name: "dentalSevere",
-          flag: "red",
-          vi: "Có nhiễm trùng răng miệng/nha chu/áp xe răng không?",
-          en: "Do you have dental infection, gum disease, or dental abscess?"
-        },
-        {
-          name: "jawSurgery",
-          flag: "yellow",
-          vi: "Từng phẫu thuật/gãy xương hàm mặt chưa?",
-          en: "Have you ever had facial bone surgery or facial/jaw fracture?"
-        },
-        {
-          name: "jawBleeding",
-          flag: "red",
-          vi: "Có thiếu máu/rối loạn đông máu/chống đông không?",
-          en: "Do you have anemia, bleeding disorder, or take blood thinners?"
-        }
-      ],
-      breast: [
-        {
-          name: "breastMass",
-          flag: "red",
-          vi: "Có khối u vú, tiết dịch núm vú bất thường hoặc bệnh tuyến vú chưa đánh giá không?",
-          en: "Do you have a breast lump, abnormal nipple discharge, or unevaluated breast condition?"
-        },
-        {
-          name: "breastCancer",
-          flag: "yellow",
-          vi: "Có tiền sử ung thư vú/xạ trị vùng ngực không?",
-          en: "Do you have a history of breast cancer or chest radiation?"
-        },
-        {
-          name: "breastRevision",
-          flag: "yellow",
-          vi: "Từng nâng ngực, co thắt bao xơ, nhiễm trùng, lệch/vỡ túi không?",
-          en: "Have you had breast implants, capsular contracture, infection, implant malposition, or rupture?"
-        },
-        {
-          name: "breastVTE",
-          flag: "red",
-          vi: "Có tiền sử huyết khối hoặc đang dùng hormone/IVF không?",
-          en: "Do you have a history of blood clots or currently use hormones/IVF medication?"
-        }
-      ],
-      body: [
-        {
-          name: "multiLipo",
-          flag: "yellow",
-          vi: "Muốn hút nhiều vùng/lượng hút lớn trong một lần không?",
-          en: "Are you considering multiple liposuction areas or a large-volume procedure in one session?"
-        },
-        {
-          name: "hernia",
-          flag: "yellow",
-          vi: "Có thoát vị rốn/thành bụng hoặc từng mổ bụng nhiều lần không?",
-          en: "Do you have an umbilical/abdominal hernia or multiple previous abdominal surgeries?"
-        },
-        {
-          name: "bodyVTE",
-          flag: "red",
-          vi: "Có tiền sử huyết khối, giãn tĩnh mạch nặng, dùng hormone/IVF không?",
-          en: "Do you have a history of blood clots, severe varicose veins, or use hormones/IVF medication?"
-        },
-        {
-          name: "bodyOsa",
-          flag: "red",
-          vi: "Có BMI cao kèm ngủ ngáy/ngưng thở khi ngủ không?",
-          en: "Do you have high BMI with loud snoring or sleep apnea?"
-        },
-        {
-          name: "bodyLast",
-          flag: "red",
-          vi: "Từng có dấu hiệu ngộ độc thuốc tê sau gây tê/hút mỡ không?",
-          en: "Have you ever had signs of severe reaction after local anesthesia or liposuction?"
-        }
-      ],
-      buttock: [
-        {
-          name: "buttockSilicone",
-          flag: "red",
-          vi: "Từng tiêm silicon lỏng/chất làm đầy không rõ vùng mông không?",
-          en: "Have you ever had liquid silicone or unknown filler injected into the buttocks?"
-        },
-        {
-          name: "buttockInfection",
-          flag: "red",
-          vi: "Có viêm/u cục/đau/nhiễm trùng vùng mông không?",
-          en: "Do you have inflammation, lumps, pain, or infection in the buttock area?"
-        },
-        {
-          name: "buttockVTE",
-          flag: "red",
-          vi: "Có tiền sử huyết khối/BMI cao/ít vận động không?",
-          en: "Do you have a history of blood clots, high BMI, or limited mobility?"
-        }
-      ],
-      intimate: [
-        {
-          name: "vaginalInfection",
-          flag: "red",
-          vi: "Có viêm âm đạo, khí hư bất thường, herpes sinh dục đang bùng phát không?",
-          en: "Do you currently have vaginal infection, abnormal discharge, or active genital herpes?"
-        },
-        {
-          name: "hpvActive",
-          flag: "yellow",
-          vi: "Có tổn thương HPV/mụn cóc sinh dục đang hoạt động không?",
-          en: "Do you have active HPV lesions or genital warts?"
-        },
-        {
-          name: "coercion",
-          flag: "red",
-          vi: "Có ai ép buộc anh/chị làm dịch vụ này không?",
-          en: "Is anyone pressuring or forcing you to have this procedure?"
-        }
-      ],
-      botox: [
-        {
-          name: "myasthenia",
-          flag: "red",
-          vi: "Có nhược cơ, Lambert-Eaton, ALS hoặc bệnh thần kinh-cơ không?",
-          en: "Do you have myasthenia gravis, Lambert-Eaton syndrome, ALS, or neuromuscular disease?"
-        },
-        {
-          name: "swallowBreath",
-          flag: "red",
-          vi: "Có khó nuốt, khó thở, yếu cơ không rõ nguyên nhân không?",
-          en: "Do you have unexplained difficulty swallowing, breathing, or muscle weakness?"
-        },
-        {
-          name: "botoxInfection",
-          flag: "red",
-          vi: "Có nhiễm trùng tại vùng tiêm không?",
-          en: "Do you have an infection at the intended injection area?"
-        },
-        {
-          name: "botoxRecent",
-          flag: "yellow",
-          vi: "Đã tiêm Botox trong 3–4 tháng gần đây chưa?",
-          en: "Have you had Botox within the last 3–4 months?"
-        }
-      ],
-      filler: [
-        {
-          name: "fillerVascular",
-          flag: "red",
-          vi: "Từng bị tím da, đau dữ dội, hoại tử, mờ mắt sau tiêm filler không?",
-          en: "Have you ever had skin discoloration, severe pain, tissue necrosis, or blurred vision after filler injection?"
-        },
-        {
-          name: "unknownFiller",
-          flag: "red",
-          vi: "Từng tiêm silicon/chất không rõ nguồn gốc không?",
-          en: "Have you ever had silicone or unknown filler injected?"
-        },
-        {
-          name: "fillerInflammation",
-          flag: "yellow",
-          vi: "Từng sưng viêm/u cục kéo dài sau filler không?",
-          en: "Have you ever had prolonged swelling, inflammation, or lumps after filler?"
-        },
-        {
-          name: "fillerInfection",
-          flag: "red",
-          vi: "Có nhiễm trùng/mụn viêm/herpes vùng tiêm không?",
-          en: "Do you currently have infection, inflamed acne, or herpes at the injection area?"
-        }
-      ],
-      scar: [
-        {
-          name: "keloid",
-          flag: "yellow",
-          vi: "Có cơ địa sẹo lồi/sẹo xấu không?",
-          en: "Do you have a tendency to form keloids or poor scars?"
-        },
-        {
-          name: "scarInfection",
-          flag: "red",
-          vi: "Sẹo có đang đỏ, đau, ngứa nhiều, chảy dịch không?",
-          en: "Is the scar currently red, painful, very itchy, or draining fluid?"
-        },
-        {
-          name: "steroidScar",
-          flag: "yellow",
-          vi: "Từng loét/teo da sau tiêm sẹo chưa?",
-          en: "Have you ever had skin thinning or ulceration after scar injections?"
-        }
-      ],
-      unknown: [
-        {
-          name: "unknownConcern",
-          flag: "yellow",
-          vi: "Anh/chị chưa rõ dịch vụ và cần bác sĩ tư vấn trực tiếp?",
-          en: "Are you unsure which service is suitable and need a direct doctor consultation?"
-        }
-      ]
+    const serviceProfiles = {
+      eyes: { profiles: ["minorLocalAnesthesia", "eyeSpecific", "bleedingBruising", "revisionCommon"] },
+      nose: { profiles: ["localOrSedation", "noseSpecific", "implantMaterial", "revisionCommon", "fillerHighRiskIfRelevant"] },
+      lips: { profiles: ["minorLocalAnesthesia", "oralLipSpecific", "infectionHerpes", "fillerIfRelevant"] },
+      faceLift: { profiles: ["sedationOrGeneral", "faceLiftSpecific", "bleedingBruising", "woundHealing", "vteModerate", "revisionCommon"] },
+      faceImplant: { profiles: ["localOrSedation", "facialImplantSpecific", "implantMaterial", "woundHealing", "revisionCommon"] },
+      jaw: { profiles: ["generalAnesthesia", "airwayHighRisk", "jawSpecific", "bleedingMajor", "vteModerate", "dentalInfection", "revisionCommon"] },
+      breast: { profiles: ["generalAnesthesia", "breastSpecific", "implantMaterial", "vteHigh", "woundHealing", "revisionCommon"] },
+      body: { profiles: ["generalAnesthesia", "lipoBodySpecific", "largeVolumeLipo", "vteHigh", "localAnestheticToxicity", "woundHealing", "revisionCommon"] },
+      buttock: { profiles: ["generalAnesthesia", "buttockSpecific", "siliconeForeignMaterial", "vteHigh", "woundHealing", "revisionCommon"] },
+      intimate: { profiles: ["minorLocalAnesthesia", "intimateSpecific", "infectionGenital", "pregnancyRelated", "consentEthics"] },
+      botox: { profiles: ["botoxSpecific", "neuromuscular", "infectionInjectionSite"] },
+      filler: { profiles: ["fillerSpecific", "vascularOcclusion", "infectionInjectionSite", "siliconeForeignMaterial", "allergyLidocaineHA"] },
+      scar: { profiles: ["scarSpecific", "woundHealing", "minorLocalAnesthesia", "infectionLocal"] },
+      unknown: { profiles: ["doctorConsultationNeeded"] }
+    };
+
+    const questionBank = {
+      minorLocalAnesthesiaHistory: { layer: "layerProcedure", flag: "yellow", vi: "Anh/chị từng bị chóng mặt, ngất, hồi hộp, khó thở, nổi mề đay hoặc phản ứng bất thường sau tiêm thuốc tê/tiểu phẫu chưa?", en: "Have you ever experienced dizziness, fainting, palpitations, breathing difficulty, hives, or unusual reactions after local anesthesia or minor procedures?" },
+      sedationGeneralConcern: { layer: "layerProcedure", flag: "yellow", vi: "Anh/chị có từng phải tiền mê, gây mê hoặc từng được bác sĩ báo cần theo dõi đặc biệt khi gây mê không?", en: "Have you ever required sedation/general anesthesia or been told that you need special monitoring during anesthesia?" },
+      difficultAirwayService: { layer: "layerProcedure", flag: "red", vi: "Anh/chị từng được báo khó đặt ống thở, khó kiểm soát đường thở, khó há miệng, cổ ngắn, hàm nhỏ hoặc ngủ ngáy/ngưng thở khi ngủ không?", en: "Have you ever been told you had difficult intubation/airway management, limited mouth opening, short neck, small jaw, loud snoring, or sleep apnea?" },
+      majorSurgeryTolerance: { layer: "layerProcedure", flag: "yellow", vi: "Anh/chị từng phẫu thuật lớn chưa? Nếu có, có phải truyền máu, nằm hồi sức, khó thở, nhiễm trùng hoặc chậm hồi phục không?", en: "Have you ever had major surgery? If yes, did you need blood transfusion, ICU care, have breathing problems, infection, or delayed recovery?" },
+
+      bleedingAfterProcedure: { layer: "layerBleedingVTE", flag: "yellow", vi: "Anh/chị từng bị tụ máu, bầm tím nặng, chảy máu kéo dài sau phẫu thuật, nhổ răng, tiểu phẫu hoặc tiêm chưa?", en: "Have you ever had hematoma, severe bruising, or prolonged bleeding after surgery, tooth extraction, minor procedures, or injections?" },
+      majorBleedingRisk: { layer: "layerBleedingVTE", flag: "red", vi: "Anh/chị có thiếu máu, rối loạn đông máu, giảm tiểu cầu, bệnh gan nặng hoặc đang dùng thuốc chống đông/kháng kết tập tiểu cầu không?", en: "Do you have anemia, bleeding disorder, low platelets, severe liver disease, or take blood thinners/antiplatelet medication?" },
+      vteHistory: { layer: "layerBleedingVTE", flag: "red", vi: "Anh/chị từng bị huyết khối tĩnh mạch sâu, thuyên tắc phổi, tắc mạch, hoặc gia đình có người bị huyết khối không?", en: "Have you ever had deep vein thrombosis, pulmonary embolism, blood clots, or a family history of blood clots?" },
+      vteRiskFactors: { layer: "layerBleedingVTE", flag: "yellow", vi: "Anh/chị có giãn tĩnh mạch nặng, BMI cao, ít vận động, đi máy bay/di chuyển đường dài gần đây, đang dùng hormone/thuốc tránh thai/IVF không?", en: "Do you have severe varicose veins, high BMI, limited mobility, recent long travel/flight, or use hormones, birth control pills, or IVF medication?" },
+
+      activeLocalInfection: { layer: "layerInfectionHealing", flag: "red", vi: "Vùng dự kiến làm có nhiễm trùng, mụn viêm, vết thương hở, chảy dịch, loét, herpes hoặc viêm da đang hoạt động không?", en: "Does the intended treatment area have infection, inflamed acne, open wound, discharge, ulceration, herpes, or active dermatitis?" },
+      poorWoundHealing: { layer: "layerInfectionHealing", flag: "yellow", vi: "Anh/chị có tiểu đường, hút thuốc/vape, sẹo lồi, lành thương kém, hoại tử da hoặc nhiễm trùng sau phẫu thuật trước đây không?", en: "Do you have diabetes, smoking/vaping, keloids, poor wound healing, skin necrosis, or previous postoperative infection?" },
+
+      eyeDryness: { layer: "layerAnatomy", flag: "yellow", vi: "Anh/chị có khô mắt, cộm mắt, chảy nước mắt, khó nhắm kín mắt hoặc phải dùng thuốc nhỏ mắt thường xuyên không?", en: "Do you have dry eyes, eye irritation, tearing, difficulty fully closing the eyes, or need regular eye drops?" },
+      eyeDisease: { layer: "layerAnatomy", flag: "yellow", vi: "Anh/chị có glaucoma/cườm nước, bệnh võng mạc, từng laser mắt, phẫu thuật mắt hoặc đang điều trị bệnh mắt không?", en: "Do you have glaucoma, retinal disease, previous eye laser, eye surgery, or an eye condition under treatment?" },
+      thyroidEyeDisease: { layer: "layerAnatomy", flag: "yellow", vi: "Anh/chị có bệnh tuyến giáp, Basedow, mắt lồi hoặc từng được chẩn đoán bệnh mắt liên quan tuyến giáp không?", en: "Do you have thyroid disease, Graves’ disease, bulging eyes, or thyroid-related eye disease?" },
+      previousEyeAesthetic: { layer: "layerMaterialRevision", flag: "yellow", vi: "Anh/chị từng cắt mí, mở góc mắt, treo cung mày, chỉnh sụp mí, chỉnh lật mí hoặc sửa mí nhiều lần chưa?", en: "Have you had eyelid surgery, canthoplasty, brow lift, ptosis correction, ectropion/entropion correction, or multiple eyelid revisions?" },
+
+      noseAcuteInfection: { layer: "layerInfectionHealing", flag: "red", vi: "Hiện tại anh/chị có viêm xoang cấp, chảy mũi mủ, đau vùng xoang, sốt hoặc nhiễm trùng da vùng mũi không?", en: "Do you currently have acute sinus infection, pus-like nasal discharge, sinus pain, fever, or nasal skin infection?" },
+      noseBreathing: { layer: "layerAnatomy", flag: "yellow", vi: "Anh/chị có nghẹt mũi mạn tính, viêm mũi dị ứng nặng, khó thở bằng mũi, lệch vách ngăn hoặc hẹp van mũi không?", en: "Do you have chronic nasal blockage, severe allergic rhinitis, difficulty breathing through the nose, deviated septum, or nasal valve narrowing?" },
+      previousNoseProcedure: { layer: "layerMaterialRevision", flag: "yellow", vi: "Anh/chị từng nâng mũi, sửa mũi, cắt cánh mũi, chỉnh xương mũi, lấy sụn tai/sụn sườn hoặc tháo vật liệu mũi chưa?", en: "Have you had rhinoplasty, revision rhinoplasty, alar reduction, nasal bone surgery, ear/rib cartilage harvest, or nasal implant removal?" },
+      noseComplication: { layer: "layerMaterialRevision", flag: "red", vi: "Sau lần làm mũi trước, anh/chị từng bị nhiễm trùng, lộ sóng, bóng đỏ đầu mũi, thủng da, lệch nặng, đau kéo dài hoặc chảy dịch không?", en: "After previous nose procedures, have you had infection, implant exposure, red/thin nasal tip skin, skin breakdown, severe deviation, prolonged pain, or discharge?" },
+      noseForeignMaterial: { layer: "layerMaterialRevision", flag: "red", vi: "Anh/chị từng tiêm filler, silicon lỏng, đặt chỉ nâng mũi hoặc chất không rõ nguồn gốc vào mũi chưa?", en: "Have you ever had filler, liquid silicone, nose threads, or unknown material injected/placed in the nose?" },
+      ribCartilageRisk: { layer: "layerAnatomy", flag: "yellow", vi: "Nếu dự kiến dùng sụn sườn: anh/chị có bệnh phổi, từng mổ lồng ngực, đau ngực kéo dài hoặc sẹo lồi vùng ngực/sườn không?", en: "If rib cartilage may be used: do you have lung disease, previous chest surgery, chronic chest pain, or keloids on the chest/rib area?" },
+
+      oralHerpesActive: { layer: "layerInfectionHealing", flag: "red", vi: "Hiện tại anh/chị có herpes môi, mụn nước, vết loét, nhiễm trùng môi/miệng hoặc viêm da quanh miệng không?", en: "Do you currently have cold sores, blisters, ulcers, lip/mouth infection, or dermatitis around the mouth?" },
+      oralDentalIssue: { layer: "layerAnatomy", flag: "yellow", vi: "Anh/chị có đau răng, viêm lợi, nha chu, nhiễm trùng răng miệng hoặc đang điều trị nha khoa không?", en: "Do you have tooth pain, gum inflammation, periodontal disease, dental infection, or ongoing dental treatment?" },
+      previousLipProcedure: { layer: "layerMaterialRevision", flag: "yellow", vi: "Anh/chị từng tiêm filler môi, cắt môi, làm nhân trung, chỉnh hở lợi hoặc phẫu thuật vùng miệng chưa?", en: "Have you had lip filler, lip surgery, philtrum surgery, gummy smile treatment, or oral-area surgery before?" },
+
+      facialNerveSymptoms: { layer: "layerAnatomy", flag: "red", vi: "Anh/chị từng bị liệt mặt, méo miệng, yếu cơ mặt, tê mặt kéo dài hoặc đau dây thần kinh mặt không?", en: "Have you ever had facial paralysis, mouth deviation, facial muscle weakness, prolonged facial numbness, or facial nerve pain?" },
+      previousFacialProcedure: { layer: "layerMaterialRevision", flag: "yellow", vi: "Anh/chị từng căng da mặt/cổ, cấy mỡ, tiêm filler, tiêm silicon, đặt vật liệu độn hoặc phẫu thuật vùng mặt nhiều lần chưa?", en: "Have you had face/neck lift, fat grafting, filler, silicone injection, implants, or multiple facial surgeries before?" },
+      faceImplantInflammation: { layer: "layerMaterialRevision", flag: "red", vi: "Anh/chị từng bị viêm, u cục, đau kéo dài, nhiễm trùng hoặc chảy dịch sau khi tiêm/độn/cấy mỡ vùng mặt chưa?", en: "Have you had inflammation, lumps, prolonged pain, infection, or discharge after facial injections, implants, or fat grafting?" },
+
+      jawOralInfection: { layer: "layerInfectionHealing", flag: "red", vi: "Anh/chị đang có đau răng, áp xe răng, nha chu nặng, nhiễm trùng răng miệng hoặc răng lung lay chưa điều trị không?", en: "Do you currently have tooth pain, dental abscess, severe gum disease, oral infection, or untreated loose teeth?" },
+      previousJawSurgery: { layer: "layerMaterialRevision", flag: "yellow", vi: "Anh/chị từng phẫu thuật hàm mặt, gãy xương mặt, niềng răng phẫu thuật hoặc đặt nẹp vít vùng hàm mặt chưa?", en: "Have you had jaw/facial bone surgery, facial fracture, orthognathic treatment, or plates/screws in the facial bones?" },
+      jawNerveSymptoms: { layer: "layerAnatomy", flag: "yellow", vi: "Anh/chị có tê môi, tê cằm, đau dây thần kinh mặt hoặc yếu cơ mặt trước đó không?", en: "Do you have pre-existing lip numbness, chin numbness, facial nerve pain, or facial weakness?" },
+
+      breastCurrentProblem: { layer: "layerAnatomy", flag: "red", vi: "Anh/chị có khối u vú, đau vú bất thường, tiết dịch núm vú, lõm da/lõm núm vú hoặc bệnh tuyến vú chưa được khám không?", en: "Do you have a breast lump, unusual breast pain, nipple discharge, skin/nipple retraction, or unevaluated breast condition?" },
+      breastCancerHistory: { layer: "layerAnatomy", flag: "yellow", vi: "Anh/chị có tiền sử ung thư vú, u vú, xạ trị vùng ngực hoặc gia đình có ung thư vú không?", en: "Do you have a history of breast cancer, breast tumors, chest radiation, or family history of breast cancer?" },
+      previousBreastProcedure: { layer: "layerMaterialRevision", flag: "yellow", vi: "Anh/chị từng nâng ngực, treo ngực, thu nhỏ ngực, thu quầng/đầu ti hoặc phẫu thuật vùng ngực chưa?", en: "Have you had breast augmentation, breast lift, breast reduction, areola/nipple surgery, or breast surgery before?" },
+      breastImplantComplication: { layer: "layerMaterialRevision", flag: "yellow", vi: "Anh/chị từng bị co thắt bao xơ, nhiễm trùng, lệch túi, vỡ túi, đau kéo dài hoặc chảy dịch sau nâng ngực không?", en: "Have you had capsular contracture, infection, implant malposition, rupture, prolonged pain, or discharge after breast implants?" },
+      postpartumBreastfeeding: { layer: "layerEthics", flag: "yellow", vi: "Anh/chị đang cho con bú, mới sinh trong 6 tháng gần đây hoặc dự định mang thai sớm không?", en: "Are you breastfeeding, within 6 months postpartum, or planning pregnancy soon?" },
+
+      largeVolumeLipoPlan: { layer: "layerProcedure", flag: "yellow", vi: "Anh/chị muốn hút nhiều vùng hoặc hút lượng mỡ lớn trong một lần không?", en: "Are you considering multiple liposuction areas or a large-volume procedure in one session?" },
+      previousAbdominalSurgery: { layer: "layerMaterialRevision", flag: "yellow", vi: "Anh/chị từng mổ bụng, sinh mổ, hút mỡ, cắt da bụng hoặc có sẹo phẫu thuật lớn vùng bụng/body chưa?", en: "Have you had abdominal surgery, C-section, liposuction, tummy tuck, or major body scars before?" },
+      abdominalHernia: { layer: "layerAnatomy", flag: "yellow", vi: "Anh/chị có thoát vị rốn, thoát vị thành bụng, tách cơ bụng hoặc bụng phình bất thường không?", en: "Do you have an umbilical hernia, abdominal wall hernia, diastasis recti, or unusual abdominal bulging?" },
+      bodySkinCondition: { layer: "layerInfectionHealing", flag: "yellow", vi: "Vùng muốn làm có da chùng nhiều, rạn da nặng, sẹo cũ, nhiễm trùng da hoặc vết thương hở không?", en: "Does the treatment area have severe loose skin, stretch marks, old scars, skin infection, or open wounds?" },
+      localAnesthesiaToxicitySigns: { layer: "layerProcedure", flag: "red", vi: "Anh/chị từng có co giật, ù tai, tê quanh miệng, hồi hộp, ngất hoặc phản ứng nặng sau gây tê/hút mỡ chưa?", en: "Have you ever had seizure, ringing in the ears, mouth numbness, palpitations, fainting, or severe reaction after local anesthesia or liposuction?" },
+
+      buttockUnknownMaterial: { layer: "layerMaterialRevision", flag: "red", vi: "Anh/chị từng tiêm silicon lỏng, filler, mỡ không rõ nguồn gốc hoặc chất làm đầy vùng mông chưa?", en: "Have you ever had liquid silicone, filler, unknown fat, or unknown material injected into the buttocks?" },
+      buttockCurrentInflammation: { layer: "layerInfectionHealing", flag: "red", vi: "Hiện tại vùng mông có đau, viêm, u cục, chảy dịch, nhiễm trùng hoặc da đổi màu không?", en: "Do you currently have pain, inflammation, lumps, discharge, infection, or skin discoloration in the buttock area?" },
+      previousButtockProcedure: { layer: "layerMaterialRevision", flag: "yellow", vi: "Anh/chị từng đặt túi mông, tháo túi mông, nâng mông hoặc xử lý silicon mông chưa?", en: "Have you had buttock implants, implant removal, buttock augmentation, or silicone removal before?" },
+
+      intimateCurrentInfection: { layer: "layerEthics", flag: "red", vi: "Hiện tại anh/chị có viêm âm đạo, khí hư bất thường, ngứa/rát, mùi hôi, đau vùng kín hoặc nhiễm trùng chưa điều trị không?", en: "Do you currently have vaginal infection, abnormal discharge, itching/burning, odor, genital pain, or untreated infection?" },
+      intimateHerpesHPV: { layer: "layerEthics", flag: "yellow", vi: "Anh/chị có herpes sinh dục, HPV, mụn cóc sinh dục hoặc tổn thương vùng kín đang hoạt động không?", en: "Do you have genital herpes, HPV, genital warts, or active genital lesions?" },
+      intimatePregnancyPostpartum: { layer: "layerEthics", flag: "yellow", vi: "Anh/chị đang mang thai, nghi mang thai, mới sinh hoặc đang cho con bú không?", en: "Are you pregnant, possibly pregnant, recently postpartum, or breastfeeding?" },
+      intimateConsentPressure: { layer: "layerEthics", flag: "red", vi: "Có ai ép buộc hoặc gây áp lực khiến anh/chị phải làm dịch vụ này không?", en: "Is anyone forcing or pressuring you to have this procedure?" },
+
+      botoxNeuromuscular: { layer: "layerAnatomy", flag: "red", vi: "Anh/chị có nhược cơ, Lambert-Eaton, ALS hoặc bệnh thần kinh-cơ không?", en: "Do you have myasthenia gravis, Lambert-Eaton syndrome, ALS, or any neuromuscular disease?" },
+      botoxSwallowBreath: { layer: "layerAnatomy", flag: "red", vi: "Anh/chị có khó nuốt, khó thở, yếu cơ, sụp mí hoặc nói khó không rõ nguyên nhân không?", en: "Do you have unexplained difficulty swallowing, breathing, muscle weakness, droopy eyelids, or speech difficulty?" },
+      botoxMedicationInteraction: { layer: "layerAnatomy", flag: "yellow", vi: "Anh/chị đang dùng kháng sinh nhóm aminoglycoside, thuốc giãn cơ hoặc thuốc ảnh hưởng thần kinh-cơ không?", en: "Are you taking aminoglycoside antibiotics, muscle relaxants, or medications affecting neuromuscular transmission?" },
+      botoxPreviousComplication: { layer: "layerMaterialRevision", flag: "yellow", vi: "Anh/chị từng bị sụp mí, méo mặt, khó nuốt, khó thở hoặc yếu cơ sau tiêm Botox chưa?", en: "Have you ever had droopy eyelids, facial asymmetry, difficulty swallowing, breathing difficulty, or weakness after Botox?" },
+      botoxRecent: { layer: "layerMaterialRevision", flag: "yellow", vi: "Anh/chị đã tiêm Botox trong 3–4 tháng gần đây chưa?", en: "Have you had Botox within the last 3–4 months?" },
+
+      fillerHighRiskArea: { layer: "layerAnatomy", flag: "yellow", vi: "Anh/chị muốn tiêm hoặc từng tiêm filler ở vùng nguy cơ cao như mũi, quanh mắt, rãnh mũi má, trán hoặc thái dương không?", en: "Are you planning or have you had filler in high-risk areas such as the nose, around the eyes, nasolabial folds, forehead, or temples?" },
+      fillerVascularEvent: { layer: "layerAnatomy", flag: "red", vi: "Anh/chị từng bị đau dữ dội, tím/trắng da, nổi bông, hoại tử, loét da, mờ mắt hoặc giảm thị lực sau tiêm filler không?", en: "Have you ever had severe pain, blue/white skin discoloration, mottling, necrosis, skin ulceration, blurred vision, or vision loss after filler?" },
+      fillerUnknownMaterial: { layer: "layerMaterialRevision", flag: "red", vi: "Anh/chị từng tiêm silicon lỏng, filler không rõ loại, chất làm đầy không rõ nguồn gốc hoặc tiêm ở nơi không rõ chuyên môn không?", en: "Have you ever had liquid silicone, unknown filler, unknown injectable material, or injections by an unverified provider?" },
+      fillerDelayedInflammation: { layer: "layerMaterialRevision", flag: "yellow", vi: "Anh/chị từng bị sưng viêm, u cục, đau kéo dài hoặc phản ứng muộn sau filler không?", en: "Have you ever had prolonged swelling, inflammation, lumps, pain, or delayed reaction after filler?" },
+      fillerLidocaineHAAllergy: { layer: "layerAnatomy", flag: "red", vi: "Anh/chị có dị ứng Lidocaine, Hyaluronic Acid hoặc từng phản ứng nặng với filler không?", en: "Are you allergic to Lidocaine, Hyaluronic Acid, or have you had a severe reaction to filler?" },
+
+      scarKeloidHistory: { layer: "layerAnatomy", flag: "yellow", vi: "Anh/chị có cơ địa sẹo lồi, sẹo phì đại hoặc từng bị sẹo xấu sau phẫu thuật/chấn thương không?", en: "Do you have a tendency to form keloids, hypertrophic scars, or poor scars after surgery or trauma?" },
+      scarCurrentInflammation: { layer: "layerInfectionHealing", flag: "red", vi: "Sẹo hiện tại có đỏ nhiều, đau, nóng, chảy dịch, loét hoặc nghi nhiễm trùng không?", en: "Is the scar currently very red, painful, warm, draining fluid, ulcerated, or possibly infected?" },
+      scarSteroidComplication: { layer: "layerMaterialRevision", flag: "yellow", vi: "Anh/chị từng tiêm sẹo bằng Triamcinolone/corticoid và bị teo da, lõm da, giãn mạch hoặc loét da chưa?", en: "Have you had Triamcinolone/steroid scar injections causing skin thinning, indentation, visible vessels, or ulceration?" },
+      scarContractureFunction: { layer: "layerAnatomy", flag: "yellow", vi: "Sẹo có gây co kéo, hạn chế vận động, kéo lệch mí/môi/mũi hoặc ảnh hưởng chức năng không?", en: "Does the scar cause contracture, limited movement, eyelid/lip/nose distortion, or functional problems?" },
+
+      doctorConsultationNeeded: { layer: "layerEthics", flag: "yellow", vi: "Anh/chị chưa rõ dịch vụ phù hợp và cần bác sĩ tư vấn trực tiếp?", en: "Are you unsure which service is suitable and need a direct doctor consultation?" }
+    };
+
+    const profileQuestionMap = {
+      minorLocalAnesthesia: ["minorLocalAnesthesiaHistory"],
+      localOrSedation: ["minorLocalAnesthesiaHistory", "sedationGeneralConcern"],
+      sedationOrGeneral: ["sedationGeneralConcern", "majorSurgeryTolerance", "difficultAirwayService"],
+      generalAnesthesia: ["sedationGeneralConcern", "majorSurgeryTolerance", "difficultAirwayService"],
+      airwayHighRisk: ["difficultAirwayService"],
+
+      bleedingBruising: ["bleedingAfterProcedure"],
+      bleedingMajor: ["bleedingAfterProcedure", "majorBleedingRisk"],
+      vteModerate: ["vteHistory", "vteRiskFactors"],
+      vteHigh: ["vteHistory", "vteRiskFactors"],
+
+      infectionLocal: ["activeLocalInfection"],
+      infectionInjectionSite: ["activeLocalInfection"],
+      infectionHerpes: ["oralHerpesActive"],
+      infectionGenital: ["intimateCurrentInfection", "intimateHerpesHPV"],
+      woundHealing: ["poorWoundHealing"],
+      dentalInfection: ["jawOralInfection"],
+      pregnancyRelated: ["intimatePregnancyPostpartum"],
+      consentEthics: ["intimateConsentPressure"],
+
+      eyeSpecific: ["eyeDryness", "eyeDisease", "thyroidEyeDisease", "previousEyeAesthetic"],
+      noseSpecific: ["noseAcuteInfection", "noseBreathing", "previousNoseProcedure", "noseComplication", "noseForeignMaterial", "ribCartilageRisk"],
+      oralLipSpecific: ["oralHerpesActive", "oralDentalIssue", "previousLipProcedure"],
+      faceLiftSpecific: ["facialNerveSymptoms", "previousFacialProcedure", "poorWoundHealing"],
+      facialImplantSpecific: ["previousFacialProcedure", "faceImplantInflammation", "facialNerveSymptoms"],
+      jawSpecific: ["jawOralInfection", "previousJawSurgery", "jawNerveSymptoms"],
+      breastSpecific: ["breastCurrentProblem", "breastCancerHistory", "previousBreastProcedure", "breastImplantComplication", "postpartumBreastfeeding"],
+      lipoBodySpecific: ["previousAbdominalSurgery", "abdominalHernia", "bodySkinCondition"],
+      largeVolumeLipo: ["largeVolumeLipoPlan"],
+      buttockSpecific: ["previousButtockProcedure", "buttockCurrentInflammation"],
+      intimateSpecific: ["intimateCurrentInfection", "intimateHerpesHPV"],
+
+      implantMaterial: ["previousFacialProcedure"],
+      siliconeForeignMaterial: ["fillerUnknownMaterial", "buttockUnknownMaterial"],
+      revisionCommon: ["majorSurgeryTolerance"],
+      fillerIfRelevant: ["fillerUnknownMaterial", "fillerDelayedInflammation"],
+      fillerHighRiskIfRelevant: ["fillerHighRiskArea", "fillerVascularEvent", "fillerUnknownMaterial"],
+
+      neuromuscular: ["botoxNeuromuscular", "botoxSwallowBreath"],
+      botoxSpecific: ["botoxNeuromuscular", "botoxSwallowBreath", "botoxMedicationInteraction", "botoxPreviousComplication", "botoxRecent"],
+      fillerSpecific: ["fillerHighRiskArea", "fillerVascularEvent", "fillerUnknownMaterial", "fillerDelayedInflammation", "fillerLidocaineHAAllergy"],
+      vascularOcclusion: ["fillerVascularEvent", "fillerHighRiskArea"],
+      allergyLidocaineHA: ["fillerLidocaineHAAllergy"],
+      localAnestheticToxicity: ["localAnesthesiaToxicitySigns"],
+      scarSpecific: ["scarKeloidHistory", "scarCurrentInflammation", "scarSteroidComplication", "scarContractureFunction"],
+      doctorConsultationNeeded: ["doctorConsultationNeeded"]
     };
 
     const steps = document.querySelectorAll(".step");
@@ -1445,6 +986,7 @@
     const serviceGroupCheckboxes = document.getElementById("serviceGroupCheckboxes");
     const serviceGroupsInput = document.getElementById("serviceGroupsInput");
     const serviceGroupLabelsInput = document.getElementById("serviceGroupLabelsInput");
+    const serviceProfilesInput = document.getElementById("serviceProfilesInput");
     const sexSelect = document.getElementById("sexSelect");
     const progressBar = document.getElementById("progressBar");
     const stepText = document.getElementById("stepText");
@@ -1465,16 +1007,12 @@
 
       document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
-        if (i18n[lang][key]) {
-          el.textContent = i18n[lang][key];
-        }
+        if (i18n[lang][key]) el.textContent = i18n[lang][key];
       });
 
       document.querySelectorAll("[data-placeholder-key]").forEach(el => {
         const key = el.getAttribute("data-placeholder-key");
-        if (i18n[lang][key]) {
-          el.placeholder = i18n[lang][key];
-        }
+        if (i18n[lang][key]) el.placeholder = i18n[lang][key];
       });
 
       renderSexOptions();
@@ -1483,9 +1021,7 @@
       renderServiceQuestions();
       updateStep();
 
-      if (currentStep === steps.length - 1) {
-        calculateRisk();
-      }
+      if (currentStep === steps.length - 1) calculateRisk();
     }
 
     function renderSexOptions() {
@@ -1500,47 +1036,44 @@
     }
 
     function getSelectedServiceGroups() {
-      return Array.from(
-        document.querySelectorAll('input[name="serviceGroupOption"]:checked')
-      ).map(input => input.value);
+      return Array.from(document.querySelectorAll('input[name="serviceGroupOption"]:checked')).map(input => input.value);
+    }
+
+    function getSelectedProfiles(selectedServices) {
+      const profiles = new Set();
+      selectedServices.forEach(code => {
+        const service = serviceProfiles[code];
+        if (!service || !service.profiles) return;
+        service.profiles.forEach(profile => profiles.add(profile));
+      });
+      return Array.from(profiles);
     }
 
     function updateServiceGroupHiddenInputs() {
       const selected = getSelectedServiceGroups();
-
-      const labels = selected.map(code => {
-        return serviceLabels[currentLang][code] || code;
-      });
+      const labels = selected.map(code => serviceLabels[currentLang][code] || code);
+      const profiles = getSelectedProfiles(selected);
 
       serviceGroupsInput.value = selected.join(",");
       serviceGroupLabelsInput.value = labels.join(" | ");
+      serviceProfilesInput.value = profiles.join(",");
     }
 
     function renderServiceCheckboxes() {
       const selectedBefore = getSelectedServiceGroups();
-
       serviceGroupCheckboxes.innerHTML = "";
 
       Object.entries(serviceLabels[currentLang]).forEach(([value, label]) => {
         const item = document.createElement("label");
         item.className = "service-check";
-
         item.innerHTML = `
-          <input 
-            type="checkbox" 
-            name="serviceGroupOption" 
-            value="${value}"
-          />
+          <input type="checkbox" name="serviceGroupOption" value="${value}" />
           <span>${label}</span>
         `;
-
         serviceGroupCheckboxes.appendChild(item);
 
         const input = item.querySelector("input");
-
-        if (selectedBefore.includes(value)) {
-          input.checked = true;
-        }
+        if (selectedBefore.includes(value)) input.checked = true;
 
         input.addEventListener("change", () => {
           updateServiceGroupHiddenInputs();
@@ -1560,10 +1093,7 @@
       const container = document.getElementById(containerId);
       const previousValues = {};
 
-      questions.forEach(q => {
-        previousValues[q.name] = getRadioValue(q.name);
-      });
-
+      questions.forEach(q => { previousValues[q.name] = getRadioValue(q.name); });
       container.innerHTML = "";
 
       questions.forEach(q => {
@@ -1572,18 +1102,9 @@
         box.innerHTML = `
           <div class="question-title">${q[currentLang]}</div>
           <div class="radio-row">
-            <label class="pill">
-              <input type="radio" name="${q.name}" value="No" data-flag="none" />
-              ${i18n[currentLang].no}
-            </label>
-            <label class="pill">
-              <input type="radio" name="${q.name}" value="Yes" data-flag="${q.flag}" />
-              ${i18n[currentLang].yes}
-            </label>
-            <label class="pill">
-              <input type="radio" name="${q.name}" value="Not sure" data-flag="yellow" />
-              ${i18n[currentLang].unknown}
-            </label>
+            <label class="pill"><input type="radio" name="${q.name}" value="No" data-flag="none" /> ${i18n[currentLang].no}</label>
+            <label class="pill"><input type="radio" name="${q.name}" value="Yes" data-flag="${q.flag}" /> ${i18n[currentLang].yes}</label>
+            <label class="pill"><input type="radio" name="${q.name}" value="Not sure" data-flag="yellow" /> ${i18n[currentLang].unknown}</label>
           </div>
         `;
         container.appendChild(box);
@@ -1602,6 +1123,89 @@
       });
     }
 
+    function getLayeredServiceQuestions(selectedServices) {
+      const profileSet = new Set();
+      const questionIdSet = new Set();
+      const layered = {
+        layerProcedure: [],
+        layerBleedingVTE: [],
+        layerInfectionHealing: [],
+        layerAnatomy: [],
+        layerMaterialRevision: [],
+        layerEthics: []
+      };
+
+      selectedServices.forEach(serviceCode => {
+        const service = serviceProfiles[serviceCode];
+        if (!service || !service.profiles) return;
+        service.profiles.forEach(profile => profileSet.add(profile));
+      });
+
+      profileSet.forEach(profile => {
+        const questionIds = profileQuestionMap[profile] || [];
+        questionIds.forEach(questionId => {
+          if (questionIdSet.has(questionId)) return;
+
+          const q = questionBank[questionId];
+          if (!q) {
+            console.warn("Missing questionBank item:", questionId);
+            return;
+          }
+
+          const layer = q.layer || "layerAnatomy";
+          if (!layered[layer]) layered[layer] = [];
+
+          layered[layer].push({
+            name: questionId,
+            flag: q.flag,
+            vi: q.vi,
+            en: q.en
+          });
+
+          questionIdSet.add(questionId);
+        });
+      });
+
+      return layered;
+    }
+
+    function renderLayeredQuestions(containerId, layeredQuestions) {
+      const container = document.getElementById(containerId);
+      const previousValues = {};
+      Object.values(layeredQuestions).flat().forEach(q => { previousValues[q.name] = getRadioValue(q.name); });
+
+      container.innerHTML = "";
+
+      Object.entries(layeredQuestions).forEach(([layerKey, questions]) => {
+        if (!questions.length) return;
+
+        const title = document.createElement("div");
+        title.className = "question-layer-title";
+        title.textContent = i18n[currentLang][layerKey] || layerKey;
+        container.appendChild(title);
+
+        questions.forEach(q => {
+          const box = document.createElement("div");
+          box.className = "question-box";
+          box.innerHTML = `
+            <div class="question-title">${q[currentLang]}</div>
+            <div class="radio-row">
+              <label class="pill"><input type="radio" name="${q.name}" value="No" data-flag="none" /> ${i18n[currentLang].no}</label>
+              <label class="pill"><input type="radio" name="${q.name}" value="Yes" data-flag="${q.flag}" /> ${i18n[currentLang].yes}</label>
+              <label class="pill"><input type="radio" name="${q.name}" value="Not sure" data-flag="yellow" /> ${i18n[currentLang].unknown}</label>
+            </div>
+          `;
+          container.appendChild(box);
+
+          const oldValue = previousValues[q.name];
+          if (oldValue) {
+            const target = box.querySelector(`input[name="${q.name}"][value="${oldValue}"]`);
+            if (target) target.checked = true;
+          }
+        });
+      });
+    }
+
     function renderServiceQuestions() {
       const selectedServices = getSelectedServiceGroups();
       const container = document.getElementById("serviceSpecificContainer");
@@ -1611,27 +1215,13 @@
         return;
       }
 
-      const mergedQuestions = [];
-      const existingNames = new Set();
-
-      selectedServices.forEach(serviceCode => {
-        const questions = serviceQuestions[serviceCode] || [];
-
-        questions.forEach(q => {
-          if (!existingNames.has(q.name)) {
-            mergedQuestions.push(q);
-            existingNames.add(q.name);
-          }
-        });
-      });
-
-      renderYesNoQuestions("serviceSpecificContainer", mergedQuestions);
+      const layeredQuestions = getLayeredServiceQuestions(selectedServices);
+      renderLayeredQuestions("serviceSpecificContainer", layeredQuestions);
+      updateServiceGroupHiddenInputs();
     }
 
     function updateStep() {
-      steps.forEach((step, index) => {
-        step.classList.toggle("active", index === currentStep);
-      });
+      steps.forEach((step, index) => step.classList.toggle("active", index === currentStep));
 
       const percent = Math.round(((currentStep + 1) / steps.length) * 100);
       progressBar.style.width = `${percent}%`;
@@ -1642,9 +1232,7 @@
       nextBtn.classList.toggle("hidden", currentStep === steps.length - 1);
       submitBtn.classList.toggle("hidden", currentStep !== steps.length - 1);
 
-      if (currentStep === steps.length - 1) {
-        calculateRisk();
-      }
+      if (currentStep === steps.length - 1) calculateRisk();
     }
 
     function validateCurrentStep() {
@@ -1657,13 +1245,9 @@
         }
       }
 
-      if (currentStep === 0) {
-        const selectedServices = getSelectedServiceGroups();
-
-        if (!selectedServices.length) {
-          alert(i18n[currentLang].selectAtLeastOneService);
-          return false;
-        }
+      if (currentStep === 0 && !getSelectedServiceGroups().length) {
+        alert(i18n[currentLang].selectAtLeastOneService);
+        return false;
       }
 
       return true;
@@ -1733,17 +1317,14 @@
       const data = {};
       const formData = new FormData(form);
 
-      for (const [key, value] of formData.entries()) {
-        data[key] = value;
-      }
+      for (const [key, value] of formData.entries()) data[key] = value;
 
       const selectedServices = getSelectedServiceGroups();
 
       data.createdAt = new Date().toISOString();
       data.serviceGroups = selectedServices.join(",");
-      data.serviceGroupLabels = selectedServices
-        .map(code => serviceLabels[currentLang][code] || code)
-        .join(" | ");
+      data.serviceGroupLabels = selectedServices.map(code => serviceLabels[currentLang][code] || code).join(" | ");
+      data.serviceProfiles = getSelectedProfiles(selectedServices).join(",");
       data.userAgent = navigator.userAgent;
 
       return data;
@@ -1758,7 +1339,6 @@
 
     nextBtn.addEventListener("click", () => {
       if (!validateCurrentStep()) return;
-
       if (currentStep < steps.length - 1) {
         currentStep++;
         updateStep();
@@ -1767,7 +1347,6 @@
 
     form.addEventListener("submit", async event => {
       event.preventDefault();
-
       if (!validateCurrentStep()) return;
 
       calculateRisk();
@@ -1780,9 +1359,7 @@
           await fetch(GOOGLE_APPS_SCRIPT_URL, {
             method: "POST",
             mode: "no-cors",
-            headers: {
-              "Content-Type": "text/plain;charset=utf-8"
-            },
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
             body: JSON.stringify(payload)
           });
         } catch (error) {
@@ -1804,7 +1381,6 @@
     });
 
     document.getElementById("createdAt").value = new Date().toISOString();
-
     renderSexOptions();
     renderServiceCheckboxes();
     renderAllQuestionGroups();
