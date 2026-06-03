@@ -1569,6 +1569,148 @@
       return data;
     }
 
+
+    const photoInputConfig = [
+      { id: "photoFront", previewId: "previewFront", required: true },
+      { id: "photoRight", previewId: "previewRight", required: true },
+      { id: "photoLeft", previewId: "previewLeft", required: true },
+      { id: "photoTop45", previewId: "previewTop45", required: false },
+      { id: "photoBottom45", previewId: "previewBottom45", required: false }
+    ];
+
+    function setupPhotoPreviews() {
+      photoInputConfig.forEach(item => {
+        const input = document.getElementById(item.id);
+        const preview = document.getElementById(item.previewId);
+
+        if (!input || !preview) return;
+
+        input.addEventListener("change", () => {
+          const file = input.files && input.files[0];
+
+          if (!file) {
+            preview.style.display = "none";
+            preview.src = "";
+            return;
+          }
+
+          if (!file.type.startsWith("image/")) {
+            alert(
+              currentLang === "vi"
+                ? "Vui lòng chỉ tải file hình ảnh."
+                : "Please upload image files only."
+            );
+            input.value = "";
+            preview.style.display = "none";
+            preview.src = "";
+            return;
+          }
+
+          const reader = new FileReader();
+          reader.onload = event => {
+            preview.src = event.target.result;
+            preview.style.display = "block";
+          };
+          reader.readAsDataURL(file);
+        });
+      });
+    }
+
+    function validateRequiredPhotos() {
+      const missing = photoInputConfig.filter(item => {
+        const input = document.getElementById(item.id);
+        return item.required && (!input || !input.files || !input.files.length);
+      });
+
+      if (missing.length) {
+        alert(
+          currentLang === "vi"
+            ? "Vui lòng tải lên tối thiểu 3 hình ảnh bắt buộc: chính diện, bên phải và bên trái."
+            : "Please upload at least 3 required photos: front view, right side, and left side."
+        );
+        return false;
+      }
+
+      return true;
+    }
+
+    function resizeImageFile(file, maxWidth = 1200, quality = 0.78) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+
+        reader.onerror = () => reject(new Error("Cannot read image file."));
+
+        reader.onload = event => {
+          const img = new Image();
+
+          img.onerror = () => reject(new Error("Cannot load image."));
+
+          img.onload = () => {
+            const scale = Math.min(1, maxWidth / img.width);
+            const width = Math.round(img.width * scale);
+            const height = Math.round(img.height * scale);
+
+            const canvas = document.createElement("canvas");
+            canvas.width = width;
+            canvas.height = height;
+
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, width, height);
+
+            const dataUrl = canvas.toDataURL("image/jpeg", quality);
+
+            resolve({
+              originalName: file.name,
+              mimeType: "image/jpeg",
+              sizeBytes: Math.round((dataUrl.length * 3) / 4),
+              dataUrl
+            });
+          };
+
+          img.src = event.target.result;
+        };
+
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function collectPhotoData() {
+      const photos = [];
+
+      for (const item of photoInputConfig) {
+        const input = document.getElementById(item.id);
+
+        if (!input || !input.files || !input.files.length) continue;
+
+        const file = input.files[0];
+        const compressed = await resizeImageFile(file);
+        const labelKey = input.getAttribute("data-photo-label-key");
+
+        photos.push({
+          field: item.id,
+          label: i18n[currentLang][labelKey] || item.id,
+          required: item.required,
+          originalName: compressed.originalName,
+          mimeType: compressed.mimeType,
+          sizeBytes: compressed.sizeBytes,
+          dataUrl: compressed.dataUrl
+        });
+      }
+
+      return photos;
+    }
+
+    function resetPhotoPreviews() {
+      photoInputConfig.forEach(item => {
+        const preview = document.getElementById(item.previewId);
+
+        if (!preview) return;
+
+        preview.src = "";
+        preview.style.display = "none";
+      });
+    }
+
     prevBtn.addEventListener("click", () => {
       if (currentStep > 0) {
         currentStep--;
@@ -1616,6 +1758,7 @@
       renderServiceCheckboxes();
       renderAllQuestionGroups();
       renderServiceQuestions();
+      resetPhotoPreviews();
       updateStep();
     });
 
