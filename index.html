@@ -781,6 +781,7 @@
         next: "Tiếp tục",
         previous: "Quay lại",
         submit: "Gửi hồ sơ",
+        submitting: "Đang gửi hồ sơ...",
         step1Title: "1. Thông tin cá nhân",
         step1Desc: "Thông tin cơ bản để tạo hồ sơ khách hàng.",
         step2Title: "2. Dị ứng & phản vệ",
@@ -861,6 +862,7 @@
         next: "Next",
         previous: "Back",
         submit: "Submit",
+        submitting: "Submitting...",
         step1Title: "1. Personal Information",
         step1Desc: "Basic information to create your client profile.",
         step2Title: "2. Allergies & Anaphylaxis",
@@ -1109,11 +1111,11 @@
 
       botoxNeuromuscular: { layer: "layerAnatomy", flag: "red", vi: "Anh/chị có nhược cơ, Lambert-Eaton, ALS hoặc bệnh thần kinh-cơ không?", en: "Do you have myasthenia gravis, Lambert-Eaton syndrome, ALS, or any neuromuscular disease?" },
       botoxSwallowBreath: { layer: "layerAnatomy", flag: "red", vi: "Anh/chị có khó nuốt, khó thở, yếu cơ, sụp mí hoặc nói khó không rõ nguyên nhân không?", en: "Do you have unexplained difficulty swallowing, breathing, muscle weakness, droopy eyelids, or speech difficulty?" },
-      botoxMedicationInteraction: { layer: "layerAnatomy", flag: "yellow", vi: "Anh/chị đang dùng kháng sinh nhóm aminoglycoside, thuốc giãn cơ hoặc thuốc ảnh hưởng thần kinh-cơ không?", en: "Are you taking aminoglycoside antibiotics, muscle relaxants, or medications affecting neuromuscular transmission?" },
+      botoxMedicationInteraction: { layer: "layerAnatomy", flag: "yellow", vi: "Anh/chị đang dùng kháng sinh nhóm aminoglycoside, thuớc giãn cơ hoặc thuốc ảnh hưởng thần kinh-cơ không?", en: "Are you taking aminoglycoside antibiotics, muscle relaxants, or medications affecting neuromuscular transmission?" },
       botoxPreviousComplication: { layer: "layerMaterialRevision", flag: "yellow", vi: "Anh/chị từng bị sụp mí, méo mặt, khó nuốt, khó thở hoặc yếu cơ sau tiêm Botox chưa?", en: "Have you ever had droopy eyelids, facial asymmetry, difficulty swallowing, breathing difficulty, or weakness after Botox?" },
       botoxRecent: { layer: "layerMaterialRevision", flag: "yellow", vi: "Anh/chị đã tiêm Botox trong 3–4 tháng gần đây chưa?", en: "Have you had Botox within the last 3–4 months?" },
 
-      fillerHighRiskArea: { layer: "layerAnatomy", flag: "yellow", vi: "Anh/chị muốn tiêm hoặc từng tiêm filler ở vùng nguy cơ cao như mũi, quanh mắt, rãnh mũi má, trán hoặc thái dương không?", en: "Are you planning or have you had filler in high-risk areas such as the nose, around the eyes, nasolabial folds, forehead, or temples?" },
+      fillerHighRiskArea: { layer: "layerAnatomy", flag: "yellow", vi: "Anh/chị muốn tiêm hoặc từng tiêm filler ở vùng nguy cơ cao như mũi, quanh mắt, rãnh mũi má, trán hoặc thái dương không?", en: "Are you planning or have you had filler in high-risk areas such as the nose, around the eyes, nasocial folds, forehead, or temples?" },
       fillerVascularEvent: { layer: "layerAnatomy", flag: "red", vi: "Anh/chị từng bị đau dữ dội, tím/trắng da, nổi bông, hoại tử, loét da, mờ mắt hoặc giảm thị lực sau tiêm filler không?", en: "Have you ever had severe pain, blue/white skin discoloration, mottling, necrosis, skin ulceration, blurred vision, or vision loss after filler?" },
       fillerUnknownMaterial: { layer: "layerMaterialRevision", flag: "red", vi: "Anh/chị từng tiêm silicon lỏng, filler không rõ loại, chất làm đầy không rõ nguồn gốc hoặc tiêm ở nơi không rõ chuyên môn không?", en: "Have you ever had liquid silicone, unknown filler, unknown injectable material, or injections by an unverified provider?" },
       fillerDelayedInflammation: { layer: "layerMaterialRevision", flag: "yellow", vi: "Anh/chị từng bị sưng viêm, u cục, đau kéo dài hoặc phản ứng muộn sau filler không?", en: "Have you ever had prolonged swelling, inflammation, lumps, pain, or delayed reaction after filler?" },
@@ -1123,7 +1125,6 @@
       scarCurrentInflammation: { layer: "layerInfectionHealing", flag: "red", vi: "Sẹo hiện tại có đỏ nhiều, đau, nóng, chảy dịch, loét hoặc nghi nhiễm trùng không?", en: "Is the scar currently very red, painful, warm, draining fluid, ulcerated, or possibly infected?" },
       scarSteroidComplication: { layer: "layerMaterialRevision", flag: "yellow", vi: "Anh/chị từng tiêm sẹo bằng Triamcinolone/corticoid và bị teo da, lõm da, giãn mạch hoặc loét da chưa?", en: "Have you had Triamcinolone/steroid scar injections causing skin thinning, indentation, visible vessels, or ulceration?" },
       scarContractureFunction: { layer: "layerAnatomy", flag: "yellow", vi: "Sẹo có gây co kéo, hạn chế vận động, kéo lệch mí/môi/mũi hoặc ảnh hưởng chức năng không?", en: "Does the scar cause contracture, limited movement, eyelid/lip/nose distortion, or functional problems?" },
-
 
       dentalPainSwellingInfection: { layer: "layerInfectionHealing", flag: "red", vi: "Hiện tại anh/chị có đau răng dữ dội, sưng mặt/sưng nướu, mủ, sốt, áp xe răng hoặc nhiễm trùng răng miệng chưa điều trị không?", en: "Do you currently have severe tooth pain, facial/gum swelling, pus, fever, dental abscess, or untreated oral infection?" },
       dentalGumDiseaseLooseTeeth: { layer: "layerAnatomy", flag: "yellow", vi: "Anh/chị có nha chu nặng, chảy máu nướu thường xuyên, răng lung lay, tiêu xương hoặc hôi miệng kéo dài không?", en: "Do you have severe periodontal disease, frequent gum bleeding, loose teeth, bone loss, or persistent bad breath?" },
@@ -1551,28 +1552,28 @@
       riskReasonsInput.value = reasons.join(" | ");
     }
     function collectAnswerSummary() {
-  const answers = [];
+      const answers = [];
 
-  form.querySelectorAll("input[type='radio']:checked").forEach(input => {
-    const answer = input.value;
-    const isMeaningful = answer === "Yes" || answer === "Not sure";
+      form.querySelectorAll("input[type='radio']:checked").forEach(input => {
+        const answer = input.value;
+        const isMeaningful = answer === "Yes" || answer === "Not sure";
 
-    if (!isMeaningful) return;
+        if (!isMeaningful) return;
 
-    const questionBox = input.closest(".question-box");
-    const questionText = questionBox?.querySelector(".question-title")?.innerText || input.name;
+        const questionBox = input.closest(".question-box");
+        const questionText = questionBox?.querySelector(".question-title")?.innerText || input.name;
 
-    answers.push({
-      name: input.name,
-      question: questionText,
-      answer: answer === "Yes" ? (currentLang === "vi" ? "Có" : "Yes") : (currentLang === "vi" ? "Không rõ" : "Not sure"),
-      flag: input.dataset.flag || "",
-      language: currentLang
-    });
-  });
+        answers.push({
+          name: input.name,
+          question: questionText,
+          answer: answer === "Yes" ? (currentLang === "vi" ? "Có" : "Yes") : (currentLang === "vi" ? "Không rõ" : "Not sure"),
+          flag: input.dataset.flag || "",
+          language: currentLang
+        });
+      });
 
-  return answers;
-}
+      return answers;
+    }
     async function collectFormData() {
       const data = {};
       const formData = new FormData(form);
@@ -1590,7 +1591,9 @@
       data.serviceGroupLabels = selectedServices.map(code => serviceLabels[currentLang][code] || code).join(" | ");
       data.serviceProfiles = getSelectedProfiles(selectedServices).join(",");
       data.userAgent = navigator.userAgent;
-      data.photos = await collectPhotoData();
+      
+      // TỐI ƯU 1: Chuyển sang xử lý nén ảnh song song cùng một lúc
+      data.photos = await collectPhotoDataParallel();
       data.photoCount = data.photos.length;
       data.photoLabels = data.photos.map(photo => photo.label).join(" | ");
       data.answerSummary = collectAnswerSummary();
@@ -1662,7 +1665,8 @@
       return true;
     }
 
-    function resizeImageFile(file, maxWidth = 1200, quality = 0.78) {
+    // TỐI ƯU 2: Giảm chiều rộng tối đa (maxWidth = 900) và hạ nhẹ chất lượng (quality = 0.7) để dung lượng siêu nhẹ, gửi siêu nhanh mà ảnh vẫn rõ nét y khoa
+    function resizeImageFile(file, maxWidth = 900, quality = 0.7) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
 
@@ -1702,19 +1706,17 @@
       });
     }
 
-    async function collectPhotoData() {
-      const photos = [];
-
-      for (const item of photoInputConfig) {
+    // TỐI ƯU 1: Thay thế hàm cũ bằng Promise.all chạy song song đa luồng cho ảnh
+    async function collectPhotoDataParallel() {
+      const promises = photoInputConfig.map(async (item) => {
         const input = document.getElementById(item.id);
-
-        if (!input || !input.files || !input.files.length) continue;
+        if (!input || !input.files || !input.files.length) return null;
 
         const file = input.files[0];
         const compressed = await resizeImageFile(file);
         const labelKey = input.getAttribute("data-photo-label-key");
 
-        photos.push({
+        return {
           field: item.id,
           label: i18n[currentLang][labelKey] || item.id,
           required: item.required,
@@ -1722,10 +1724,11 @@
           mimeType: compressed.mimeType,
           sizeBytes: compressed.sizeBytes,
           dataUrl: compressed.dataUrl
-        });
-      }
+        };
+      });
 
-      return photos;
+      const results = await Promise.all(promises);
+      return results.filter(photo => photo !== null); // Lọc bỏ các ảnh không đăng tải
     }
 
     function resetPhotoPreviews() {
@@ -1758,36 +1761,44 @@
       event.preventDefault();
       if (!validateCurrentStep()) return;
 
+      // TỐI ƯU 3: Khóa nút submit và chuyển chữ thành "Đang gửi hồ sơ..." để tối ưu trải nghiệm và chống bấm trùng (Anti-spam click)
+      submitBtn.disabled = true;
+      const originalSubmitText = submitBtn.textContent;
+      submitBtn.textContent = i18n[currentLang].submitting || "Đang gửi...";
+
       calculateRisk();
 
-      const payload = await collectFormData();
-      console.log("HL Medical Intake Payload:", payload);
+      try {
+        const payload = await collectFormData();
+        console.log("HL Medical Intake Payload:", payload);
 
-      if (GOOGLE_APPS_SCRIPT_URL) {
-        try {
+        if (GOOGLE_APPS_SCRIPT_URL) {
           await fetch(GOOGLE_APPS_SCRIPT_URL, {
             method: "POST",
             mode: "no-cors",
             headers: { "Content-Type": "text/plain;charset=utf-8" },
             body: JSON.stringify(payload)
           });
-        } catch (error) {
-          console.error(error);
-          alert(i18n[currentLang].alertSubmitError);
-          return;
         }
-      }
 
-      alert(i18n[currentLang].alertSubmitted + payload.riskLevel);
-      form.reset();
-      currentStep = 0;
-      document.getElementById("createdAt").value = new Date().toISOString();
-      renderSexOptions();
-      renderServiceCheckboxes();
-      renderAllQuestionGroups();
-      renderServiceQuestions();
-      resetPhotoPreviews();
-      updateStep();
+        alert(i18n[currentLang].alertSubmitted + payload.riskLevel);
+        form.reset();
+        currentStep = 0;
+        document.getElementById("createdAt").value = new Date().toISOString();
+        renderSexOptions();
+        renderServiceCheckboxes();
+        renderAllQuestionGroups();
+        renderServiceQuestions();
+        resetPhotoPreviews();
+        updateStep();
+      } catch (error) {
+        console.error(error);
+        alert(i18n[currentLang].alertSubmitError);
+      } finally {
+        // Mở khóa lại nút sau khi xử lý kết thúc (Dù thành công hay thất bại)
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalSubmitText;
+      }
     });
 
     document.getElementById("createdAt").value = new Date().toISOString();
